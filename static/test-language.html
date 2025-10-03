@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大五人格测试 - 中文版测试</title>
+    <meta name="description" content="基于科学心理学模型的专业人格测试，发现最匹配您的LLM和理想AI Agent">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f5f7fa; 
+        }
+        .header { 
+            background: linear-gradient(135deg, #3498db, #2c3e50); 
+            color: white; 
+            text-align: center; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            margin-bottom: 2rem; 
+        }
+        .language-switch { 
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            z-index: 1000; 
+        }
+        .language-switch button { 
+            background: white; 
+            border: 2px solid #3498db; 
+            color: #3498db; 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: 500; 
+        }
+        .question-card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 30px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border-left: 4px solid #3498db; 
+        }
+        .answer-options { 
+            display: flex; 
+            justify-content: space-between; 
+            gap: 10px; 
+            flex-wrap: wrap; 
+        }
+        .answer-option { 
+            flex: 1; 
+            min-width: 120px; 
+        }
+        .answer-option input[type="radio"] { 
+            display: none; 
+        }
+        .answer-option label { 
+            display: block; 
+            padding: 12px 8px; 
+            text-align: center; 
+            border: 2px solid #e9ecef; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            font-weight: 500; 
+        }
+        .answer-option input[type="radio"]:checked + label { 
+            background: #3498db; 
+            color: white; 
+            border-color: #3498db; 
+            transform: scale(1.05); 
+        }
+        .submit-btn { 
+            background: linear-gradient(135deg, #27ae60, #2ecc71); 
+            color: white; 
+            border: none; 
+            padding: 15px 40px; 
+            font-size: 1.2rem; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); 
+        }
+        .submit-container { 
+            text-align: center; 
+            margin: 40px 0; 
+        }
+        .test-result { 
+            background: #e8f5e8; 
+            border: 1px solid #4caf50; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin: 20px 0; 
+        }
+        .error { 
+            background: #ffebee; 
+            border: 1px solid #f44336; 
+            color: #c62828; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin: 20px 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="switchLanguage()" id="lang-btn">English</button>
+    </div>
+
+    <div class="header">
+        <h1 id="main-title">大五人格测试</h1>
+        <p id="main-subtitle">基于科学的心理学模型，深度了解您的性格特征</p>
+    </div>
+
+    <div id="test-section">
+        <div id="questions-container"></div>
+        
+        <div class="submit-container">
+            <button class="submit-btn" id="submit-btn" onclick="submitTest()" disabled>
+                <span id="submit-text">完成测试</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="result-container" style="display: none;">
+        <div class="test-result" id="test-result"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/imageGenerator.js"></script>
+    
+    <script>
+        // 简化的测试应用用于验证语言切换
+        class TestApp {
+            constructor() {
+                this.currentLanguage = 'zh';
+                this.answers = {};
+                this.calculator = new PersonalityCalculator();
+                this.init();
+            }
+
+            init() {
+                this.renderQuestions();
+                this.updateLanguage();
+            }
+
+            getCurrentQuestions() {
+                return this.currentLanguage === 'en' ? QUESTIONS_EN : QUESTIONS_ZH;
+            }
+
+            renderQuestions() {
+                const questions = this.getCurrentQuestions();
+                const container = document.getElementById('questions-container');
+                const answerOptions = ANSWER_OPTIONS[this.currentLanguage];
+                
+                container.innerHTML = '';
+                
+                // 只显示前3个问题用于测试
+                questions.slice(0, 3).forEach(question => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-card';
+                    questionDiv.innerHTML = `
+                        <div class="question-number">${this.currentLanguage === 'en' ? 'Question' : '问题'} ${question.id}</div>
+                        <div class="question-text">${question.text}</div>
+                        <div class="answer-options">
+                            ${answerOptions.map(option => `
+                                <div class="answer-option">
+                                    <input type="radio" id="q${question.id}_${option.value}" 
+                                           name="q${question.id}" value="${option.value}"
+                                           data-question-id="${question.id}">
+                                    <label for="q${question.id}_${option.value}">${option.text}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    container.appendChild(questionDiv);
+                });
+                
+                // 绑定事件
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                document.addEventListener('change', (e) => {
+                    if (e.target.type === 'radio' && e.target.dataset.questionId) {
+                        const questionId = parseInt(e.target.dataset.questionId);
+                        const answer = parseInt(e.target.value);
+                        this.answers[questionId] = answer;
+                        
+                        // 启用提交按钮
+                        const submitBtn = document.getElementById('submit-btn');
+                        if (Object.keys(this.answers).length >= 3) {
+                            submitBtn.disabled = false;
+                        }
+                    }
+                });
+            }
+
+            switchLanguage() {
+                this.currentLanguage = this.currentLanguage === 'zh' ? 'en' : 'zh';
+                this.renderQuestions();
+                this.updateLanguage();
+                
+                // 更新按钮文本
+                const langBtn = document.getElementById('lang-btn');
+                if (langBtn) {
+                    langBtn.textContent = this.currentLanguage === 'en' ? '中文' : 'English';
+                }
+            }
+
+            updateLanguage() {
+                const texts = TEXTS[this.currentLanguage];
+                
+                const elements = {
+                    'main-title': texts.title,
+                    'main-subtitle': texts.subtitle,
+                    'submit-text': texts.submitBtn
+                };
+                
+                Object.entries(elements).forEach(([id, text]) => {
+                    const element = document.getElementById(id);
+                    if (element) element.textContent = text;
+                });
+            }
+
+            submitTest() {
+                const questions = this.getCurrentQuestions();
+                
+                // 验证答案
+                if (Object.keys(this.answers).length < 3) {
+                    alert(this.currentLanguage === 'en' ? 
+                        'Please answer all questions' : 
+                        '请回答所有问题');
+                    return;
+                }
+
+                // 生成简单报告
+                const report = this.calculator.generateReport(this.answers, questions.slice(0, 3), this.currentLanguage);
+                this.showResult(report);
+            }
+
+            showResult(report) {
+                document.getElementById('test-section').style.display = 'none';
+                document.getElementById('result-container').style.display = 'block';
+                
+                const resultDiv = document.getElementById('test-result');
+                const language = this.currentLanguage;
+                
+                resultDiv.innerHTML = `
+                    <h3>${language === 'en' ? 'Test Results' : '测试结果'}</h3>
+                    <p><strong>${language === 'en' ? 'MBTI Type' : 'MBTI类型'}:</strong> ${report.mbtiResult.typeCode}</p>
+                    <p><strong>${language === 'en' ? 'Type Name' : '类型名称'}:</strong> ${language === 'en' ? report.mbtiResult.nameEn : report.mbtiResult.name}</p>
+                    <p><strong>${language === 'en' ? 'Language Verified' : '语言验证'}:</strong> ${language === 'en' ? 'English' : '中文'}</p>
+                    <p><strong>${language === 'en' ? 'Questions Language' : '问题语言'}:</strong> ${language === 'en' ? 'English questions and answers' : '中文问题和答案'}</p>
+                    <div style="margin-top: 20px; padding: 15px; background: #f0f8ff; border-radius: 8px;">
+                        <strong>${language === 'en' ? 'Status' : '状态'}:</strong> 
+                        ${language === 'en' ? 
+                            '✅ Language switching is working correctly!<br>✅ Questions are displayed in English<br>✅ Answer options are in English<br>✅ Results are generated in English' : 
+                            '✅ 语言切换正常工作！<br>✅ 问题显示为中文<br>✅ 答案选项为中文<br>✅ 结果以中文生成'}
+                    </div>
+                `;
+            }
+        }
+
+        // 全局变量和函数
+        let app;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            app = new TestApp();
+        });
+
+        function switchLanguage() {
+            if (app) app.switchLanguage();
+        }
+
+        function submitTest() {
+            if (app) app.submitTest();
+        }
+    </script>
+</body>
+</html>

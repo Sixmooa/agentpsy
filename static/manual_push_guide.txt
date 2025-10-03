@@ -1,0 +1,33 @@
+手动推送指南 - GitHub推送问题解决方案
+
+由于当前网络连接问题，无法直接推送到GitHub。以下是替代方案：
+
+## 方案1：使用GitHub Desktop
+1. 下载并安装GitHub Desktop：https://desktop.github.com/
+2. 添加本地仓库：D:\git\personality-test-app\static
+3. 提交更改（如果有）
+4. 推送到远程仓库
+
+## 方案2：使用GitHub网站手动上传
+1. 访问：https://github.com/ptreezh/personlity
+2. 点击"Add file" → "Upload files"
+3. 上传整个项目文件夹
+4. 在提交信息中输入：
+   "Configure personality.agentpsy.com domain and English default page"
+
+## 方案3：等待网络恢复后推送
+当前配置状态：
+- ✅ CNAME文件已设置：personality.agentpsy.com
+- ✅ index.html已配置重定向到英文页面
+- ✅ 无需提交新更改
+
+当网络恢复后，执行：
+git push origin master
+
+## 当前项目状态
+域名：personality.agentpsy.com
+默认页面：英文测评页面（index-en.html）
+配置状态：已完成
+推送状态：等待网络恢复
+
+配置已就绪，只需推送即可生效！

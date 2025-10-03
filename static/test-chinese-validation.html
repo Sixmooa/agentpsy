@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文语言验证测试</title>
+    <style>
+        body { 
+            font-family: 'Microsoft YaHei', sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f5f7fa; 
+        }
+        .container { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 30px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .test-section { 
+            margin: 20px 0; 
+            padding: 20px; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+        }
+        .passed { 
+            background: #e8f5e8; 
+            border-color: #4caf50; 
+            color: #2e7d32; 
+        }
+        .failed { 
+            background: #ffebee; 
+            border-color: #f44336; 
+            color: #c62828; 
+        }
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .language-switch button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switch">
+        <button onclick="toggleLanguage()" id="lang-btn">English</button>
+    </div>
+
+    <div class="container">
+        <h1>中文语言功能验证测试</h1>
+        <p>此页面用于验证中文切换功能是否完全正常工作</p>
+        
+        <div id="test-results"></div>
+        
+        <div class="container" style="margin-top: 30px;">
+            <h3>实时测试区域</h3>
+            <div id="live-test">
+                <p>当前语言: <span id="current-lang">中文</span></p>
+                <div id="sample-question"></div>
+                <div id="sample-answers"></div>
+                <div id="sample-report"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script>
+        let currentLang = 'zh';
+        
+        function log(message, success = true) {
+            const resultsDiv = document.getElementById('test-results');
+            const div = document.createElement('div');
+            div.className = `test-section ${success ? 'passed' : 'failed'}`;
+            div.innerHTML = `
+                <strong>${success ? '✅ 通过' : '❌ 失败'}:</strong> ${message}
+                <div style="font-size: 14px; margin-top: 5px; opacity: 0.8;">
+                    时间: ${new Date().toLocaleString('zh-CN')}
+                </div>
+            `;
+            resultsDiv.appendChild(div);
+        }
+        
+        function testChineseData() {
+            log('开始验证中文数据完整性...');
+            
+            // 测试1: 中文问题数据
+            try {
+                if (typeof QUESTIONS_ZH === 'undefined') {
+                    log('QUESTIONS_ZH 未定义', false);
+                    return false;
+                }
+                
+                if (QUESTIONS_ZH.length !== 50) {
+                    log(`中文问题数量错误: 期望50个，实际${QUESTIONS_ZH.length}个`, false);
+                    return false;
+                }
+                
+                // 检查前几个问题
+                const sampleQuestions = QUESTIONS_ZH.slice(0, 3);
+                const hasValidChinese = sampleQuestions.every(q => 
+                    q.text && q.text.length > 0 && /[\u4e00-\u9fff]/.test(q.text)
+                );
+                
+                if (!hasValidChinese) {
+                    log('中文问题文本不包含中文字符', false);
+                    return false;
+                }
+                
+                log(`✅ 中文问题数据验证通过 - ${QUESTIONS_ZH.length}个问题`);
+            } catch (error) {
+                log(`中文问题数据验证失败: ${error.message}`, false);
+                return false;
+            }
+            
+            // 测试2: 中文答案选项
+            try {
+                if (typeof ANSWER_OPTIONS === 'undefined' || !ANSWER_OPTIONS.zh) {
+                    log('中文答案选项未定义', false);
+                    return false;
+                }
+                
+                const zhOptions = ANSWER_OPTIONS.zh;
+                if (zhOptions.length !== 5) {
+                    log(`中文答案选项数量错误: 期望5个，实际${zhOptions.length}个`, false);
+                    return false;
+                }
+                
+                const hasValidOptions = zhOptions.every(option => 
+                    option.text && /[\u4e00-\u9fff]/.test(option.text)
+                );
+                
+                if (!hasValidOptions) {
+                    log('中文答案选项不包含中文字符', false);
+                    return false;
+                }
+                
+                log('✅ 中文答案选项验证通过');
+            } catch (error) {
+                log(`中文答案选项验证失败: ${error.message}`, false);
+                return false;
+            }
+            
+            // 测试3: 中文界面文本
+            try {
+                if (typeof TEXTS === 'undefined' || !TEXTS.zh) {
+                    log('中文界面文本未定义', false);
+                    return false;
+                }
+                
+                const zhTexts = TEXTS.zh;
+                const requiredFields = ['title', 'subtitle', 'submitBtn', 'loadingText'];
+                
+                for (const field of requiredFields) {
+                    if (!zhTexts[field] || !/[\u4e00-\u9fff]/.test(zhTexts[field])) {
+                        log(`中文界面文本字段 "${field}" 缺失或不包含中文`, false);
+                        return false;
+                    }
+                }
+                
+                log('✅ 中文界面文本验证通过');
+            } catch (error) {
+                log(`中文界面文本验证失败: ${error.message}`, false);
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function updateLiveTest() {
+            document.getElementById('current-lang').textContent = currentLang === 'zh' ? '中文' : 'English';
+            
+            // 显示示例问题
+            if (typeof QUESTIONS_ZH !== 'undefined' && QUESTIONS_ZH.length > 0) {
+                const sampleQuestion = currentLang === 'zh' ? QUESTIONS_ZH[0] : QUESTIONS_EN[0];
+                document.getElementById('sample-question').innerHTML = `
+                    <h4>示例问题:</h4>
+                    <p><strong>${currentLang === 'zh' ? '问题' : 'Question'} ${sampleQuestion.id}:</strong> ${sampleQuestion.text}</p>
+                `;
+            }
+            
+            // 显示示例答案
+            if (typeof ANSWER_OPTIONS !== 'undefined') {
+                const options = ANSWER_OPTIONS[currentLang];
+                document.getElementById('sample-answers').innerHTML = `
+                    <h4>答案选项:</h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        ${options.map(option => `
+                            <span style="background: #f0f0f0; padding: 8px 12px; border-radius: 4px; font-size: 14px;">
+                                ${option.value}: ${option.text}
+                            </span>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            // 显示示例报告文本
+            if (typeof TEXTS !== 'undefined' && TEXTS[currentLang]) {
+                const texts = TEXTS[currentLang];
+                document.getElementById('sample-report').innerHTML = `
+                    <h4>界面文本示例:</h4>
+                    <ul>
+                        <li><strong>标题:</strong> ${texts.title}</li>
+                        <li><strong>副标题:</strong> ${texts.subtitle}</li>
+                        <li><strong>提交按钮:</strong> ${texts.submitBtn}</li>
+                        <li><strong>加载文本:</strong> ${texts.loadingText}</li>
+                    </ul>
+                `;
+            }
+        }
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            document.getElementById('lang-btn').textContent = currentLang === 'zh' ? 'English' : '中文';
+            updateLiveTest();
+            
+            log(`切换到${currentLang === 'zh' ? '中文' : 'English'}语言`);
+        }
+        
+        // 页面加载时执行测试
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成，开始中文语言功能验证...');
+            
+            // 延迟执行以确保数据加载完成
+            setTimeout(() => {
+                const success = testChineseData();
+                if (success) {
+                    log('🎉 所有中文数据验证通过！语言切换功能应该正常工作。');
+                } else {
+                    log('⚠️ 发现中文数据问题，需要修复。', false);
+                }
+                
+                updateLiveTest();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

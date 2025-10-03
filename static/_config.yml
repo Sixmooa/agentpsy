@@ -1,0 +1,10 @@
+# GitHub Pages Configuration
+# This file configures GitHub Pages for custom domain and redirects
+
+# Custom domain configuration
+domain: personality.agentpsy.com
+enforce_https: true
+
+# Default settings
+theme: null
+plugins: []

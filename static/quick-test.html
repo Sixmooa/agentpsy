@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速功能测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>快速功能测试</h1>
+    <div id="test-results"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/storage.js"></script>
+
+    <script>
+        function runQuickTests() {
+            const results = [];
+            
+            // Test 1: 数据完整性
+            try {
+                if (QUESTIONS_ZH.length === 50 && QUESTIONS_EN.length === 50) {
+                    results.push({ name: '问题数据完整性', status: 'pass', message: '中英文各50题' });
+                } else {
+                    results.push({ name: '问题数据完整性', status: 'fail', message: `中文${QUESTIONS_ZH.length}题，英文${QUESTIONS_EN.length}题` });
+                }
+            } catch (e) {
+                results.push({ name: '问题数据完整性', status: 'fail', message: e.message });
+            }
+
+            // Test 2: 计算器实例化
+            try {
+                const calculator = new PersonalityCalculator();
+                results.push({ name: '计算器实例化', status: 'pass', message: '成功创建PersonalityCalculator实例' });
+            } catch (e) {
+                results.push({ name: '计算器实例化', status: 'fail', message: e.message });
+            }
+
+            // Test 3: 存储管理器实例化
+            try {
+                const storage = new StorageManager();
+                results.push({ name: '存储管理器实例化', status: 'pass', message: '成功创建StorageManager实例' });
+            } catch (e) {
+                results.push({ name: '存储管理器实例化', status: 'fail', message: e.message });
+            }
+
+            // Test 4: 基本计算功能
+            try {
+                const calculator = new PersonalityCalculator();
+                const testAnswers = {};
+                QUESTIONS_ZH.forEach(q => {
+                    testAnswers[q.id] = Math.floor(Math.random() * 5) + 1;
+                });
+                
+                const scores = calculator.calculateBigFiveScores(testAnswers, QUESTIONS_ZH);
+                const mbti = calculator.calculateMBTI(scores);
+                
+                if (mbti.type && mbti.typeCode && mbti.name) {
+                    results.push({ name: '基本计算功能', status: 'pass', message: `计算出MBTI类型: ${mbti.type}` });
+                } else {
+                    results.push({ name: '基本计算功能', status: 'fail', message: '计算结果不完整' });
+                }
+            } catch (e) {
+                results.push({ name: '基本计算功能', status: 'fail', message: e.message });
+            }
+
+            // Test 5: 贝尔宾角色数据
+            try {
+                const roleCount = Object.keys(BELBIN_ROLES).length;
+                if (roleCount === 9) {
+                    results.push({ name: '贝尔宾角色数据', status: 'pass', message: '包含9种团队角色' });
+                } else {
+                    results.push({ name: '贝尔宾角色数据', status: 'fail', message: `只有${roleCount}种角色` });
+                }
+            } catch (e) {
+                results.push({ name: '贝尔宾角色数据', status: 'fail', message: e.message });
+            }
+
+            // Test 6: MBTI详情数据
+            try {
+                const mbtiCount = Object.keys(MBTI_DETAILS).length;
+                const hasRequiredTypes = ['INTJ-A', 'ENTP-T', 'ISFP-A'].every(type => MBTI_DETAILS[type]);
+                
+                if (mbtiCount >= 16 && hasRequiredTypes) {
+                    results.push({ name: 'MBTI详情数据', status: 'pass', message: `包含${mbtiCount}种类型详情` });
+                } else {
+                    results.push({ name: 'MBTI详情数据', status: 'fail', message: `只有${mbtiCount}种类型，缺少必要类型` });
+                }
+            } catch (e) {
+                results.push({ name: 'MBTI详情数据', status: 'fail', message: e.message });
+            }
+
+            // 显示结果
+            const container = document.getElementById('test-results');
+            container.innerHTML = results.map(result => `
+                <div class="test-result ${result.status}">
+                    <strong>${result.name}:</strong> ${result.message}
+                </div>
+            `).join('');
+
+            // 统计
+            const passed = results.filter(r => r.status === 'pass').length;
+            const total = results.length;
+            container.innerHTML += `
+                <div class="test-result ${passed === total ? 'pass' : 'fail'}" style="margin-top: 20px; font-weight: bold;">
+                    总计: ${passed}/${total} 测试通过 (${Math.round(passed/total*100)}%)
+                </div>
+            `;
+        }
+
+        // 页面加载后运行测试
+        document.addEventListener('DOMContentLoaded', runQuickTests);
+    </script>
+</body>
+</html>
