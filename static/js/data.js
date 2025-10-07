@@ -696,3 +696,18 @@ if (typeof window !== 'undefined') {
     global.ANSWER_OPTIONS = ANSWER_OPTIONS;
     global.TEXTS = TEXTS;
 }
+
+// Node.js module export support
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        QUESTIONS_ZH,
+        QUESTIONS_EN,
+        BELBIN_ROLES,
+        MBTI_DETAILS,
+        CAREER_SUGGESTIONS,
+        CAREER_SUGGESTIONS_EN,
+        DIMENSIONS,
+        ANSWER_OPTIONS,
+        TEXTS
+    };
+}

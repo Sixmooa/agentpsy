@@ -5,7 +5,7 @@
 
 class PersonalityCalculator {
     constructor() {
-        this.midPoint = 3.0;
+        this.midPoint = 50; // 百分制的中点
     }
 
     /**
@@ -40,11 +40,13 @@ class PersonalityCalculator {
             }
         }
 
-        // 计算平均分
+        // 计算平均分并转换为百分制
         const avgScores = {};
         for (const dimension in scores) {
             if (counts[dimension] > 0) {
-                avgScores[dimension] = Math.round((scores[dimension] / counts[dimension]) * 100) / 100;
+                // 将1-5的平均分转换为0-100的百分制
+                const avgScore = scores[dimension] / counts[dimension];
+                avgScores[dimension] = Math.round(((avgScore - 1) / 4) * 100);
             } else {
                 avgScores[dimension] = 0;
             }
@@ -73,7 +75,7 @@ class PersonalityCalculator {
         // J/P (判断/知觉) - 基于尽责性得分
         const jp = conscientiousness >= this.midPoint ? 'J' : 'P';
         
-        // 情绪稳定性后缀 -A/-T
+        // 情绪稳定性后缀 -A/-T (神经质高表示情绪不稳定)
         const suffix = neuroticism > this.midPoint ? '-T' : '-A';
         
         const mbtiType = ei + sn + tf + jp + suffix;
@@ -242,6 +244,8 @@ class PersonalityCalculator {
 // 导出到全局
 if (typeof window !== 'undefined') {
     window.PersonalityCalculator = PersonalityCalculator;
+} else if (typeof module !== 'undefined' && module.exports) {
+    module.exports = PersonalityCalculator;
 } else if (typeof global !== 'undefined') {
     global.PersonalityCalculator = PersonalityCalculator;
 }
