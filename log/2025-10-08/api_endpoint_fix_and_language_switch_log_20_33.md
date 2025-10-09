@@ -1,8 +1,5 @@
 # API端点修复和语言切换功能工作日志
 
-## 日期
-2025年1月7日
-
 ## 任务概述
 修复Android应用的API端点配置，从Mock API切换到实际的Supabase Edge Function，并确保语言切换功能正常工作。
 
