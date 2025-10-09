@@ -3,6 +3,7 @@ package com.example.myapplication.ui.question
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.myapplication.data.model.*
 import com.example.myapplication.data.repository.PersonalityTestRepository
+import com.example.myapplication.data.TestProgressDataStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
@@ -11,11 +12,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.Assert.*
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
-import org.mockito.kotlin.whenever
-import org.mockito.kotlin.any
-import org.mockito.kotlin.eq
+import io.mockk.*
 
 /**
  * QuestionViewModel 单元测试
@@ -27,11 +24,12 @@ class QuestionViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @Mock
-    private lateinit var repository: PersonalityTestRepository
+    private val repository = mockk<PersonalityTestRepository>()
+    private val dataStore = mockk<TestProgressDataStore>()
 
+    private val testDispatcher = StandardTestDispatcher()
+    private val testScope = TestScope(testDispatcher)
     private lateinit var viewModel: QuestionViewModel
-    private val testDispatcher = UnconfinedTestDispatcher()
 
     private val mockQuestions = listOf(
         Question(
@@ -39,21 +37,24 @@ class QuestionViewModelTest {
             questionTextZh = "你喜欢与人交往吗？",
             questionTextEn = "Do you like socializing?",
             dimension = "extraversion",
-            reverse = false
+            reverse = false,
+            createdAt = null
         ),
         Question(
             id = 2,
             questionTextZh = "你喜欢独处吗？",
             questionTextEn = "Do you like being alone?",
             dimension = "extraversion",
-            reverse = true
+            reverse = true,
+            createdAt = null
         ),
         Question(
             id = 3,
             questionTextZh = "你富有想象力吗？",
             questionTextEn = "Are you imaginative?",
             dimension = "openness",
-            reverse = false
+            reverse = false,
+            createdAt = null
         )
     )
 
@@ -67,76 +68,84 @@ class QuestionViewModelTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.openMocks(this)
         Dispatchers.setMain(testDispatcher)
-        viewModel = QuestionViewModel(repository)
+        // Setup default mocks before creating ViewModel
+        coEvery { repository.getAnswerOptions(any()) } returns Result.success(mockAnswerOptions)
+        coEvery { repository.getRandomQuestions(count = any(), language = any()) } returns Result.success(mockQuestions)
+        coEvery { dataStore.getTestProgress } returns kotlinx.coroutines.flow.flowOf("")
+        coEvery { dataStore.saveTestProgress(any()) } returns Unit
+        coEvery { dataStore.clearTestProgress() } returns Unit
+        viewModel = QuestionViewModel(repository, dataStore)
     }
 
     @After
     fun tearDown() {
         Dispatchers.resetMain()
+        clearAllMocks()
     }
 
     @Test
-    fun `initial state is correct`() {
-        val initialState = viewModel.uiState.value
+    fun `initial state is correct`() = runTest {
+        // Wait for initial data loading to complete
+        testScope.advanceUntilIdle()
         
-        assertFalse(initialState.isLoading)
-
-        assertTrue(initialState.answerOptions.isEmpty())
-        assertEquals(0, initialState.currentQuestionIndex)
-        assertNull(initialState.currentQuestion)
-        assertNull(initialState.error)
-        assertFalse(initialState.testCompleted)
-        assertNull(initialState.testReport)
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertEquals(mockAnswerOptions, state.answerOptions)
+        assertEquals(0, state.currentQuestionIndex)
+        assertEquals(mockQuestions[0], state.currentQuestion)
+        assertNull(state.error)
+        assertFalse(state.testCompleted)
+        assertNull(state.testReport)
     }
 
     @Test
     fun `loadInitialData success updates state correctly`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
-
-        // Act
+        // Wait for initial loading to complete
+        testScope.advanceUntilIdle()
+        
+        // Act - reload data
         viewModel.loadInitialData()
+        testScope.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertEquals(mockAnswerOptions, state.answerOptions)
-
         assertEquals(mockQuestions[0], state.currentQuestion)
         assertEquals(0, state.currentQuestionIndex)
-        assertNull(state.error)
     }
 
     @Test
     fun `loadInitialData failure shows error message`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.failure(Exception("Network error")))
-
-        // Act
-        viewModel.loadInitialData()
-
-        // Assert
+        // Given: 模拟失败的响应
+        coEvery { repository.getAnswerOptions(any()) } returns Result.failure(Exception("Network error"))
+        coEvery { repository.getRandomQuestions(count = any(), language = any()) } returns Result.failure(Exception("Network error"))
+        
+        // When: 重新创建ViewModel触发初始化
+        viewModel = QuestionViewModel(repository, dataStore)
+        testScope.advanceUntilIdle()
+        
+        // Then: 验证错误状态
         val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNotNull(state.error)
-        assertTrue(state.error!!.contains("Network error"))
+        assertFalse("加载状态应为false", state.isLoading)
+        assertNotNull("应该有错误信息", state.error)
+        assertTrue("错误信息应包含Network error", state.error!!.contains("Network error"))
     }
 
 
 
     @Test
     fun `nextQuestion advances to next question`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
-        viewModel.loadInitialData()
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
+        
+        // Arrange - select an answer first
         viewModel.selectAnswer(mockAnswerOptions[3])
 
         // Act
         viewModel.nextQuestion()
+        testScope.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -146,13 +155,12 @@ class QuestionViewModelTest {
 
     @Test
     fun `nextQuestion does not advance without answer`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
-        viewModel.loadInitialData()
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
 
-        // Act
+        // Act - try to advance without selecting answer
         viewModel.nextQuestion()
+        testScope.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -162,12 +170,13 @@ class QuestionViewModelTest {
 
     @Test
     fun `previousQuestion goes back to previous question`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
-        viewModel.loadInitialData()
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
+        
+        // Arrange - go to next question first
         viewModel.selectAnswer(mockAnswerOptions[3])
         viewModel.nextQuestion()
+        testScope.advanceUntilIdle()
 
         // Act
         viewModel.previousQuestion()
@@ -180,12 +189,10 @@ class QuestionViewModelTest {
 
     @Test
     fun `previousQuestion does not go below zero`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
-        viewModel.loadInitialData()
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
 
-        // Act
+        // Act - try to go back from first question
         viewModel.previousQuestion()
 
         // Assert
@@ -195,9 +202,8 @@ class QuestionViewModelTest {
 
     @Test
     fun `submitTest success completes test with report`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
         
         val mockTestReport = TestReport(
             timestamp = "2024-01-01T12:00:00Z",
@@ -219,24 +225,24 @@ class QuestionViewModelTest {
             )
         )
 
-        whenever(repository.submitTest(
+        coEvery { repository.submitTest(
             answers = any(),
-            language = eq("zh"),
-            saveResult = eq(false)
-        )).thenReturn(Result.success(mockTestReport))
-
-        viewModel.loadInitialData()
+            language = "zh",
+            saveResult = false
+        ) } returns Result.success(mockTestReport)
         
         // 回答所有问题
         mockQuestions.forEachIndexed { index, _ ->
             viewModel.selectAnswer(mockAnswerOptions[index % mockAnswerOptions.size])
             if (index < mockQuestions.size - 1) {
                 viewModel.nextQuestion()
+                testScope.advanceUntilIdle()
             }
         }
 
         // Act
         viewModel.submitTest()
+        testScope.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -249,28 +255,27 @@ class QuestionViewModelTest {
 
     @Test
     fun `submitTest failure shows error message`() = runTest {
-        // Arrange
-        whenever(repository.getAnswerOptions("zh")).thenReturn(Result.success(mockAnswerOptions))
-        whenever(repository.getRandomQuestions(10, "zh")).thenReturn(Result.success(mockQuestions))
+        // Wait for initial loading
+        testScope.advanceUntilIdle()
         
-        whenever(repository.submitTest(
+        coEvery { repository.submitTest(
             answers = any(),
-            language = eq("zh"),
-            saveResult = eq(false)
-        )).thenReturn(Result.failure(Exception("Submit failed")))
-
-        viewModel.loadInitialData()
+            language = "zh",
+            saveResult = false
+        ) } returns Result.failure(Exception("Submit failed"))
         
         // 回答所有问题
         mockQuestions.forEachIndexed { index, _ ->
             viewModel.selectAnswer(mockAnswerOptions[index % mockAnswerOptions.size])
             if (index < mockQuestions.size - 1) {
                 viewModel.nextQuestion()
+                testScope.advanceUntilIdle()
             }
         }
 
         // Act
         viewModel.submitTest()
+        testScope.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value

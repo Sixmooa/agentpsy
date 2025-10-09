@@ -1,0 +1,439 @@
+{
+  "summary": {
+    "totalTests": 43,
+    "passedTests": 37,
+    "failedTests": 6,
+    "passRate": "86.05",
+    "duration": 19985
+  },
+  "unitTests": {
+    "totalTests": 21,
+    "passedTests": 21,
+    "passRate": 100,
+    "results": [
+      {
+        "test": "extreme_extravert",
+        "dimension": "extraversion",
+        "actual": 100,
+        "expected": {
+          "min": 80,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ extraversion: 100.00 (expected: 80-100)"
+      },
+      {
+        "test": "extreme_extravert",
+        "dimension": "openness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ openness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_extravert",
+        "dimension": "conscientiousness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ conscientiousness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_extravert",
+        "dimension": "agreeableness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ agreeableness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_extravert",
+        "dimension": "neuroticism",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ neuroticism: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "extraversion",
+        "actual": 0,
+        "expected": {
+          "min": 0,
+          "max": 20
+        },
+        "passed": true,
+        "message": "✓ extraversion: 0.00 (expected: 0-20)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "openness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ openness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "conscientiousness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ conscientiousness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "agreeableness",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ agreeableness: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "neuroticism",
+        "actual": 50,
+        "expected": {
+          "min": 0,
+          "max": 100
+        },
+        "passed": true,
+        "message": "✓ neuroticism: 50.00 (expected: 0-100)"
+      },
+      {
+        "test": "balanced",
+        "dimension": "extraversion",
+        "actual": 50,
+        "expected": {
+          "min": 45,
+          "max": 55
+        },
+        "passed": true,
+        "message": "✓ extraversion: 50.00 (expected: 45-55)"
+      },
+      {
+        "test": "balanced",
+        "dimension": "openness",
+        "actual": 50,
+        "expected": {
+          "min": 45,
+          "max": 55
+        },
+        "passed": true,
+        "message": "✓ openness: 50.00 (expected: 45-55)"
+      },
+      {
+        "test": "balanced",
+        "dimension": "conscientiousness",
+        "actual": 50,
+        "expected": {
+          "min": 45,
+          "max": 55
+        },
+        "passed": true,
+        "message": "✓ conscientiousness: 50.00 (expected: 45-55)"
+      },
+      {
+        "test": "balanced",
+        "dimension": "agreeableness",
+        "actual": 50,
+        "expected": {
+          "min": 45,
+          "max": 55
+        },
+        "passed": true,
+        "message": "✓ agreeableness: 50.00 (expected: 45-55)"
+      },
+      {
+        "test": "balanced",
+        "dimension": "neuroticism",
+        "actual": 50,
+        "expected": {
+          "min": 45,
+          "max": 55
+        },
+        "passed": true,
+        "message": "✓ neuroticism: 50.00 (expected: 45-55)"
+      },
+      {
+        "test": "extreme_extravert",
+        "dimension": "ei",
+        "actual": "E",
+        "expected": "E",
+        "passed": true,
+        "message": "✓ MBTI ei: E (expected: E)"
+      },
+      {
+        "test": "extreme_introvert",
+        "dimension": "ei",
+        "actual": "I",
+        "expected": "I",
+        "passed": true,
+        "message": "✓ MBTI ei: I (expected: I)"
+      },
+      {
+        "test": "complete_answers",
+        "actual": true,
+        "expected": true,
+        "passed": true,
+        "message": "✓ Answer validation: true (expected: true)"
+      },
+      {
+        "test": "incomplete_answers",
+        "actual": false,
+        "expected": false,
+        "passed": true,
+        "message": "✓ Answer validation: false (expected: false)"
+      },
+      {
+        "test": "invalid_answers",
+        "actual": false,
+        "expected": false,
+        "passed": true,
+        "message": "✓ Answer validation: false (expected: false)"
+      },
+      {
+        "test": "language_consistency",
+        "actual": "INTJ-A",
+        "expected": "INTJ-A",
+        "passed": true,
+        "message": "✓ 语言一致性: INTJ-A === INTJ-A"
+      }
+    ],
+    "success": true
+  },
+  "regressionTests": {
+    "totalTests": 16,
+    "passedTests": 16,
+    "passRate": 100,
+    "results": [
+      {
+        "testCase": "pattern_all_max",
+        "description": "模式测试: all_max",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "pattern_all_min",
+        "description": "模式测试: all_min",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "pattern_all_neutral",
+        "description": "模式测试: all_neutral",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "pattern_alternating",
+        "description": "模式测试: alternating",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "pattern_gradient",
+        "description": "模式测试: gradient",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_0",
+        "description": "随机测试 1",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_1",
+        "description": "随机测试 2",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_2",
+        "description": "随机测试 3",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_3",
+        "description": "随机测试 4",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_4",
+        "description": "随机测试 5",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_5",
+        "description": "随机测试 6",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_6",
+        "description": "随机测试 7",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_7",
+        "description": "随机测试 8",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_8",
+        "description": "随机测试 9",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "random_9",
+        "description": "随机测试 10",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      },
+      {
+        "testCase": "chinese_neutral",
+        "description": "中文版本中性测试",
+        "bigFiveComparison": null,
+        "mbtiComparison": null,
+        "overallMatch": true,
+        "errors": []
+      }
+    ],
+    "success": true
+  },
+  "integrationTests": {
+    "tests": [
+      {
+        "name": "get_questions_en",
+        "passed": false,
+        "errors": [
+          "问题数据不是数组格式"
+        ]
+      },
+      {
+        "name": "get_questions_zh",
+        "passed": false,
+        "errors": [
+          "问题数据不是数组格式"
+        ]
+      },
+      {
+        "name": "get_answer_options_en",
+        "passed": false,
+        "errors": [
+          "答案选项数据不是数组格式"
+        ]
+      },
+      {
+        "name": "complete_test_flow",
+        "passed": false,
+        "error": "questions.forEach is not a function"
+      },
+      {
+        "name": "error_handling",
+        "passed": false,
+        "error": "questions.forEach is not a function"
+      },
+      {
+        "name": "performance_test",
+        "passed": false,
+        "error": "questions.forEach is not a function"
+      }
+    ],
+    "performance": {
+      "getQuestions": {
+        "duration": 720.270599999998,
+        "durationFormatted": "720.27ms"
+      },
+      "getQuestionsZH": {
+        "duration": 844.8807000000015,
+        "durationFormatted": "844.88ms"
+      },
+      "getAnswerOptions": {
+        "duration": 650.8032999999996,
+        "durationFormatted": "650.80ms"
+      }
+    },
+    "summary": {
+      "total": 6,
+      "passed": 0,
+      "failed": 6,
+      "passRate": "0.00"
+    }
+  },
+  "performance": {
+    "frontend": {
+      "bigFiveTime": 0.0107924,
+      "mbtiTime": 0.00047760000000000245,
+      "reportTime": 0.017868999999999958
+    },
+    "backend": {
+      "frontend": 0.017271999999993567,
+      "backend": 156.51294
+    },
+    "comparison": {
+      "frontend": 0.017271999999993567,
+      "backend": 156.51294
+    }
+  },
+  "timestamp": "2025-10-08T02:21:06.064Z",
+  "endTime": "2025-10-08T02:21:26.049Z"
+}

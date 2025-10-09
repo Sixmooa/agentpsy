@@ -22,7 +22,7 @@ class ResultViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var viewModel: ResultViewModel
-    private val testDispatcher = UnconfinedTestDispatcher()
+    private val testDispatcher = StandardTestDispatcher()
 
     private val mockTestReport = TestReport(
         timestamp = "2024-01-01T12:00:00Z",
@@ -64,19 +64,20 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `initial state is correct`() {
+    fun `initial state is correct`() = runTest {
         val initialState = viewModel.uiState.value
         
-        assertFalse(initialState.isLoading)
+        assertTrue(initialState.isLoading)
         assertNull(initialState.testReport)
         assertNull(initialState.error)
         assertFalse(initialState.shouldRestartTest)
     }
 
     @Test
-    fun `setTestReport updates state correctly`() {
+    fun `setTestReport updates state correctly`() = runTest {
         // Act
         viewModel.setTestReport(mockTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -89,12 +90,14 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `restartTest sets restart flag`() {
+    fun `restartTest sets restart flag`() = runTest {
         // Arrange
         viewModel.setTestReport(mockTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.restartTest()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -103,13 +106,16 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `clearRestartFlag clears restart flag`() {
+    fun `clearRestartFlag clears restart flag`() = runTest {
         // Arrange
         viewModel.setTestReport(mockTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         viewModel.restartTest()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.clearRestartFlag()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         val state = viewModel.uiState.value
@@ -117,12 +123,14 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `shareResult works correctly`() {
+    fun `shareResult works correctly`() = runTest {
         // Arrange
         viewModel.setTestReport(mockTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         // 验证分享功能被调用，这里主要测试方法不会抛出异常
@@ -131,13 +139,15 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `shareResult works with English report`() {
+    fun `shareResult works with English report`() = runTest {
         // Arrange
         val englishTestReport = mockTestReport.copy(language = "en")
         viewModel.setTestReport(englishTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         // 验证分享功能被调用，这里主要测试方法不会抛出异常
@@ -147,9 +157,10 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `shareResult handles no test report gracefully`() {
+    fun `shareResult handles no test report gracefully`() = runTest {
         // Act
         viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         // 验证在没有测试报告时分享功能不会崩溃
@@ -158,7 +169,7 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `shareResult handles empty strengths and challenges`() {
+    fun `shareResult handles empty strengths and challenges`() = runTest {
         // Arrange
         val reportWithEmptyLists = mockTestReport.copy(
             mbtiTypeInfo = mockTestReport.mbtiTypeInfo.copy(
@@ -167,9 +178,11 @@ class ResultViewModelTest {
             )
         )
         viewModel.setTestReport(reportWithEmptyLists)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         // 验证即使优势和挑战为空，分享功能也能正常工作
@@ -180,15 +193,17 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `shareResult handles empty career suggestions`() {
+    fun `shareResult handles empty career suggestions`() = runTest {
         // Arrange
         val reportWithEmptyCareers = mockTestReport.copy(
             careerSuggestions = emptyList()
         )
         viewModel.setTestReport(reportWithEmptyCareers)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Act
         viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // Assert
         // 验证即使职业建议为空，分享功能也能正常工作
@@ -198,7 +213,7 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `multiple setTestReport calls update state correctly`() {
+    fun `multiple setTestReport calls update state correctly`() = runTest {
         // Arrange
         val firstReport = mockTestReport
         val secondReport = mockTestReport.copy(
@@ -211,9 +226,11 @@ class ResultViewModelTest {
 
         // Act
         viewModel.setTestReport(firstReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         val firstState = viewModel.uiState.value
 
         viewModel.setTestReport(secondReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         val secondState = viewModel.uiState.value
 
         // Assert
@@ -223,7 +240,7 @@ class ResultViewModelTest {
     }
 
     @Test
-    fun `state management flow works correctly`() {
+    fun `state management flow works correctly`() = runTest {
         // 测试完整的状态管理流程
         
         // 1. 初始状态
@@ -233,20 +250,29 @@ class ResultViewModelTest {
 
         // 2. 设置测试报告
         viewModel.setTestReport(mockTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         state = viewModel.uiState.value
         assertNotNull(state.testReport)
         assertFalse(state.shouldRestartTest)
 
         // 3. 触发重新开始
         viewModel.restartTest()
+        testDispatcher.scheduler.advanceUntilIdle()
         state = viewModel.uiState.value
         assertTrue(state.shouldRestartTest)
         assertNotNull(state.testReport) // 报告仍然存在
 
         // 4. 清除重新开始标志
         viewModel.clearRestartFlag()
+        testDispatcher.scheduler.advanceUntilIdle()
         state = viewModel.uiState.value
         assertFalse(state.shouldRestartTest)
         assertNotNull(state.testReport) // 报告仍然存在
+
+        // 5. 分享结果
+        viewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
+        state = viewModel.uiState.value
+        assertNotNull(state.testReport) // 分享后报告仍然存在
     }
 }

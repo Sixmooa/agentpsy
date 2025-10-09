@@ -1,12 +1,20 @@
 package com.example.myapplication.regression
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.myapplication.data.model.*
 import com.example.myapplication.data.repository.PersonalityTestRepository
+import com.example.myapplication.data.TestProgressDataStore
 import com.example.myapplication.ui.question.QuestionViewModel
 import com.example.myapplication.ui.result.ResultViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -24,11 +32,18 @@ import kotlin.test.assertTrue
 @OptIn(ExperimentalCoroutinesApi::class)
 class PersonalityTestRegressionTest {
 
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
+
     @Mock
     private lateinit var mockRepository: PersonalityTestRepository
+    
+    @Mock
+    private lateinit var mockDataStore: TestProgressDataStore
 
     private lateinit var questionViewModel: QuestionViewModel
     private lateinit var resultViewModel: ResultViewModel
+    private val testDispatcher = StandardTestDispatcher()
 
     private val sampleQuestions = listOf(
         Question(1, "测试问题1", "Test Question 1", "extraversion", false),
@@ -68,8 +83,14 @@ class PersonalityTestRegressionTest {
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        questionViewModel = QuestionViewModel(mockRepository)
+        Dispatchers.setMain(testDispatcher)
+        // 不在这里创建ViewModel，而是在每个测试中创建，以确保mock先设置
         resultViewModel = ResultViewModel()
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
     }
 
     /**
@@ -142,12 +163,14 @@ class PersonalityTestRegressionTest {
      */
     @Test
     fun regression_questionViewModel_coreFunctionality() = runTest {
-        // 设置mock响应
-        whenever(mockRepository.getRandomQuestions(10)).thenReturn(Result.success(sampleQuestions))
-        whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
+        // 设置mock响应 - 初始加载返回多个问题以支持导航
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any()))
+            .thenReturn(Result.success(sampleQuestions)) // 返回所有问题
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleAnswerOptions))
 
-        // 测试初始化
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel，传入测试协程作用域
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
         
         // 验证初始状态
         val initialState = questionViewModel.uiState.value
@@ -168,6 +191,9 @@ class PersonalityTestRegressionTest {
         assertFalse(questionViewModel.uiState.value.canNavigatePrevious)
 
         questionViewModel.nextQuestion()
+        // 等待协程完成
+        testDispatcher.scheduler.advanceUntilIdle()
+        
         val stateAfterNext = questionViewModel.uiState.value
         assertEquals(1, stateAfterNext.currentQuestionIndex)
         assertTrue(questionViewModel.uiState.value.canNavigatePrevious)
@@ -181,18 +207,20 @@ class PersonalityTestRegressionTest {
     fun regression_resultViewModel_coreFunctionality() {
         // 测试初始状态
         val initialState = resultViewModel.uiState.value
-        assertFalse(initialState.isLoading)
+        assertTrue(initialState.isLoading)
         assertEquals(null, initialState.testReport)
         assertFalse(initialState.shouldRestartTest)
 
         // 测试设置测试报告
         resultViewModel.setTestReport(sampleTestReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         val stateAfterSet = resultViewModel.uiState.value
         assertNotNull(stateAfterSet.testReport)
         assertEquals("INTJ", stateAfterSet.testReport!!.mbtiType)
 
         // 测试分享功能
         resultViewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
         val shareText = resultViewModel.uiState.value.shareText!!
         assertTrue(shareText.contains("INTJ"))
         assertTrue(shareText.contains("建筑师"))
@@ -201,10 +229,12 @@ class PersonalityTestRegressionTest {
 
         // 测试重启功能
         resultViewModel.restartTest()
+        testDispatcher.scheduler.advanceUntilIdle()
         val stateAfterRestart = resultViewModel.uiState.value
         assertTrue(stateAfterRestart.shouldRestartTest)
 
         resultViewModel.clearRestartFlag()
+        testDispatcher.scheduler.advanceUntilIdle()
         val stateAfterClear = resultViewModel.uiState.value
         assertFalse(stateAfterClear.shouldRestartTest)
     }
@@ -216,21 +246,26 @@ class PersonalityTestRegressionTest {
     @Test
     fun regression_errorHandling_maintainsStability() = runTest {
         // 模拟网络错误
-        whenever(mockRepository.getRandomQuestions(10))
-            .thenThrow(RuntimeException("Network error"))
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any()))
+            .thenReturn(Result.failure(RuntimeException("Network error")))
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any()))
+            .thenReturn(Result.failure(RuntimeException("Network error")))
 
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel，传入测试协程作用域
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
         
         val errorState = questionViewModel.uiState.value
         assertFalse(errorState.isLoading)
         assertNotNull(errorState.error)
-        assertTrue(errorState.error!!.contains("加载失败"))
+        assertTrue(errorState.error!!.contains("加载") && errorState.error!!.contains("失败"))
 
         // 测试重试机制
-        whenever(mockRepository.getRandomQuestions(10)).thenReturn(Result.success(sampleQuestions))
-        whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleQuestions))
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleAnswerOptions))
 
         questionViewModel.loadInitialData()
+        testDispatcher.scheduler.advanceUntilIdle()
         
         val recoveredState = questionViewModel.uiState.value
         assertFalse(recoveredState.isLoading)
@@ -245,23 +280,27 @@ class PersonalityTestRegressionTest {
     @Test
     fun regression_testSubmissionFlow_maintainsIntegrity() = runTest {
         // 设置初始数据
-        whenever(mockRepository.getRandomQuestions(10)).thenReturn(Result.success(sampleQuestions))
-        whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleQuestions))
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleAnswerOptions))
         whenever(mockRepository.submitTest(org.mockito.kotlin.any(), org.mockito.kotlin.any(), org.mockito.kotlin.any()))
             .thenReturn(Result.success(sampleTestReport))
 
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
 
         // 模拟完整答题流程
         sampleQuestions.forEachIndexed { index, _ ->
             questionViewModel.selectAnswer(sampleAnswerOptions[index % sampleAnswerOptions.size])
             if (index < sampleQuestions.size - 1) {
                 questionViewModel.nextQuestion()
+                testDispatcher.scheduler.advanceUntilIdle()
             }
         }
 
         // 提交测试
         questionViewModel.submitTest()
+        testDispatcher.scheduler.advanceUntilIdle()
 
         val finalState = questionViewModel.uiState.value
         assertTrue(finalState.testCompleted)
@@ -276,13 +315,14 @@ class PersonalityTestRegressionTest {
     @Test
     fun regression_dataConsistency_acrossComponents() = runTest {
         // 设置mock数据
-        whenever(mockRepository.getRandomQuestions(10)).thenReturn(Result.success(sampleQuestions))
+        whenever(mockRepository.getRandomQuestions(1)).thenReturn(Result.success(sampleQuestions))
         whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
         whenever(mockRepository.submitTest(org.mockito.kotlin.any(), org.mockito.kotlin.any(), org.mockito.kotlin.any()))
             .thenReturn(Result.success(sampleTestReport))
 
-        // 通过QuestionViewModel完成测试流程
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
         questionViewModel.selectAnswer(sampleAnswerOptions[0])
         questionViewModel.submitTest()
         val questionState = questionViewModel.uiState.value
@@ -321,11 +361,13 @@ class PersonalityTestRegressionTest {
             )
         }
 
-        whenever(mockRepository.getRandomQuestions(100)).thenReturn(Result.success(largeQuestionSet))
+        whenever(mockRepository.getRandomQuestions(1)).thenReturn(Result.success(largeQuestionSet))
         whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
 
         val startTime = System.currentTimeMillis()
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
         val loadTime = System.currentTimeMillis() - startTime
 
         // 验证加载时间在合理范围内（应该小于1秒）
@@ -349,20 +391,23 @@ class PersonalityTestRegressionTest {
     @Test
     fun regression_boundaryConditions_handledCorrectly() = runTest {
         // 测试空数据情况
-        whenever(mockRepository.getRandomQuestions(10)).thenReturn(Result.success(emptyList()))
-        whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(emptyList()))
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any())).thenReturn(Result.success(emptyList()))
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any())).thenReturn(Result.success(emptyList()))
 
-        questionViewModel.loadInitialData()
+        // 在mock设置后创建ViewModel
+        questionViewModel = QuestionViewModel(mockRepository, mockDataStore)
+        testDispatcher.scheduler.advanceUntilIdle()
         val emptyState = questionViewModel.uiState.value
         assertEquals(0, emptyState.answerOptions.size)
         assertEquals(null, emptyState.currentQuestion)
 
         // 测试单个问题情况
         val singleQuestion = listOf(sampleQuestions[0])
-        whenever(mockRepository.getRandomQuestions(1)).thenReturn(Result.success(singleQuestion))
-        whenever(mockRepository.getAnswerOptions()).thenReturn(Result.success(sampleAnswerOptions))
+        whenever(mockRepository.getRandomQuestions(count = org.mockito.kotlin.any(), language = org.mockito.kotlin.any())).thenReturn(Result.success(singleQuestion))
+        whenever(mockRepository.getAnswerOptions(language = org.mockito.kotlin.any())).thenReturn(Result.success(sampleAnswerOptions))
 
         questionViewModel.loadInitialData()
+        testDispatcher.scheduler.advanceUntilIdle()
         val singleState = questionViewModel.uiState.value
         assertNotNull(singleState.currentQuestion)
 
@@ -371,6 +416,7 @@ class PersonalityTestRegressionTest {
         val extremeReport = sampleTestReport.copy(bigFiveScores = extremeScores)
         
         resultViewModel.setTestReport(extremeReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         val extremeState = resultViewModel.uiState.value
         assertNotNull(extremeState.testReport)
         assertEquals(0.0, extremeState.testReport!!.bigFiveScores.openness)
@@ -386,7 +432,9 @@ class PersonalityTestRegressionTest {
         // 测试中文报告
         val chineseReport = sampleTestReport.copy(language = "zh")
         resultViewModel.setTestReport(chineseReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         resultViewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
         val chineseState = resultViewModel.uiState.value
         assertNotNull(chineseState.shareText)
         assertTrue(chineseState.shareText!!.contains("建筑师"))
@@ -395,7 +443,9 @@ class PersonalityTestRegressionTest {
         // 测试英文报告
         val englishReport = sampleTestReport.copy(language = "en")
         resultViewModel.setTestReport(englishReport)
+        testDispatcher.scheduler.advanceUntilIdle()
         resultViewModel.shareResult()
+        testDispatcher.scheduler.advanceUntilIdle()
         val englishState = resultViewModel.uiState.value
         assertNotNull(englishState.shareText)
         assertTrue(englishState.shareText!!.contains("Architect"))

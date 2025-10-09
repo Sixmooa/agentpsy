@@ -47,12 +47,31 @@ class IntegrationTestClient {
   
   async getQuestions(language = 'en') {
     const response = await this.makeRequest(`/questions?language=${language}`);
-    return response.questions || response; // 处理新的API响应格式
+    // 兼容多种响应结构：{questions: [...]}, {data: [...]}, 或直接数组
+    const raw = response.questions || response.data || response;
+    const arr = Array.isArray(raw) ? raw : [];
+    // 归一化字段，补充 text 以满足验证与历史测试用例
+    return arr.map(q => ({
+      ...q,
+      text: q.text ?? (language === 'zh' 
+        ? (q.question_text_zh ?? q.text_zh)
+        : (q.question_text_en ?? q.text_en))
+    }));
   }
   
   async getAnswerOptions(language = 'en') {
     const response = await this.makeRequest(`/answer-options?language=${language}`);
-    return response.options || response; // 处理新的API响应格式
+    // 兼容多种响应结构：{options: [...]}, {data: [...]}, 或直接数组
+    const raw = response.options || response.data || response;
+    const arr = Array.isArray(raw) ? raw : [];
+    // 归一化字段，补充 value 与 text 以满足验证与历史测试用例
+    return arr.map(o => ({
+      ...o,
+      value: o.value ?? o.score ?? o.id,
+      text: o.text ?? (language === 'zh' 
+        ? (o.option_text_zh ?? o.text_zh)
+        : (o.option_text_en ?? o.text_en))
+    }));
   }
   
   async submitTest(answers, language = 'en', saveResult = false) {
