@@ -1,0 +1,650 @@
+{
+  "timestamp": "2025-10-09T12:08:12.611Z",
+  "report": {
+    "summary": {
+      "localRolesCount": 9,
+      "cloudRolesCount": 9,
+      "matchingRoles": 8,
+      "missingInCloud": [
+        "Co-ordinator"
+      ],
+      "missingInLocal": [
+        "Coordinator"
+      ],
+      "inconsistencies": [
+        {
+          "role": "Plant",
+          "field": "中文名称",
+          "local": "创新者",
+          "cloud": "智多星"
+        },
+        {
+          "role": "Plant",
+          "field": "中文描述",
+          "local": "富有创造力和想象力，能够解决困难问题",
+          "cloud": "富有创造力、想象力和不拘一格。解决困难问题。"
+        },
+        {
+          "role": "Plant",
+          "field": "英文描述",
+          "local": "Creative, imaginative, free-thinking. Generates ideas and solves difficult problems.",
+          "cloud": "Creative, imaginative, unorthodox. Solves difficult problems."
+        },
+        {
+          "role": "Plant",
+          "field": "中文特征",
+          "local": "富有创造力、想象力、独立思考",
+          "cloud": "富有创造力，想象力丰富，不拘一格，独立思考"
+        },
+        {
+          "role": "Plant",
+          "field": "英文特征",
+          "local": "Creative, imaginative, free-thinking",
+          "cloud": "Creative, imaginative, unorthodox, independent thinking"
+        },
+        {
+          "role": "Plant",
+          "field": "中文贡献",
+          "local": "产生想法、解决困难问题",
+          "cloud": "解决困难问题，提供创新想法，突破传统思维"
+        },
+        {
+          "role": "Plant",
+          "field": "英文贡献",
+          "local": "Generates ideas and solves difficult problems",
+          "cloud": "Solves difficult problems, provides innovative ideas, breaks conventional thinking"
+        },
+        {
+          "role": "Plant",
+          "field": "中文弱点",
+          "local": "忽视细节、过于专注于想法",
+          "cloud": "忽视细节，过于专注于想法，沟通困难"
+        },
+        {
+          "role": "Plant",
+          "field": "英文弱点",
+          "local": "Ignores incidentals, too preoccupied to communicate effectively",
+          "cloud": "Ignores details, too focused on ideas, communication difficulties"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "中文描述",
+          "local": "外向、热情，探索机会并发展联系",
+          "cloud": "外向、热情、沟通能力强。探索机会，发展联系。"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "英文描述",
+          "local": "Outgoing, enthusiastic. Explores opportunities and develops contacts.",
+          "cloud": "Extrovert, enthusiastic, communicative. Explores opportunities and develops contacts."
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "中文特征",
+          "local": "外向、热情、善于交际",
+          "cloud": "外向，热情，沟通能力强，善于建立联系"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "英文特征",
+          "local": "Outgoing, enthusiastic, communicative",
+          "cloud": "Extroverted, enthusiastic, communicative, good at networking"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "中文贡献",
+          "local": "探索机会、发展联系、报告想法",
+          "cloud": "探索机会，发展联系，带来外部信息"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "英文贡献",
+          "local": "Explores opportunities, develops contacts, reports on ideas",
+          "cloud": "Explores opportunities, develops contacts, brings external information"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "中文弱点",
+          "local": "过度乐观、失去兴趣后容易放弃",
+          "cloud": "过度乐观，失去兴趣太快，缺乏持续性"
+        },
+        {
+          "role": "Resource_Investigator",
+          "field": "英文弱点",
+          "local": "Over-optimistic, loses interest once initial enthusiasm has passed",
+          "cloud": "Over-optimistic, loses interest quickly, lacks follow-through"
+        },
+        {
+          "role": "Shaper",
+          "field": "中文名称",
+          "local": "塑造者",
+          "cloud": "推进者"
+        },
+        {
+          "role": "Shaper",
+          "field": "中文描述",
+          "local": "充满挑战性、动态，在压力下茁壮成长",
+          "cloud": "具有挑战性、动态、在压力下茁壮成长。有动力和勇气克服障碍。"
+        },
+        {
+          "role": "Shaper",
+          "field": "中文特征",
+          "local": "充满挑战性、动态、勇气",
+          "cloud": "具有挑战性，动态，抗压能力强，有动力"
+        },
+        {
+          "role": "Shaper",
+          "field": "英文特征",
+          "local": "Challenging, dynamic, thrives on pressure",
+          "cloud": "Challenging, dynamic, thrives under pressure, driven"
+        },
+        {
+          "role": "Shaper",
+          "field": "中文贡献",
+          "local": "克服障碍、推动行动",
+          "cloud": "克服障碍，推动进展，激励团队"
+        },
+        {
+          "role": "Shaper",
+          "field": "英文贡献",
+          "local": "Has the drive and courage to overcome obstacles",
+          "cloud": "Overcomes obstacles, drives progress, motivates team"
+        },
+        {
+          "role": "Shaper",
+          "field": "中文弱点",
+          "local": "容易激怒、冒犯他人、急躁",
+          "cloud": "容易激怒他人，冒犯他人，急躁"
+        },
+        {
+          "role": "Teamworker",
+          "field": "中文名称",
+          "local": "团队合作者",
+          "cloud": "团队工作者"
+        },
+        {
+          "role": "Teamworker",
+          "field": "中文描述",
+          "local": "合作、温和、有洞察力且善于外交",
+          "cloud": "合作、温和、感知和外交。倾听，建立，避免摩擦，平息水域。"
+        },
+        {
+          "role": "Teamworker",
+          "field": "英文描述",
+          "local": "Co-operative, mild, perceptive, diplomatic",
+          "cloud": "Co-operative, mild, perceptive and diplomatic. Listens, builds, averts friction, calms the waters."
+        },
+        {
+          "role": "Teamworker",
+          "field": "中文特征",
+          "local": "合作、温和、有洞察力、善于外交",
+          "cloud": "合作，温和，感知力强，外交手腕"
+        },
+        {
+          "role": "Teamworker",
+          "field": "英文特征",
+          "local": "Co-operative, mild, perceptive, diplomatic",
+          "cloud": "Cooperative, mild, perceptive, diplomatic"
+        },
+        {
+          "role": "Teamworker",
+          "field": "中文贡献",
+          "local": "维护团队和谐、缓解冲突、支持他人",
+          "cloud": "倾听，建立关系，避免摩擦，平息冲突"
+        },
+        {
+          "role": "Teamworker",
+          "field": "英文贡献",
+          "local": "Listens, builds, averts friction",
+          "cloud": "Listens, builds relationships, averts friction, calms conflicts"
+        },
+        {
+          "role": "Teamworker",
+          "field": "中文弱点",
+          "local": "在危机中犹豫不决、难以抉择",
+          "cloud": "在危机情况下优柔寡断，避免对抗"
+        },
+        {
+          "role": "Teamworker",
+          "field": "英文弱点",
+          "local": "Indecisive in crunch situations, can be easily influenced",
+          "cloud": "Indecisive in crunch situations, avoids confrontation"
+        },
+        {
+          "role": "Implementer",
+          "field": "中文描述",
+          "local": "将想法转化为实际行动，纪律性强且高效",
+          "cloud": "纪律性、可靠、保守和高效。将想法转化为实际行动。"
+        },
+        {
+          "role": "Implementer",
+          "field": "英文描述",
+          "local": "Practical, reliable, efficient. Turns ideas into actions and organises work that needs to be done.",
+          "cloud": "Disciplined, reliable, conservative and efficient. Turns ideas into practical actions."
+        },
+        {
+          "role": "Implementer",
+          "field": "中文特征",
+          "local": "纪律性、可靠、高效、保守",
+          "cloud": "纪律性，可靠，保守，高效"
+        },
+        {
+          "role": "Implementer",
+          "field": "中文贡献",
+          "local": "组织工作、实施计划、确保质量",
+          "cloud": "将想法转化为行动，组织工作，提供稳定性"
+        },
+        {
+          "role": "Implementer",
+          "field": "英文贡献",
+          "local": "Turns ideas into practical actions",
+          "cloud": "Turns ideas into actions, organizes work, provides stability"
+        },
+        {
+          "role": "Implementer",
+          "field": "中文弱点",
+          "local": "缺乏灵活性、可能阻碍变革",
+          "cloud": "有些僵化，对新想法反应慢，缺乏灵活性"
+        },
+        {
+          "role": "Implementer",
+          "field": "英文弱点",
+          "local": "Somewhat inflexible, slow to respond to new possibilities",
+          "cloud": "Somewhat inflexible, slow to respond to new ideas, lacks flexibility"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "中文描述",
+          "local": "注重细节，确保任务按时高质量完成",
+          "cloud": "勤奋、焦虑、有意识。寻找错误和遗漏。按时交付。"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "英文描述",
+          "local": "Painstaking, conscientious, anxious. Searches out errors. Polishes and perfects.",
+          "cloud": "Painstaking, conscientious, anxious. Searches out errors and omissions. Delivers on time."
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "中文特征",
+          "local": "注重细节、焦虑、追求完美、有责任感",
+          "cloud": "勤奋，有责任心，焦虑，注重细节"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "英文特征",
+          "local": "Painstaking, conscientious, anxious",
+          "cloud": "Painstaking, conscientious, anxious, detail-oriented"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "中文贡献",
+          "local": "发现错误、确保质量、按时完成任务",
+          "cloud": "寻找错误，确保质量，按时交付"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "英文贡献",
+          "local": "Searches out errors and omissions, delivers on time",
+          "cloud": "Searches for errors, ensures quality, delivers on time"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "中文弱点",
+          "local": "担心过多、可能悲观、完美主义",
+          "cloud": "倾向于担心过度，不愿意委派，过分挑剔"
+        },
+        {
+          "role": "Completer_Finisher",
+          "field": "英文弱点",
+          "local": "Inclined to worry unduly, reluctant to delegate",
+          "cloud": "Inclined to worry unduly, reluctant to delegate, overly critical"
+        },
+        {
+          "role": "Specialist",
+          "field": "中文描述",
+          "local": "提供专业知识和技能，专注于特定领域",
+          "cloud": "单一思维、自我激励、专注。提供知识和技能，这些在短期内供应。"
+        },
+        {
+          "role": "Specialist",
+          "field": "中文特征",
+          "local": "专注、自我驱动、追求专业技能",
+          "cloud": "专注，自我激励，专业知识丰富，献身精神"
+        },
+        {
+          "role": "Specialist",
+          "field": "英文特征",
+          "local": "Single-minded, self-starting, dedicated",
+          "cloud": "Focused, self-motivated, expert knowledge, dedicated"
+        },
+        {
+          "role": "Specialist",
+          "field": "中文贡献",
+          "local": "提供专业知识、维护技术标准",
+          "cloud": "提供专业知识，解决技术问题，深度分析"
+        },
+        {
+          "role": "Specialist",
+          "field": "英文贡献",
+          "local": "Provides knowledge and skills in rare supply",
+          "cloud": "Provides expertise, solves technical problems, in-depth analysis"
+        },
+        {
+          "role": "Specialist",
+          "field": "中文弱点",
+          "local": "视野狭窄、难以参与其他领域工作",
+          "cloud": "只对自己的主题有贡献，沉迷于技术细节，缺乏大局观"
+        },
+        {
+          "role": "Specialist",
+          "field": "英文弱点",
+          "local": "Contributes only on a narrow front, dwells on technicalities",
+          "cloud": "Contributes only on own subject, dwells on technicalities, lacks big picture view"
+        }
+      ]
+    },
+    "detailedComparison": [
+      {
+        "roleKey": "Plant",
+        "matches": {
+          "英文名称": true
+        },
+        "differences": {
+          "中文名称": {
+            "local": "创新者",
+            "cloud": "智多星"
+          },
+          "中文描述": {
+            "local": "富有创造力和想象力，能够解决困难问题",
+            "cloud": "富有创造力、想象力和不拘一格。解决困难问题。"
+          },
+          "英文描述": {
+            "local": "Creative, imaginative, free-thinking. Generates ideas and solves difficult problems.",
+            "cloud": "Creative, imaginative, unorthodox. Solves difficult problems."
+          },
+          "中文特征": {
+            "local": "富有创造力、想象力、独立思考",
+            "cloud": "富有创造力，想象力丰富，不拘一格，独立思考"
+          },
+          "英文特征": {
+            "local": "Creative, imaginative, free-thinking",
+            "cloud": "Creative, imaginative, unorthodox, independent thinking"
+          },
+          "中文贡献": {
+            "local": "产生想法、解决困难问题",
+            "cloud": "解决困难问题，提供创新想法，突破传统思维"
+          },
+          "英文贡献": {
+            "local": "Generates ideas and solves difficult problems",
+            "cloud": "Solves difficult problems, provides innovative ideas, breaks conventional thinking"
+          },
+          "中文弱点": {
+            "local": "忽视细节、过于专注于想法",
+            "cloud": "忽视细节，过于专注于想法，沟通困难"
+          },
+          "英文弱点": {
+            "local": "Ignores incidentals, too preoccupied to communicate effectively",
+            "cloud": "Ignores details, too focused on ideas, communication difficulties"
+          }
+        }
+      },
+      {
+        "roleKey": "Resource_Investigator",
+        "matches": {
+          "中文名称": true,
+          "英文名称": true
+        },
+        "differences": {
+          "中文描述": {
+            "local": "外向、热情，探索机会并发展联系",
+            "cloud": "外向、热情、沟通能力强。探索机会，发展联系。"
+          },
+          "英文描述": {
+            "local": "Outgoing, enthusiastic. Explores opportunities and develops contacts.",
+            "cloud": "Extrovert, enthusiastic, communicative. Explores opportunities and develops contacts."
+          },
+          "中文特征": {
+            "local": "外向、热情、善于交际",
+            "cloud": "外向，热情，沟通能力强，善于建立联系"
+          },
+          "英文特征": {
+            "local": "Outgoing, enthusiastic, communicative",
+            "cloud": "Extroverted, enthusiastic, communicative, good at networking"
+          },
+          "中文贡献": {
+            "local": "探索机会、发展联系、报告想法",
+            "cloud": "探索机会，发展联系，带来外部信息"
+          },
+          "英文贡献": {
+            "local": "Explores opportunities, develops contacts, reports on ideas",
+            "cloud": "Explores opportunities, develops contacts, brings external information"
+          },
+          "中文弱点": {
+            "local": "过度乐观、失去兴趣后容易放弃",
+            "cloud": "过度乐观，失去兴趣太快，缺乏持续性"
+          },
+          "英文弱点": {
+            "local": "Over-optimistic, loses interest once initial enthusiasm has passed",
+            "cloud": "Over-optimistic, loses interest quickly, lacks follow-through"
+          }
+        }
+      },
+      {
+        "roleKey": "Shaper",
+        "matches": {
+          "英文名称": true,
+          "英文描述": true,
+          "英文弱点": true
+        },
+        "differences": {
+          "中文名称": {
+            "local": "塑造者",
+            "cloud": "推进者"
+          },
+          "中文描述": {
+            "local": "充满挑战性、动态，在压力下茁壮成长",
+            "cloud": "具有挑战性、动态、在压力下茁壮成长。有动力和勇气克服障碍。"
+          },
+          "中文特征": {
+            "local": "充满挑战性、动态、勇气",
+            "cloud": "具有挑战性，动态，抗压能力强，有动力"
+          },
+          "英文特征": {
+            "local": "Challenging, dynamic, thrives on pressure",
+            "cloud": "Challenging, dynamic, thrives under pressure, driven"
+          },
+          "中文贡献": {
+            "local": "克服障碍、推动行动",
+            "cloud": "克服障碍，推动进展，激励团队"
+          },
+          "英文贡献": {
+            "local": "Has the drive and courage to overcome obstacles",
+            "cloud": "Overcomes obstacles, drives progress, motivates team"
+          },
+          "中文弱点": {
+            "local": "容易激怒、冒犯他人、急躁",
+            "cloud": "容易激怒他人，冒犯他人，急躁"
+          }
+        }
+      },
+      {
+        "roleKey": "Monitor_Evaluator",
+        "matches": {
+          "中文名称": true,
+          "英文名称": true,
+          "中文描述": true,
+          "英文描述": true,
+          "中文特征": true,
+          "英文特征": true,
+          "中文贡献": true,
+          "英文贡献": true,
+          "中文弱点": true,
+          "英文弱点": true
+        },
+        "differences": {}
+      },
+      {
+        "roleKey": "Teamworker",
+        "matches": {
+          "英文名称": true
+        },
+        "differences": {
+          "中文名称": {
+            "local": "团队合作者",
+            "cloud": "团队工作者"
+          },
+          "中文描述": {
+            "local": "合作、温和、有洞察力且善于外交",
+            "cloud": "合作、温和、感知和外交。倾听，建立，避免摩擦，平息水域。"
+          },
+          "英文描述": {
+            "local": "Co-operative, mild, perceptive, diplomatic",
+            "cloud": "Co-operative, mild, perceptive and diplomatic. Listens, builds, averts friction, calms the waters."
+          },
+          "中文特征": {
+            "local": "合作、温和、有洞察力、善于外交",
+            "cloud": "合作，温和，感知力强，外交手腕"
+          },
+          "英文特征": {
+            "local": "Co-operative, mild, perceptive, diplomatic",
+            "cloud": "Cooperative, mild, perceptive, diplomatic"
+          },
+          "中文贡献": {
+            "local": "维护团队和谐、缓解冲突、支持他人",
+            "cloud": "倾听，建立关系，避免摩擦，平息冲突"
+          },
+          "英文贡献": {
+            "local": "Listens, builds, averts friction",
+            "cloud": "Listens, builds relationships, averts friction, calms conflicts"
+          },
+          "中文弱点": {
+            "local": "在危机中犹豫不决、难以抉择",
+            "cloud": "在危机情况下优柔寡断，避免对抗"
+          },
+          "英文弱点": {
+            "local": "Indecisive in crunch situations, can be easily influenced",
+            "cloud": "Indecisive in crunch situations, avoids confrontation"
+          }
+        }
+      },
+      {
+        "roleKey": "Implementer",
+        "matches": {
+          "中文名称": true,
+          "英文名称": true,
+          "英文特征": true
+        },
+        "differences": {
+          "中文描述": {
+            "local": "将想法转化为实际行动，纪律性强且高效",
+            "cloud": "纪律性、可靠、保守和高效。将想法转化为实际行动。"
+          },
+          "英文描述": {
+            "local": "Practical, reliable, efficient. Turns ideas into actions and organises work that needs to be done.",
+            "cloud": "Disciplined, reliable, conservative and efficient. Turns ideas into practical actions."
+          },
+          "中文特征": {
+            "local": "纪律性、可靠、高效、保守",
+            "cloud": "纪律性，可靠，保守，高效"
+          },
+          "中文贡献": {
+            "local": "组织工作、实施计划、确保质量",
+            "cloud": "将想法转化为行动，组织工作，提供稳定性"
+          },
+          "英文贡献": {
+            "local": "Turns ideas into practical actions",
+            "cloud": "Turns ideas into actions, organizes work, provides stability"
+          },
+          "中文弱点": {
+            "local": "缺乏灵活性、可能阻碍变革",
+            "cloud": "有些僵化，对新想法反应慢，缺乏灵活性"
+          },
+          "英文弱点": {
+            "local": "Somewhat inflexible, slow to respond to new possibilities",
+            "cloud": "Somewhat inflexible, slow to respond to new ideas, lacks flexibility"
+          }
+        }
+      },
+      {
+        "roleKey": "Completer_Finisher",
+        "matches": {
+          "中文名称": true,
+          "英文名称": true
+        },
+        "differences": {
+          "中文描述": {
+            "local": "注重细节，确保任务按时高质量完成",
+            "cloud": "勤奋、焦虑、有意识。寻找错误和遗漏。按时交付。"
+          },
+          "英文描述": {
+            "local": "Painstaking, conscientious, anxious. Searches out errors. Polishes and perfects.",
+            "cloud": "Painstaking, conscientious, anxious. Searches out errors and omissions. Delivers on time."
+          },
+          "中文特征": {
+            "local": "注重细节、焦虑、追求完美、有责任感",
+            "cloud": "勤奋，有责任心，焦虑，注重细节"
+          },
+          "英文特征": {
+            "local": "Painstaking, conscientious, anxious",
+            "cloud": "Painstaking, conscientious, anxious, detail-oriented"
+          },
+          "中文贡献": {
+            "local": "发现错误、确保质量、按时完成任务",
+            "cloud": "寻找错误，确保质量，按时交付"
+          },
+          "英文贡献": {
+            "local": "Searches out errors and omissions, delivers on time",
+            "cloud": "Searches for errors, ensures quality, delivers on time"
+          },
+          "中文弱点": {
+            "local": "担心过多、可能悲观、完美主义",
+            "cloud": "倾向于担心过度，不愿意委派，过分挑剔"
+          },
+          "英文弱点": {
+            "local": "Inclined to worry unduly, reluctant to delegate",
+            "cloud": "Inclined to worry unduly, reluctant to delegate, overly critical"
+          }
+        }
+      },
+      {
+        "roleKey": "Specialist",
+        "matches": {
+          "中文名称": true,
+          "英文名称": true,
+          "英文描述": true
+        },
+        "differences": {
+          "中文描述": {
+            "local": "提供专业知识和技能，专注于特定领域",
+            "cloud": "单一思维、自我激励、专注。提供知识和技能，这些在短期内供应。"
+          },
+          "中文特征": {
+            "local": "专注、自我驱动、追求专业技能",
+            "cloud": "专注，自我激励，专业知识丰富，献身精神"
+          },
+          "英文特征": {
+            "local": "Single-minded, self-starting, dedicated",
+            "cloud": "Focused, self-motivated, expert knowledge, dedicated"
+          },
+          "中文贡献": {
+            "local": "提供专业知识、维护技术标准",
+            "cloud": "提供专业知识，解决技术问题，深度分析"
+          },
+          "英文贡献": {
+            "local": "Provides knowledge and skills in rare supply",
+            "cloud": "Provides expertise, solves technical problems, in-depth analysis"
+          },
+          "中文弱点": {
+            "local": "视野狭窄、难以参与其他领域工作",
+            "cloud": "只对自己的主题有贡献，沉迷于技术细节，缺乏大局观"
+          },
+          "英文弱点": {
+            "local": "Contributes only on a narrow front, dwells on technicalities",
+            "cloud": "Contributes only on own subject, dwells on technicalities, lacks big picture view"
+          }
+        }
+      }
+    ]
+  }
+}
