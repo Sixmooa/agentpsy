@@ -34,7 +34,7 @@ interface ApiService {
      * 提交测试答案
      * @param request 测试提交请求
      */
-    @POST("personality-api/submit")
+    @POST("personality-api/submit-test")
     suspend fun submitTest(
         @Body request: TestSubmissionRequest
     ): Response<TestSubmissionResponse>

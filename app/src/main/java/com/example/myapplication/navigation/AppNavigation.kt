@@ -2,12 +2,14 @@ package com.example.myapplication.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.data.model.TestReport
+import com.example.myapplication.ui.ViewModelFactory
 import com.example.myapplication.ui.question.QuestionScreen
 import com.example.myapplication.ui.question.QuestionViewModel
 import com.example.myapplication.ui.result.ResultScreen
@@ -42,7 +44,8 @@ fun AppNavigation(
         
         // 问题页面
         composable(Screen.Question.route) {
-            val viewModel: QuestionViewModel = viewModel()
+            val context = LocalContext.current
+            val viewModel: QuestionViewModel = viewModel(factory = ViewModelFactory(context))
             
             QuestionScreen(
                 viewModel = viewModel,

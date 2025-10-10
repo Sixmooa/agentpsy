@@ -7,6 +7,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -46,14 +47,31 @@ fun QuestionScreen(
     ) {
         // 顶部栏
         TopAppBar(
-            title = { Text("人格测试") },
+            title = { 
+                Text(
+                    text = if (uiState.currentLanguage == "zh") "人格测试" else "Personality Test"
+                ) 
+            },
             navigationIcon = {
                 IconButton(onClick = onBackToWelcome) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "返回"
+                        contentDescription = if (uiState.currentLanguage == "zh") "返回" else "Back"
                     )
                 }
+            },
+            actions = {
+                IconButton(onClick = { viewModel.switchLanguage() }) {
+                    Icon(
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = if (uiState.currentLanguage == "zh") "切换语言" else "Switch Language"
+                    )
+                }
+                Text(
+                    text = if (uiState.currentLanguage == "zh") "EN" else "中",
+                    modifier = Modifier.padding(end = 8.dp),
+                    style = MaterialTheme.typography.bodyMedium
+                )
             }
         )
         
@@ -66,18 +84,20 @@ fun QuestionScreen(
             // 顶部进度指示器
             ProgressIndicator(
                 currentQuestion = uiState.currentQuestionIndex + 1,
-                totalQuestions = uiState.totalQuestions
+                totalQuestions = uiState.totalQuestions,
+                language = uiState.currentLanguage
             )
         
         when {
             uiState.isLoading -> {
-                LoadingContent()
+                LoadingContent(language = uiState.currentLanguage)
             }
             
             uiState.error != null -> {
                 val error = uiState.error!!
                 ErrorContent(
                     error = error,
+                    language = uiState.currentLanguage,
                     onRetry = { viewModel.loadInitialData() }
                 )
             }
@@ -88,9 +108,12 @@ fun QuestionScreen(
                     question = currentQuestion,
                     answerOptions = uiState.answerOptions,
                     selectedAnswer = uiState.selectedAnswer,
+                    language = uiState.currentLanguage,
                     onAnswerSelected = viewModel::selectAnswer,
                     canNavigatePrevious = uiState.canNavigatePrevious,
                     canNavigateNext = uiState.canNavigateNext,
+                    shouldShowSubmitButton = uiState.shouldShowSubmitButton,
+                    isPrimaryButtonEnabled = uiState.isPrimaryButtonEnabled,
                     onPreviousClick = viewModel::previousQuestion,
                     onNextClick = viewModel::nextQuestion,
                     onSubmitClick = viewModel::submitTest,
@@ -106,6 +129,7 @@ fun QuestionScreen(
 private fun ProgressIndicator(
     currentQuestion: Int,
     totalQuestions: Int,
+    language: String,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -119,7 +143,7 @@ private fun ProgressIndicator(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "题目进度",
+                text = if (language == "zh") "题目进度" else "Progress",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
@@ -148,6 +172,7 @@ private fun ProgressIndicator(
 
 @Composable
 private fun LoadingContent(
+    language: String,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -160,7 +185,7 @@ private fun LoadingContent(
         ) {
             CircularProgressIndicator()
             Text(
-                text = "正在加载题目...",
+                text = if (language == "zh") "正在加载题目..." else "Loading questions...",
                 style = MaterialTheme.typography.bodyLarge
             )
         }
@@ -170,6 +195,7 @@ private fun LoadingContent(
 @Composable
 private fun ErrorContent(
     error: String,
+    language: String,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -185,7 +211,7 @@ private fun ErrorContent(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "出现错误",
+                text = if (language == "zh") "出现错误" else "Error Occurred",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onErrorContainer
             )
@@ -203,7 +229,7 @@ private fun ErrorContent(
                     containerColor = MaterialTheme.colorScheme.error
                 )
             ) {
-                Text("重试")
+                Text(if (language == "zh") "重试" else "Retry")
             }
         }
     }
@@ -214,9 +240,12 @@ private fun QuestionContent(
     question: com.example.myapplication.data.model.Question,
     answerOptions: List<AnswerOption>,
     selectedAnswer: AnswerOption?,
+    language: String,
     onAnswerSelected: (AnswerOption) -> Unit,
     canNavigatePrevious: Boolean,
     canNavigateNext: Boolean,
+    shouldShowSubmitButton: Boolean,
+    isPrimaryButtonEnabled: Boolean,
     onPreviousClick: () -> Unit,
     onNextClick: () -> Unit,
     onSubmitClick: () -> Unit,
@@ -260,6 +289,9 @@ private fun QuestionContent(
         NavigationButtons(
             canNavigatePrevious = canNavigatePrevious,
             canNavigateNext = canNavigateNext,
+            shouldShowSubmitButton = shouldShowSubmitButton,
+            isPrimaryButtonEnabled = isPrimaryButtonEnabled,
+            language = language,
             onPreviousClick = onPreviousClick,
             onNextClick = onNextClick,
             onSubmitClick = onSubmitClick
@@ -307,6 +339,9 @@ private fun AnswerOptionCard(
 private fun NavigationButtons(
     canNavigatePrevious: Boolean,
     canNavigateNext: Boolean,
+    shouldShowSubmitButton: Boolean,
+    isPrimaryButtonEnabled: Boolean,
+    language: String,
     onPreviousClick: () -> Unit,
     onNextClick: () -> Unit,
     onSubmitClick: () -> Unit,
@@ -322,16 +357,22 @@ private fun NavigationButtons(
             enabled = canNavigatePrevious,
             modifier = Modifier.weight(1f)
         ) {
-            Text("上一题")
+            Text(if (language == "zh") "上一题" else "Previous")
         }
         
         // 下一题/提交按钮
         Button(
-            onClick = if (canNavigateNext) onNextClick else onSubmitClick,
-            enabled = canNavigateNext,
+            onClick = if (shouldShowSubmitButton) onSubmitClick else onNextClick,
+            enabled = isPrimaryButtonEnabled,
             modifier = Modifier.weight(1f)
         ) {
-            Text(if (canNavigateNext) "下一题" else "提交测试")
+            Text(
+                if (shouldShowSubmitButton) {
+                    if (language == "zh") "提交测试" else "Submit Test"
+                } else {
+                    if (language == "zh") "下一题" else "Next"
+                }
+            )
         }
     }
 }

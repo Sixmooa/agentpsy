@@ -40,22 +40,33 @@ data class TestSubmissionResponse(
 data class TestReport(
     @SerialName("timestamp")
     val timestamp: String,
-    
+
     @SerialName("language")
     val language: String,
-    
+
     @SerialName("mbtiType")
     val mbtiType: String,
-    
+
     @SerialName("bigFiveScores")
     val bigFiveScores: BigFiveScores,
-    
+
+    @SerialName("mbtiResult")
+    val mbtiResult: MBTIResult? = null,
+
     @SerialName("mbtiTypeInfo")
-    val mbtiTypeInfo: MBTIType,
-    
+    val mbtiTypeInfo: MBTIType? = null,
+
     @SerialName("careerSuggestions")
-    val careerSuggestions: List<CareerSuggestion>
-)
+    val careerSuggestions: List<CareerSuggestion> = emptyList()
+) {
+    /**
+     * 获取MBTI类型信息，优先使用mbtiTypeInfo，如果为null则基于mbtiResult创建
+     */
+    fun getMBTITypeInfo(): MBTIType {
+        return mbtiTypeInfo ?: mbtiResult?.let { MBTIType.fromMBTIResult(it) }
+            ?: MBTIType() // 最后的fallback
+    }
+}
 
 /**
  * 测试提交请求模型

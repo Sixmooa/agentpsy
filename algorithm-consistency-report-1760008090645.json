@@ -1,0 +1,2305 @@
+{
+  "summary": {
+    "totalTests": 20,
+    "passedTests": 20,
+    "failedTests": 0,
+    "successRate": "100.00%",
+    "timestamp": "2025-10-09T11:08:10.645Z"
+  },
+  "algorithmComparison": {
+    "cloudAlgorithm": "personality-api-final.ts",
+    "staticAlgorithm": "calculator.js",
+    "comparisonMethod": "direct-calculation-comparison"
+  },
+  "testResults": [
+    {
+      "testName": "平衡模式测试",
+      "answerPattern": "balanced",
+      "timestamp": "2025-10-09T11:08:10.640Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3,
+          "conscientiousness": 3,
+          "extraversion": 3,
+          "agreeableness": 3,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "N",
+              "score": 3
+            },
+            "tf": {
+              "type": "T",
+              "score": 3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3,
+          "conscientiousness": 3,
+          "extraversion": 3,
+          "agreeableness": 3,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "N",
+              "score": 3
+            },
+            "tf": {
+              "type": "T",
+              "score": 3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "INTJ-A",
+          "staticType": "INTJ-A"
+        }
+      }
+    },
+    {
+      "testName": "极端高分测试",
+      "answerPattern": "extreme_high",
+      "timestamp": "2025-10-09T11:08:10.641Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 5,
+          "conscientiousness": 5,
+          "extraversion": 5,
+          "agreeableness": 5,
+          "neuroticism": 5
+        },
+        "mbti": {
+          "type": "ENFJ-T",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 5
+            },
+            "sn": {
+              "type": "N",
+              "score": 5
+            },
+            "tf": {
+              "type": "F",
+              "score": 5
+            },
+            "jp": {
+              "type": "J",
+              "score": 5
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 5
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 5,
+          "conscientiousness": 5,
+          "extraversion": 5,
+          "agreeableness": 5,
+          "neuroticism": 5
+        },
+        "mbti": {
+          "type": "ENFJ-T",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 5
+            },
+            "sn": {
+              "type": "N",
+              "score": 5
+            },
+            "tf": {
+              "type": "F",
+              "score": 5
+            },
+            "jp": {
+              "type": "J",
+              "score": 5
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 5
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ENFJ-T",
+          "staticType": "ENFJ-T"
+        }
+      }
+    },
+    {
+      "testName": "极端低分测试",
+      "answerPattern": "extreme_low",
+      "timestamp": "2025-10-09T11:08:10.641Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 1,
+          "conscientiousness": 1,
+          "extraversion": 1,
+          "agreeableness": 1,
+          "neuroticism": 1
+        },
+        "mbti": {
+          "type": "ISTP-A",
+          "typeCode": "ISTP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 1
+            },
+            "sn": {
+              "type": "S",
+              "score": 1
+            },
+            "tf": {
+              "type": "T",
+              "score": 1
+            },
+            "jp": {
+              "type": "P",
+              "score": 1
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 1
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 1,
+          "conscientiousness": 1,
+          "extraversion": 1,
+          "agreeableness": 1,
+          "neuroticism": 1
+        },
+        "mbti": {
+          "type": "ISTP-A",
+          "typeCode": "ISTP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 1
+            },
+            "sn": {
+              "type": "S",
+              "score": 1
+            },
+            "tf": {
+              "type": "T",
+              "score": 1
+            },
+            "jp": {
+              "type": "P",
+              "score": 1
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 1
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISTP-A",
+          "staticType": "ISTP-A"
+        }
+      }
+    },
+    {
+      "testName": "INTJ模式测试",
+      "answerPattern": "intj_pattern",
+      "timestamp": "2025-10-09T11:08:10.641Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 4,
+          "conscientiousness": 4,
+          "extraversion": 2,
+          "agreeableness": 2,
+          "neuroticism": 2
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2
+            },
+            "sn": {
+              "type": "N",
+              "score": 4
+            },
+            "tf": {
+              "type": "T",
+              "score": 2
+            },
+            "jp": {
+              "type": "J",
+              "score": 4
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 4,
+          "conscientiousness": 4,
+          "extraversion": 2,
+          "agreeableness": 2,
+          "neuroticism": 2
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2
+            },
+            "sn": {
+              "type": "N",
+              "score": 4
+            },
+            "tf": {
+              "type": "T",
+              "score": 2
+            },
+            "jp": {
+              "type": "J",
+              "score": 4
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "INTJ-A",
+          "staticType": "INTJ-A"
+        }
+      }
+    },
+    {
+      "testName": "ENFP模式测试",
+      "answerPattern": "enfp_pattern",
+      "timestamp": "2025-10-09T11:08:10.642Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 4,
+          "conscientiousness": 2,
+          "extraversion": 4,
+          "agreeableness": 4,
+          "neuroticism": 4
+        },
+        "mbti": {
+          "type": "ENFP-T",
+          "typeCode": "ENFP",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "N",
+              "score": 4
+            },
+            "tf": {
+              "type": "F",
+              "score": 4
+            },
+            "jp": {
+              "type": "P",
+              "score": 2
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 4
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 4,
+          "conscientiousness": 2,
+          "extraversion": 4,
+          "agreeableness": 4,
+          "neuroticism": 4
+        },
+        "mbti": {
+          "type": "ENFP-T",
+          "typeCode": "ENFP",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "N",
+              "score": 4
+            },
+            "tf": {
+              "type": "F",
+              "score": 4
+            },
+            "jp": {
+              "type": "P",
+              "score": 2
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 4
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ENFP-T",
+          "staticType": "ENFP-T"
+        }
+      }
+    },
+    {
+      "testName": "边界值测试 (3.0)",
+      "answerPattern": "boundary_test",
+      "timestamp": "2025-10-09T11:08:10.642Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3,
+          "conscientiousness": 3,
+          "extraversion": 3,
+          "agreeableness": 3,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "N",
+              "score": 3
+            },
+            "tf": {
+              "type": "T",
+              "score": 3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3,
+          "conscientiousness": 3,
+          "extraversion": 3,
+          "agreeableness": 3,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "INTJ-A",
+          "typeCode": "INTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "N",
+              "score": 3
+            },
+            "tf": {
+              "type": "T",
+              "score": 3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "INTJ-A",
+          "staticType": "INTJ-A"
+        }
+      }
+    },
+    {
+      "testName": "混合模式测试",
+      "answerPattern": "mixed_pattern",
+      "timestamp": "2025-10-09T11:08:10.642Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2,
+          "conscientiousness": 3,
+          "extraversion": 4,
+          "agreeableness": 5,
+          "neuroticism": 1
+        },
+        "mbti": {
+          "type": "ESFJ-A",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "S",
+              "score": 2
+            },
+            "tf": {
+              "type": "F",
+              "score": 5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 1
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2,
+          "conscientiousness": 3,
+          "extraversion": 4,
+          "agreeableness": 5,
+          "neuroticism": 1
+        },
+        "mbti": {
+          "type": "ESFJ-A",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "S",
+              "score": 2
+            },
+            "tf": {
+              "type": "F",
+              "score": 5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 1
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ESFJ-A",
+          "staticType": "ESFJ-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 1",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.642Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3.1,
+          "conscientiousness": 2.5,
+          "extraversion": 2.6,
+          "agreeableness": 3.3,
+          "neuroticism": 2.3
+        },
+        "mbti": {
+          "type": "INFP-A",
+          "typeCode": "INFP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.6
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.1
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.3
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.5
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3.1,
+          "conscientiousness": 2.5,
+          "extraversion": 2.6,
+          "agreeableness": 3.3,
+          "neuroticism": 2.3
+        },
+        "mbti": {
+          "type": "INFP-A",
+          "typeCode": "INFP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.6
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.1
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.3
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.5
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "INFP-A",
+          "staticType": "INFP-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 2",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.643Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.1,
+          "conscientiousness": 3.1,
+          "extraversion": 4,
+          "agreeableness": 3.6,
+          "neuroticism": 3.8
+        },
+        "mbti": {
+          "type": "ESFJ-T",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.1
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.6
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.8
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.1,
+          "conscientiousness": 3.1,
+          "extraversion": 4,
+          "agreeableness": 3.6,
+          "neuroticism": 3.8
+        },
+        "mbti": {
+          "type": "ESFJ-T",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.1
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.6
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.8
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ESFJ-T",
+          "staticType": "ESFJ-T"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 3",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.643Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 2.9,
+          "extraversion": 2.9,
+          "agreeableness": 3.1,
+          "neuroticism": 3.1
+        },
+        "mbti": {
+          "type": "ISFP-T",
+          "typeCode": "ISFP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.9
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.1
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.9
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.1
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 2.9,
+          "extraversion": 2.9,
+          "agreeableness": 3.1,
+          "neuroticism": 3.1
+        },
+        "mbti": {
+          "type": "ISFP-T",
+          "typeCode": "ISFP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.9
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.1
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.9
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.1
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISFP-T",
+          "staticType": "ISFP-T"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 4",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.643Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.1,
+          "extraversion": 2.8,
+          "agreeableness": 3.4,
+          "neuroticism": 3.6
+        },
+        "mbti": {
+          "type": "INFJ-T",
+          "typeCode": "INFJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.8
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.4
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.6
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.1,
+          "extraversion": 2.8,
+          "agreeableness": 3.4,
+          "neuroticism": 3.6
+        },
+        "mbti": {
+          "type": "INFJ-T",
+          "typeCode": "INFJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.8
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.4
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.6
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "INFJ-T",
+          "staticType": "INFJ-T"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 5",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.9,
+          "conscientiousness": 3.2,
+          "extraversion": 2.9,
+          "agreeableness": 3.5,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "ISFJ-A",
+          "typeCode": "ISFJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.9
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.9
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.2
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.9,
+          "conscientiousness": 3.2,
+          "extraversion": 2.9,
+          "agreeableness": 3.5,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "ISFJ-A",
+          "typeCode": "ISFJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.9
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.9
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.2
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISFJ-A",
+          "staticType": "ISFJ-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 6",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.3,
+          "extraversion": 4.1,
+          "agreeableness": 3.1,
+          "neuroticism": 2.3
+        },
+        "mbti": {
+          "type": "ENFJ-A",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4.1
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.1
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.3,
+          "extraversion": 4.1,
+          "agreeableness": 3.1,
+          "neuroticism": 2.3
+        },
+        "mbti": {
+          "type": "ENFJ-A",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 4.1
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.1
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ENFJ-A",
+          "staticType": "ENFJ-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 7",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.9,
+          "extraversion": 3.4,
+          "agreeableness": 2.8,
+          "neuroticism": 2
+        },
+        "mbti": {
+          "type": "ENTJ-A",
+          "typeCode": "ENTJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.4
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.8
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.9
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3.9,
+          "extraversion": 3.4,
+          "agreeableness": 2.8,
+          "neuroticism": 2
+        },
+        "mbti": {
+          "type": "ENTJ-A",
+          "typeCode": "ENTJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.4
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.8
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.9
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ENTJ-A",
+          "staticType": "ENTJ-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 8",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 3.3,
+          "extraversion": 3.5,
+          "agreeableness": 2.8,
+          "neuroticism": 3.3
+        },
+        "mbti": {
+          "type": "ESTJ-T",
+          "typeCode": "ESTJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.5
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.8
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 3.3,
+          "extraversion": 3.5,
+          "agreeableness": 2.8,
+          "neuroticism": 3.3
+        },
+        "mbti": {
+          "type": "ESTJ-T",
+          "typeCode": "ESTJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.5
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.8
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ESTJ-T",
+          "staticType": "ESTJ-T"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 9",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.4,
+          "conscientiousness": 3.3,
+          "extraversion": 3.5,
+          "agreeableness": 3.3,
+          "neuroticism": 2.8
+        },
+        "mbti": {
+          "type": "ESFJ-A",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.5
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.4
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.8
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.4,
+          "conscientiousness": 3.3,
+          "extraversion": 3.5,
+          "agreeableness": 3.3,
+          "neuroticism": 2.8
+        },
+        "mbti": {
+          "type": "ESFJ-A",
+          "typeCode": "ESFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.5
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.4
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.3
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.8
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ESFJ-A",
+          "staticType": "ESFJ-A"
+        }
+      }
+    },
+    {
+      "testName": "随机测试 10",
+      "answerPattern": "random",
+      "timestamp": "2025-10-09T11:08:10.644Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.5,
+          "conscientiousness": 2.3,
+          "extraversion": 2.6,
+          "agreeableness": 2.9,
+          "neuroticism": 2.5
+        },
+        "mbti": {
+          "type": "ISTP-A",
+          "typeCode": "ISTP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.6
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.5
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.9
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.5
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.5,
+          "conscientiousness": 2.3,
+          "extraversion": 2.6,
+          "agreeableness": 2.9,
+          "neuroticism": 2.5
+        },
+        "mbti": {
+          "type": "ISTP-A",
+          "typeCode": "ISTP",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 2.6
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.5
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.9
+            },
+            "jp": {
+              "type": "P",
+              "score": 2.3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.5
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISTP-A",
+          "staticType": "ISTP-A"
+        }
+      }
+    },
+    {
+      "testName": "边界值测试 2.99",
+      "answerPattern": "custom",
+      "timestamp": "2025-10-09T11:08:10.645Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3,
+          "extraversion": 3.6,
+          "agreeableness": 3.2,
+          "neuroticism": 2.9
+        },
+        "mbti": {
+          "type": "ENFJ-A",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.6
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.2
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.9
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 3.2,
+          "conscientiousness": 3,
+          "extraversion": 3.6,
+          "agreeableness": 3.2,
+          "neuroticism": 2.9
+        },
+        "mbti": {
+          "type": "ENFJ-A",
+          "typeCode": "ENFJ",
+          "dimensions": {
+            "ei": {
+              "type": "E",
+              "score": 3.6
+            },
+            "sn": {
+              "type": "N",
+              "score": 3.2
+            },
+            "tf": {
+              "type": "F",
+              "score": 3.2
+            },
+            "jp": {
+              "type": "J",
+              "score": 3
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 2.9
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ENFJ-A",
+          "staticType": "ENFJ-A"
+        }
+      },
+      "customAnswers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 2,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 2,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 2,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 2,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 2
+      }
+    },
+    {
+      "testName": "边界值测试 3",
+      "answerPattern": "custom",
+      "timestamp": "2025-10-09T11:08:10.645Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.7,
+          "conscientiousness": 3.1,
+          "extraversion": 3,
+          "agreeableness": 2.1,
+          "neuroticism": 3.2
+        },
+        "mbti": {
+          "type": "ISTJ-T",
+          "typeCode": "ISTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.7
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.1
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.2
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.7,
+          "conscientiousness": 3.1,
+          "extraversion": 3,
+          "agreeableness": 2.1,
+          "neuroticism": 3.2
+        },
+        "mbti": {
+          "type": "ISTJ-T",
+          "typeCode": "ISTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.7
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.1
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.1
+            },
+            "suffix": {
+              "type": "-T",
+              "score": 3.2
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISTJ-T",
+          "staticType": "ISTJ-T"
+        }
+      },
+      "customAnswers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 3,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 3
+      }
+    },
+    {
+      "testName": "边界值测试 3.01",
+      "answerPattern": "custom",
+      "timestamp": "2025-10-09T11:08:10.645Z",
+      "bigFiveConsistent": true,
+      "mbtiConsistent": true,
+      "cloudResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 3.8,
+          "extraversion": 3,
+          "agreeableness": 2.5,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "ISTJ-A",
+          "typeCode": "ISTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.8
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "staticResults": {
+        "bigFive": {
+          "openness": 2.8,
+          "conscientiousness": 3.8,
+          "extraversion": 3,
+          "agreeableness": 2.5,
+          "neuroticism": 3
+        },
+        "mbti": {
+          "type": "ISTJ-A",
+          "typeCode": "ISTJ",
+          "dimensions": {
+            "ei": {
+              "type": "I",
+              "score": 3
+            },
+            "sn": {
+              "type": "S",
+              "score": 2.8
+            },
+            "tf": {
+              "type": "T",
+              "score": 2.5
+            },
+            "jp": {
+              "type": "J",
+              "score": 3.8
+            },
+            "suffix": {
+              "type": "-A",
+              "score": 3
+            }
+          }
+        }
+      },
+      "comparisons": {
+        "bigFive": {
+          "isConsistent": true,
+          "differences": {
+            "openness": 0,
+            "conscientiousness": 0,
+            "extraversion": 0,
+            "agreeableness": 0,
+            "neuroticism": 0
+          },
+          "maxDifference": 0
+        },
+        "mbti": {
+          "typeMatch": true,
+          "typeCodeMatch": true,
+          "dimensionsMatch": {
+            "ei": true,
+            "sn": true,
+            "tf": true,
+            "jp": true,
+            "suffix": true
+          },
+          "cloudType": "ISTJ-A",
+          "staticType": "ISTJ-A"
+        }
+      },
+      "customAnswers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 4,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 4,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 4,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 4,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 4
+      }
+    }
+  ],
+  "analysis": {
+    "bigFiveConsistency": {
+      "consistent": 20,
+      "inconsistent": 0,
+      "maxDifference": 0,
+      "averageDifference": 0
+    },
+    "mbtiConsistency": {
+      "consistent": 20,
+      "inconsistent": 0,
+      "dimensionMismatches": {
+        "ei": 0,
+        "sn": 0,
+        "tf": 0,
+        "jp": 0,
+        "suffix": 0
+      }
+    },
+    "patternAnalysis": {
+      "balanced": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "extreme_high": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "extreme_low": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "intj_pattern": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "enfp_pattern": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "boundary_test": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "mixed_pattern": {
+        "total": 1,
+        "consistent": 1,
+        "inconsistent": 0
+      },
+      "random": {
+        "total": 10,
+        "consistent": 10,
+        "inconsistent": 0
+      },
+      "custom": {
+        "total": 3,
+        "consistent": 3,
+        "inconsistent": 0
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "type": "success",
+      "category": "算法一致性",
+      "message": "所有测试通过，云端算法和静态算法完全一致"
+    }
+  ]
+}

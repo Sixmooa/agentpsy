@@ -169,7 +169,7 @@ private fun ResultContent(
         item {
             MBTITypeCard(
                 mbtiType = testReport.mbtiType,
-                mbtiTypeInfo = testReport.mbtiTypeInfo
+                mbtiTypeInfo = testReport.getMBTITypeInfo()
             )
         }
         
@@ -278,6 +278,57 @@ private fun MBTITypeCard(
                 textAlign = TextAlign.Center,
                 lineHeight = 24.sp
             )
+
+            // 优势和挑战
+            if (mbtiTypeInfo.strengths?.isNotEmpty() == true || mbtiTypeInfo.challenges?.isNotEmpty() == true) {
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // 优势
+                mbtiTypeInfo.strengths?.takeIf { it.isNotEmpty() }?.let { strengths ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Text(
+                            text = "优势特质",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+
+                        strengths.forEach { strength ->
+                            Text(
+                                text = "• $strength",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                // 挑战
+                mbtiTypeInfo.challenges?.takeIf { it.isNotEmpty() }?.let { challenges ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Text(
+                            text = "发展建议",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+
+                        challenges.forEach { challenge ->
+                            Text(
+                                text = "• $challenge",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -335,7 +386,7 @@ private fun ScoreItem(
             )
             
             Text(
-                text = String.format("%.1f", score),
+                text = String.format("%.1f%%", score),
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.primary
@@ -343,7 +394,7 @@ private fun ScoreItem(
         }
         
         LinearProgressIndicator(
-            progress = { (score / 5.0).toFloat() },
+            progress = { (score / 100.0).toFloat() },
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.primary,
             trackColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
@@ -372,19 +423,86 @@ private fun CareerSuggestionsCard(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
             )
-            
-            careerSuggestions.forEach { career ->
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surface
-                    ),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
+
+            if (careerSuggestions.isEmpty()) {
+                Text(
+                    text = "暂无职业建议数据",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f)
+                )
+            } else {
+                // 按mbti_type或其他属性分组显示职业
+                val groupedCareers = careerSuggestions.groupBy {
+                    // 如果有category字段则按category分组，否则全部放在默认组
+                    "推荐"
+                }
+
+                groupedCareers.forEach { (category, careers) ->
+                    if (groupedCareers.size > 1) {
+                        Text(
+                            text = category,
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+
+                    careers.forEach { career ->
+                        Card(
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surface
+                            ),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                // 职业图标（使用简单的圆圈代替）
+                                Card(
+                                    colors = CardDefaults.cardColors(
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                                    ),
+                                    shape = RoundedCornerShape(50)
+                                ) {
+                                    Box(
+                                        modifier = Modifier.size(32.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = "💼",
+                                            style = MaterialTheme.typography.bodyMedium
+                                        )
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.width(12.dp))
+
+                                Text(
+                                    text = career.getCareerName(),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Medium,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                        }
+                    }
+
+                    if (category != groupedCareers.keys.last()) {
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+                }
+
+                // 如果有很多职业建议，显示提示
+                if (careerSuggestions.size > 6) {
                     Text(
-                        text = career.getCareerName(),
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(12.dp),
-                        color = MaterialTheme.colorScheme.onSurface
+                        text = "以上为部分推荐职业，更多职业建议请参考专业职业指导",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }

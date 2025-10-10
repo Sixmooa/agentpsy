@@ -100,17 +100,19 @@ class PersonalityTestRepositoryImpl(
     ): Result<R> {
         return if (response.isSuccessful) {
             val body = response.body()
-            if (body?.success == true) {
+            if (body == null) {
+                Result.failure(Exception("Response body is null"))
+            } else if (body.success == true) {
                 try {
                     Result.success(transform(body))
                 } catch (e: Exception) {
                     Result.failure(e)
                 }
             } else {
-                Result.failure(Exception("API错误: ${body?.error ?: "未知错误"}"))
+                Result.failure(Exception("API错误: ${body.error ?: "未知错误"}"))
             }
         } else {
-            Result.failure(Exception("网络请求失败: ${response.code()} ${response.message()}"))
+            Result.failure(Exception("HTTP ${response.code()}: ${response.message()}"))
         }
     }
 }

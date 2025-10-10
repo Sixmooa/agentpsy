@@ -1,0 +1,327 @@
+{
+  "summary": {
+    "totalTests": 62,
+    "passedTests": 61,
+    "failedTests": 1,
+    "successRate": "98.39%",
+    "duration": "14ms",
+    "timestamp": "2025-10-09T10:44:22.973Z"
+  },
+  "details": [
+    {
+      "status": "PASS",
+      "message": "Questions端点应该返回200状态码 - Expected: 200, Actual: 200",
+      "timestamp": "2025-10-09T10:44:22.959Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Questions端点应该返回成功状态",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Questions端点应该返回数组数据",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Questions端点应该返回50个问题 - Expected: 50, Actual: 50",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Answer options端点应该返回200状态码 - Expected: 200, Actual: 200",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Answer options端点应该返回成功状态",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Answer options端点应该返回数组数据",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Answer options端点应该返回5个选项 - Expected: 5, Actual: 5",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Submit test端点应该返回200状态码 - Expected: 200, Actual: 200",
+      "timestamp": "2025-10-09T10:44:22.960Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Submit test端点应该返回成功状态",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Submit test端点应该返回测试ID",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Submit test端点应该返回Big Five分数",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Submit test端点应该返回MBTI结果",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "OPTIONS请求应该返回200状态码 - Expected: 200, Actual: 200",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效端点应该返回404状态码 - Expected: 404, Actual: 404",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "完整的有效答案应该通过验证",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "有效答案不应该有错误 - Expected: 0, Actual: 0",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "空答案应该验证失败",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "空答案应该有错误信息",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "null答案应该验证失败",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效答案值应该验证失败",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效问题ID应该验证失败",
+      "timestamp": "2025-10-09T10:44:22.961Z"
+    },
+    {
+      "status": "PASS",
+      "message": "部分有效答案应该通过验证",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "部分答案的数量应该正确",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效JSON应该返回500错误 - Expected: 500, Actual: 500",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "缺少Content-Type应该能够处理",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效答案应该返回400错误 - Expected: 400, Actual: 400",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效答案响应应该标记为失败",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "无效答案应该包含错误详情",
+      "timestamp": "2025-10-09T10:44:22.962Z"
+    },
+    {
+      "status": "PASS",
+      "message": "响应应该包含success字段",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "响应应该包含data字段",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含testId",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含timestamp",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含bigFiveScores",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含mbtiResult",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "FAIL",
+      "message": "报告应该包含mbtiInfo",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含belbinRoles",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含careerSuggestions",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含answerCount",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "报告应该包含completionRate",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Big Five分数应该包含openness",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "openness分数应该是数字",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "openness分数应该在0-5范围内",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Big Five分数应该包含conscientiousness",
+      "timestamp": "2025-10-09T10:44:22.963Z"
+    },
+    {
+      "status": "PASS",
+      "message": "conscientiousness分数应该是数字",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "conscientiousness分数应该在0-5范围内",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Big Five分数应该包含extraversion",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "extraversion分数应该是数字",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "extraversion分数应该在0-5范围内",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Big Five分数应该包含agreeableness",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "agreeableness分数应该是数字",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "agreeableness分数应该在0-5范围内",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "Big Five分数应该包含neuroticism",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "neuroticism分数应该是数字",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "neuroticism分数应该在0-5范围内",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "MBTI结果应该包含type",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "MBTI结果应该包含typeCode",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "MBTI结果应该包含dimensions",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "MBTI类型应该包含后缀",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "MBTI类型代码应该是4个字符",
+      "timestamp": "2025-10-09T10:44:22.964Z"
+    },
+    {
+      "status": "PASS",
+      "message": "所有100个并发请求都应该成功 - Expected: 100, Actual: 100",
+      "timestamp": "2025-10-09T10:44:22.973Z"
+    },
+    {
+      "status": "PASS",
+      "message": "100个并发请求应该在5秒内完成，实际用时: 8ms",
+      "timestamp": "2025-10-09T10:44:22.973Z"
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v22.20.0",
+    "platform": "win32",
+    "testSuite": "APIPersonalityTestSuite v1.0"
+  }
+}

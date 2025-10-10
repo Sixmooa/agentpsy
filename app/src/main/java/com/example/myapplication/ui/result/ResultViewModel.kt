@@ -53,24 +53,46 @@ class ResultViewModel : ViewModel() {
      */
     fun shareResult() {
         val testReport = _uiState.value.testReport ?: return
-        
+        val language = testReport.language
+        val mbtiTypeInfo = testReport.getMBTITypeInfo()
+
         val shareText = buildString {
-            appendLine("我的MBTI人格测试结果：")
-            appendLine()
-            appendLine("类型：${testReport.mbtiType} - ${testReport.mbtiTypeInfo.getTypeName()}")
-            appendLine()
-            appendLine("描述：${testReport.mbtiTypeInfo.getDescription()}")
-            appendLine()
-            appendLine("Big Five人格维度得分：")
-            appendLine("开放性：${String.format("%.1f", testReport.bigFiveScores.openness)}")
-            appendLine("尽责性：${String.format("%.1f", testReport.bigFiveScores.conscientiousness)}")
-            appendLine("外向性：${String.format("%.1f", testReport.bigFiveScores.extraversion)}")
-            appendLine("宜人性：${String.format("%.1f", testReport.bigFiveScores.agreeableness)}")
-            appendLine("神经质：${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
-            appendLine()
-            appendLine("推荐职业：")
-            testReport.careerSuggestions.take(3).forEach { career ->
-                appendLine("• ${career.getCareerName()}")
+            if (language == "en") {
+                appendLine("My MBTI Personality Test Results:")
+                appendLine()
+                appendLine("Type: ${testReport.mbtiType} - ${mbtiTypeInfo.getTypeName(language)}")
+                appendLine()
+                appendLine("Description: ${mbtiTypeInfo.getDescription(language)}")
+                appendLine()
+                appendLine("Big Five Personality Scores:")
+                appendLine("Openness: ${String.format("%.1f", testReport.bigFiveScores.openness)}")
+                appendLine("Conscientiousness: ${String.format("%.1f", testReport.bigFiveScores.conscientiousness)}")
+                appendLine("Extraversion: ${String.format("%.1f", testReport.bigFiveScores.extraversion)}")
+                appendLine("Agreeableness: ${String.format("%.1f", testReport.bigFiveScores.agreeableness)}")
+                appendLine("Neuroticism: ${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
+                appendLine()
+                appendLine("Recommended Careers:")
+                testReport.careerSuggestions.take(3).forEach { career ->
+                    appendLine("• ${career.getCareerName(language)}")
+                }
+            } else {
+                appendLine("我的MBTI人格测试结果：")
+                appendLine()
+                appendLine("类型：${testReport.mbtiType} - ${mbtiTypeInfo.getTypeName(language)}")
+                appendLine()
+                appendLine("描述：${mbtiTypeInfo.getDescription(language)}")
+                appendLine()
+                appendLine("Big Five人格维度得分：")
+                appendLine("开放性：${String.format("%.1f", testReport.bigFiveScores.openness)}")
+                appendLine("尽责性：${String.format("%.1f", testReport.bigFiveScores.conscientiousness)}")
+                appendLine("外向性：${String.format("%.1f", testReport.bigFiveScores.extraversion)}")
+                appendLine("宜人性：${String.format("%.1f", testReport.bigFiveScores.agreeableness)}")
+                appendLine("神经质：${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
+                appendLine()
+                appendLine("推荐职业：")
+                testReport.careerSuggestions.take(3).forEach { career ->
+                    appendLine("• ${career.getCareerName(language)}")
+                }
             }
         }
         
@@ -84,13 +106,14 @@ class ResultViewModel : ViewModel() {
      */
     fun generateShareableText(): String? {
         val testReport = _uiState.value.testReport ?: return null
-        
+        val mbtiTypeInfo = testReport.getMBTITypeInfo()
+
         return buildString {
             appendLine("我的MBTI人格测试结果：")
             appendLine()
-            appendLine("类型：${testReport.mbtiType} - ${testReport.mbtiTypeInfo.getTypeName()}")
+            appendLine("类型：${testReport.mbtiType} - ${mbtiTypeInfo.getTypeName()}")
             appendLine()
-            appendLine("描述：${testReport.mbtiTypeInfo.getDescription()}")
+            appendLine("描述：${mbtiTypeInfo.getDescription()}")
             appendLine()
             appendLine("Big Five人格维度得分：")
             appendLine("开放性：${String.format("%.1f", testReport.bigFiveScores.openness)}")

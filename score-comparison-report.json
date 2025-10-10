@@ -1,0 +1,1866 @@
+{
+  "metadata": {
+    "generatedAt": "2025-10-09T10:53:24.579Z",
+    "analyzer": "ScoreComparisonAnalyzer",
+    "version": "1.0"
+  },
+  "summary": {
+    "totalTests": 8,
+    "identicalTests": 0,
+    "differentTests": 8,
+    "errorTests": 0,
+    "consistencyRate": "0.00"
+  },
+  "differences": [
+    {
+      "testName": "extreme_high",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 5,
+      "supabaseScore": 92,
+      "difference": 87,
+      "percentDifference": 94.56521739130434
+    },
+    {
+      "testName": "extreme_high",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 5,
+      "supabaseScore": 20,
+      "difference": 15,
+      "percentDifference": 75
+    },
+    {
+      "testName": "extreme_high",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 5,
+      "supabaseScore": 27.999999999999996,
+      "difference": 22.999999999999996,
+      "percentDifference": 82.14285714285714
+    },
+    {
+      "testName": "extreme_high",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 5,
+      "supabaseScore": 20,
+      "difference": 15,
+      "percentDifference": 75
+    },
+    {
+      "testName": "extreme_high",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 5,
+      "supabaseScore": 27.999999999999996,
+      "difference": 22.999999999999996,
+      "percentDifference": 82.14285714285714
+    },
+    {
+      "testName": "extreme_high",
+      "type": "mbti_type",
+      "staticType": "ENFJ-T",
+      "supabaseType": "INTP-A"
+    },
+    {
+      "testName": "extreme_low",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 1,
+      "supabaseScore": 27.999999999999996,
+      "difference": 26.999999999999996,
+      "percentDifference": 96.42857142857143
+    },
+    {
+      "testName": "extreme_low",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 1,
+      "supabaseScore": 100,
+      "difference": 99,
+      "percentDifference": 99
+    },
+    {
+      "testName": "extreme_low",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 1,
+      "supabaseScore": 92,
+      "difference": 91,
+      "percentDifference": 98.91304347826086
+    },
+    {
+      "testName": "extreme_low",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 1,
+      "supabaseScore": 100,
+      "difference": 99,
+      "percentDifference": 99
+    },
+    {
+      "testName": "extreme_low",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 1,
+      "supabaseScore": 92,
+      "difference": 91,
+      "percentDifference": 98.91304347826086
+    },
+    {
+      "testName": "extreme_low",
+      "type": "mbti_type",
+      "staticType": "ISTP-A",
+      "supabaseType": "ESFJ-T"
+    },
+    {
+      "testName": "neutral",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "neutral",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "neutral",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "neutral",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "neutral",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "neutral",
+      "type": "mbti_type",
+      "staticType": "INTJ-A",
+      "supabaseType": "ENFJ"
+    },
+    {
+      "testName": "high_openness",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 5,
+      "supabaseScore": 68,
+      "difference": 63,
+      "percentDifference": 92.64705882352942
+    },
+    {
+      "testName": "high_openness",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 55.99999999999999,
+      "difference": 52.99999999999999,
+      "percentDifference": 94.64285714285714
+    },
+    {
+      "testName": "high_openness",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 3,
+      "supabaseScore": 64,
+      "difference": 61,
+      "percentDifference": 95.3125
+    },
+    {
+      "testName": "high_openness",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 55.99999999999999,
+      "difference": 52.99999999999999,
+      "percentDifference": 94.64285714285714
+    },
+    {
+      "testName": "high_openness",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 2,
+      "supabaseScore": 55.99999999999999,
+      "difference": 53.99999999999999,
+      "percentDifference": 96.42857142857143
+    },
+    {
+      "testName": "high_openness",
+      "type": "mbti_type",
+      "staticType": "INTJ-A",
+      "supabaseType": "ENFJ"
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 3,
+      "supabaseScore": 68,
+      "difference": 65,
+      "percentDifference": 95.58823529411765
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 55.99999999999999,
+      "difference": 52.99999999999999,
+      "percentDifference": 94.64285714285714
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 5,
+      "supabaseScore": 55.99999999999999,
+      "difference": 50.99999999999999,
+      "percentDifference": 91.07142857142857
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 55.99999999999999,
+      "difference": 52.99999999999999,
+      "percentDifference": 94.64285714285714
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 2,
+      "supabaseScore": 55.99999999999999,
+      "difference": 53.99999999999999,
+      "percentDifference": 96.42857142857143
+    },
+    {
+      "testName": "high_extraversion",
+      "type": "mbti_type",
+      "staticType": "ENTJ-A",
+      "supabaseType": "ENFJ"
+    },
+    {
+      "testName": "random_1",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_1",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_1",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_1",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_1",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_1",
+      "type": "mbti_type",
+      "staticType": "INTJ-A",
+      "supabaseType": "ENFJ"
+    },
+    {
+      "testName": "random_2",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_2",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_2",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_2",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_2",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_2",
+      "type": "mbti_type",
+      "staticType": "INTJ-A",
+      "supabaseType": "ENFJ"
+    },
+    {
+      "testName": "random_3",
+      "type": "big_five",
+      "dimension": "openness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_3",
+      "type": "big_five",
+      "dimension": "conscientiousness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_3",
+      "type": "big_five",
+      "dimension": "extraversion",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_3",
+      "type": "big_five",
+      "dimension": "agreeableness",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_3",
+      "type": "big_five",
+      "dimension": "neuroticism",
+      "staticScore": 3,
+      "supabaseScore": 60,
+      "difference": 57,
+      "percentDifference": 95
+    },
+    {
+      "testName": "random_3",
+      "type": "mbti_type",
+      "staticType": "INTJ-A",
+      "supabaseType": "ENFJ"
+    }
+  ],
+  "details": [
+    {
+      "testName": "extreme_high",
+      "answers": {
+        "1": 5,
+        "2": 5,
+        "3": 5,
+        "4": 5,
+        "5": 5,
+        "6": 5,
+        "7": 5,
+        "8": 5,
+        "9": 5,
+        "10": 5,
+        "11": 5,
+        "12": 5,
+        "13": 5,
+        "14": 5,
+        "15": 5,
+        "16": 5,
+        "17": 5,
+        "18": 5,
+        "19": 5,
+        "20": 5,
+        "21": 5,
+        "22": 5,
+        "23": 5,
+        "24": 5,
+        "25": 5,
+        "26": 5,
+        "27": 5,
+        "28": 5,
+        "29": 5,
+        "30": 5,
+        "31": 5,
+        "32": 5,
+        "33": 5,
+        "34": 5,
+        "35": 5,
+        "36": 5,
+        "37": 5,
+        "38": 5,
+        "39": 5,
+        "40": 5,
+        "41": 5,
+        "42": 5,
+        "43": 5,
+        "44": 5,
+        "45": 5,
+        "46": 5,
+        "47": 5,
+        "48": 5,
+        "49": 5,
+        "50": 5
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 5,
+          "supabaseScore": 92,
+          "difference": 87,
+          "percentDifference": 94.56521739130434
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 5,
+          "supabaseScore": 20,
+          "difference": 15,
+          "percentDifference": 75
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 5,
+          "supabaseScore": 27.999999999999996,
+          "difference": 22.999999999999996,
+          "percentDifference": 82.14285714285714
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 5,
+          "supabaseScore": 20,
+          "difference": 15,
+          "percentDifference": 75
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 5,
+          "supabaseScore": 27.999999999999996,
+          "difference": 22.999999999999996,
+          "percentDifference": 82.14285714285714
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "ENFJ-T",
+          "supabaseType": "INTP-A"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 5,
+        "conscientiousness": 5,
+        "extraversion": 5,
+        "agreeableness": 5,
+        "neuroticism": 5
+      },
+      "supabaseBigFive": {
+        "openness": 92,
+        "conscientiousness": 20,
+        "extraversion": 27.999999999999996,
+        "agreeableness": 20,
+        "neuroticism": 27.999999999999996
+      },
+      "staticMBTI": {
+        "type": "ENFJ-T",
+        "typeCode": "ENFJ",
+        "name": "主人公",
+        "nameEn": "Protagonist",
+        "description": "热情且有魅力，但容易受到他人情绪和批评的影响",
+        "descriptionEn": "Charismatic and inspiring, but sensitive to others' emotions and criticism.",
+        "strengths": [
+          "激励他人",
+          "有同理心",
+          "善于沟通"
+        ],
+        "strengthsEn": [
+          "Inspiring others",
+          "Empathetic",
+          "Good communicator"
+        ],
+        "challenges": [
+          "过度敏感",
+          "难以拒绝"
+        ],
+        "challengesEn": [
+          "Overly sensitive",
+          "Difficulty saying no"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "E",
+            "score": 5
+          },
+          "sn": {
+            "type": "N",
+            "score": 5
+          },
+          "tf": {
+            "type": "F",
+            "score": 5
+          },
+          "jp": {
+            "type": "J",
+            "score": 5
+          },
+          "suffix": {
+            "type": "-T",
+            "score": 5
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "INTP-A",
+        "dimensions": {
+          "EI": "I",
+          "SN": "N",
+          "TF": "T",
+          "JP": "P"
+        },
+        "confidence": {
+          "EI": 0.44000000000000006,
+          "SN": 0.84,
+          "TF": 0.6,
+          "JP": 0.6
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "extreme_low",
+      "answers": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": 1,
+        "14": 1,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "18": 1,
+        "19": 1,
+        "20": 1,
+        "21": 1,
+        "22": 1,
+        "23": 1,
+        "24": 1,
+        "25": 1,
+        "26": 1,
+        "27": 1,
+        "28": 1,
+        "29": 1,
+        "30": 1,
+        "31": 1,
+        "32": 1,
+        "33": 1,
+        "34": 1,
+        "35": 1,
+        "36": 1,
+        "37": 1,
+        "38": 1,
+        "39": 1,
+        "40": 1,
+        "41": 1,
+        "42": 1,
+        "43": 1,
+        "44": 1,
+        "45": 1,
+        "46": 1,
+        "47": 1,
+        "48": 1,
+        "49": 1,
+        "50": 1
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 1,
+          "supabaseScore": 27.999999999999996,
+          "difference": 26.999999999999996,
+          "percentDifference": 96.42857142857143
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 1,
+          "supabaseScore": 100,
+          "difference": 99,
+          "percentDifference": 99
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 1,
+          "supabaseScore": 92,
+          "difference": 91,
+          "percentDifference": 98.91304347826086
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 1,
+          "supabaseScore": 100,
+          "difference": 99,
+          "percentDifference": 99
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 1,
+          "supabaseScore": 92,
+          "difference": 91,
+          "percentDifference": 98.91304347826086
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "ISTP-A",
+          "supabaseType": "ESFJ-T"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 1,
+        "conscientiousness": 1,
+        "extraversion": 1,
+        "agreeableness": 1,
+        "neuroticism": 1
+      },
+      "supabaseBigFive": {
+        "openness": 27.999999999999996,
+        "conscientiousness": 100,
+        "extraversion": 92,
+        "agreeableness": 100,
+        "neuroticism": 92
+      },
+      "staticMBTI": {
+        "type": "ISTP-A",
+        "typeCode": "ISTP",
+        "name": "鉴赏家",
+        "nameEn": "Virtuoso",
+        "description": "灵活且实用，喜欢动手操作和解决问题",
+        "descriptionEn": "Bold and practical experimenters, masters of all kinds of tools.",
+        "strengths": [
+          "实践能力强",
+          "适应性强",
+          "独立"
+        ],
+        "strengthsEn": [
+          "Practical skills",
+          "Adaptable",
+          "Independent"
+        ],
+        "challenges": [
+          "缺乏计划性",
+          "难以表达情感"
+        ],
+        "challengesEn": [
+          "Lack of planning",
+          "Difficulty expressing emotions"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 1
+          },
+          "sn": {
+            "type": "S",
+            "score": 1
+          },
+          "tf": {
+            "type": "T",
+            "score": 1
+          },
+          "jp": {
+            "type": "P",
+            "score": 1
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 1
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ESFJ-T",
+        "dimensions": {
+          "EI": "E",
+          "SN": "S",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.84,
+          "SN": 0.44000000000000006,
+          "TF": 1,
+          "JP": 1
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "neutral",
+      "answers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 3,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 3
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "INTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 3,
+        "conscientiousness": 3,
+        "extraversion": 3,
+        "agreeableness": 3,
+        "neuroticism": 3
+      },
+      "supabaseBigFive": {
+        "openness": 60,
+        "conscientiousness": 60,
+        "extraversion": 60,
+        "agreeableness": 60,
+        "neuroticism": 60
+      },
+      "staticMBTI": {
+        "type": "INTJ-A",
+        "typeCode": "INTJ",
+        "name": "建筑师",
+        "nameEn": "Architect",
+        "description": "富有想像力和战略性思想，冷静自信且具有批判性",
+        "descriptionEn": "Imaginative and strategic thinkers, with a plan for everything.",
+        "strengths": [
+          "独立思考",
+          "战略性规划",
+          "逻辑分析"
+        ],
+        "strengthsEn": [
+          "Independent thinking",
+          "Strategic planning",
+          "Logical analysis"
+        ],
+        "challenges": [
+          "过度批判",
+          "忽视情感因素"
+        ],
+        "challengesEn": [
+          "Overly critical",
+          "Ignoring emotional factors"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 3
+          },
+          "sn": {
+            "type": "N",
+            "score": 3
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 3
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.2,
+          "SN": 0.2,
+          "TF": 0.2,
+          "JP": 0.2
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "high_openness",
+      "answers": {
+        "1": 5,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 2,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 2,
+        "11": 5,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 2,
+        "16": 5,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 2,
+        "21": 5,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 2,
+        "26": 5,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 2,
+        "31": 5,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 2,
+        "36": 5,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 2,
+        "41": 5,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 2,
+        "46": 5,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 2
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 5,
+          "supabaseScore": 68,
+          "difference": 63,
+          "percentDifference": 92.64705882352942
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 55.99999999999999,
+          "difference": 52.99999999999999,
+          "percentDifference": 94.64285714285714
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 3,
+          "supabaseScore": 64,
+          "difference": 61,
+          "percentDifference": 95.3125
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 55.99999999999999,
+          "difference": 52.99999999999999,
+          "percentDifference": 94.64285714285714
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 2,
+          "supabaseScore": 55.99999999999999,
+          "difference": 53.99999999999999,
+          "percentDifference": 96.42857142857143
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "INTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 5,
+        "conscientiousness": 3,
+        "extraversion": 3,
+        "agreeableness": 3,
+        "neuroticism": 2
+      },
+      "supabaseBigFive": {
+        "openness": 68,
+        "conscientiousness": 55.99999999999999,
+        "extraversion": 64,
+        "agreeableness": 55.99999999999999,
+        "neuroticism": 55.99999999999999
+      },
+      "staticMBTI": {
+        "type": "INTJ-A",
+        "typeCode": "INTJ",
+        "name": "建筑师",
+        "nameEn": "Architect",
+        "description": "富有想像力和战略性思想，冷静自信且具有批判性",
+        "descriptionEn": "Imaginative and strategic thinkers, with a plan for everything.",
+        "strengths": [
+          "独立思考",
+          "战略性规划",
+          "逻辑分析"
+        ],
+        "strengthsEn": [
+          "Independent thinking",
+          "Strategic planning",
+          "Logical analysis"
+        ],
+        "challenges": [
+          "过度批判",
+          "忽视情感因素"
+        ],
+        "challengesEn": [
+          "Overly critical",
+          "Ignoring emotional factors"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 3
+          },
+          "sn": {
+            "type": "N",
+            "score": 5
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 2
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.28,
+          "SN": 0.36,
+          "TF": 0.11999999999999986,
+          "JP": 0.11999999999999986
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "high_extraversion",
+      "answers": {
+        "1": 3,
+        "2": 3,
+        "3": 5,
+        "4": 3,
+        "5": 2,
+        "6": 3,
+        "7": 3,
+        "8": 5,
+        "9": 3,
+        "10": 2,
+        "11": 3,
+        "12": 3,
+        "13": 5,
+        "14": 3,
+        "15": 2,
+        "16": 3,
+        "17": 3,
+        "18": 5,
+        "19": 3,
+        "20": 2,
+        "21": 3,
+        "22": 3,
+        "23": 5,
+        "24": 3,
+        "25": 2,
+        "26": 3,
+        "27": 3,
+        "28": 5,
+        "29": 3,
+        "30": 2,
+        "31": 3,
+        "32": 3,
+        "33": 5,
+        "34": 3,
+        "35": 2,
+        "36": 3,
+        "37": 3,
+        "38": 5,
+        "39": 3,
+        "40": 2,
+        "41": 3,
+        "42": 3,
+        "43": 5,
+        "44": 3,
+        "45": 2,
+        "46": 3,
+        "47": 3,
+        "48": 5,
+        "49": 3,
+        "50": 2
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 3,
+          "supabaseScore": 68,
+          "difference": 65,
+          "percentDifference": 95.58823529411765
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 55.99999999999999,
+          "difference": 52.99999999999999,
+          "percentDifference": 94.64285714285714
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 5,
+          "supabaseScore": 55.99999999999999,
+          "difference": 50.99999999999999,
+          "percentDifference": 91.07142857142857
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 55.99999999999999,
+          "difference": 52.99999999999999,
+          "percentDifference": 94.64285714285714
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 2,
+          "supabaseScore": 55.99999999999999,
+          "difference": 53.99999999999999,
+          "percentDifference": 96.42857142857143
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "ENTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 3,
+        "conscientiousness": 3,
+        "extraversion": 5,
+        "agreeableness": 3,
+        "neuroticism": 2
+      },
+      "supabaseBigFive": {
+        "openness": 68,
+        "conscientiousness": 55.99999999999999,
+        "extraversion": 55.99999999999999,
+        "agreeableness": 55.99999999999999,
+        "neuroticism": 55.99999999999999
+      },
+      "staticMBTI": {
+        "type": "ENTJ-A",
+        "typeCode": "ENTJ",
+        "name": "指挥官",
+        "nameEn": "Commander",
+        "description": "天生的领导者，具有强大的组织和决策能力",
+        "descriptionEn": "Bold, imaginative and strong-willed leaders.",
+        "strengths": [
+          "领导力强",
+          "决策果断",
+          "目标导向"
+        ],
+        "strengthsEn": [
+          "Strong leadership",
+          "Decisive",
+          "Goal-oriented"
+        ],
+        "challenges": [
+          "缺乏耐心",
+          "忽视他人感受"
+        ],
+        "challengesEn": [
+          "Lack of patience",
+          "Ignoring others' feelings"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "E",
+            "score": 5
+          },
+          "sn": {
+            "type": "N",
+            "score": 3
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 2
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.11999999999999986,
+          "SN": 0.36,
+          "TF": 0.11999999999999986,
+          "JP": 0.11999999999999986
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "random_1",
+      "answers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 3,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 3
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "INTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 3,
+        "conscientiousness": 3,
+        "extraversion": 3,
+        "agreeableness": 3,
+        "neuroticism": 3
+      },
+      "supabaseBigFive": {
+        "openness": 60,
+        "conscientiousness": 60,
+        "extraversion": 60,
+        "agreeableness": 60,
+        "neuroticism": 60
+      },
+      "staticMBTI": {
+        "type": "INTJ-A",
+        "typeCode": "INTJ",
+        "name": "建筑师",
+        "nameEn": "Architect",
+        "description": "富有想像力和战略性思想，冷静自信且具有批判性",
+        "descriptionEn": "Imaginative and strategic thinkers, with a plan for everything.",
+        "strengths": [
+          "独立思考",
+          "战略性规划",
+          "逻辑分析"
+        ],
+        "strengthsEn": [
+          "Independent thinking",
+          "Strategic planning",
+          "Logical analysis"
+        ],
+        "challenges": [
+          "过度批判",
+          "忽视情感因素"
+        ],
+        "challengesEn": [
+          "Overly critical",
+          "Ignoring emotional factors"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 3
+          },
+          "sn": {
+            "type": "N",
+            "score": 3
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 3
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.2,
+          "SN": 0.2,
+          "TF": 0.2,
+          "JP": 0.2
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "random_2",
+      "answers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 3,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 3
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "INTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 3,
+        "conscientiousness": 3,
+        "extraversion": 3,
+        "agreeableness": 3,
+        "neuroticism": 3
+      },
+      "supabaseBigFive": {
+        "openness": 60,
+        "conscientiousness": 60,
+        "extraversion": 60,
+        "agreeableness": 60,
+        "neuroticism": 60
+      },
+      "staticMBTI": {
+        "type": "INTJ-A",
+        "typeCode": "INTJ",
+        "name": "建筑师",
+        "nameEn": "Architect",
+        "description": "富有想像力和战略性思想，冷静自信且具有批判性",
+        "descriptionEn": "Imaginative and strategic thinkers, with a plan for everything.",
+        "strengths": [
+          "独立思考",
+          "战略性规划",
+          "逻辑分析"
+        ],
+        "strengthsEn": [
+          "Independent thinking",
+          "Strategic planning",
+          "Logical analysis"
+        ],
+        "challenges": [
+          "过度批判",
+          "忽视情感因素"
+        ],
+        "challengesEn": [
+          "Overly critical",
+          "Ignoring emotional factors"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 3
+          },
+          "sn": {
+            "type": "N",
+            "score": 3
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 3
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.2,
+          "SN": 0.2,
+          "TF": 0.2,
+          "JP": 0.2
+        }
+      },
+      "isIdentical": false
+    },
+    {
+      "testName": "random_3",
+      "answers": {
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3,
+        "13": 3,
+        "14": 3,
+        "15": 3,
+        "16": 3,
+        "17": 3,
+        "18": 3,
+        "19": 3,
+        "20": 3,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 3,
+        "25": 3,
+        "26": 3,
+        "27": 3,
+        "28": 3,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 3,
+        "33": 3,
+        "34": 3,
+        "35": 3,
+        "36": 3,
+        "37": 3,
+        "38": 3,
+        "39": 3,
+        "40": 3,
+        "41": 3,
+        "42": 3,
+        "43": 3,
+        "44": 3,
+        "45": 3,
+        "46": 3,
+        "47": 3,
+        "48": 3,
+        "49": 3,
+        "50": 3
+      },
+      "differences": [
+        {
+          "type": "big_five",
+          "dimension": "openness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "conscientiousness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "extraversion",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "agreeableness",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "big_five",
+          "dimension": "neuroticism",
+          "staticScore": 3,
+          "supabaseScore": 60,
+          "difference": 57,
+          "percentDifference": 95
+        },
+        {
+          "type": "mbti_type",
+          "staticType": "INTJ-A",
+          "supabaseType": "ENFJ"
+        }
+      ],
+      "staticBigFive": {
+        "openness": 3,
+        "conscientiousness": 3,
+        "extraversion": 3,
+        "agreeableness": 3,
+        "neuroticism": 3
+      },
+      "supabaseBigFive": {
+        "openness": 60,
+        "conscientiousness": 60,
+        "extraversion": 60,
+        "agreeableness": 60,
+        "neuroticism": 60
+      },
+      "staticMBTI": {
+        "type": "INTJ-A",
+        "typeCode": "INTJ",
+        "name": "建筑师",
+        "nameEn": "Architect",
+        "description": "富有想像力和战略性思想，冷静自信且具有批判性",
+        "descriptionEn": "Imaginative and strategic thinkers, with a plan for everything.",
+        "strengths": [
+          "独立思考",
+          "战略性规划",
+          "逻辑分析"
+        ],
+        "strengthsEn": [
+          "Independent thinking",
+          "Strategic planning",
+          "Logical analysis"
+        ],
+        "challenges": [
+          "过度批判",
+          "忽视情感因素"
+        ],
+        "challengesEn": [
+          "Overly critical",
+          "Ignoring emotional factors"
+        ],
+        "dimensions": {
+          "ei": {
+            "type": "I",
+            "score": 3
+          },
+          "sn": {
+            "type": "N",
+            "score": 3
+          },
+          "tf": {
+            "type": "T",
+            "score": 3
+          },
+          "jp": {
+            "type": "J",
+            "score": 3
+          },
+          "suffix": {
+            "type": "-A",
+            "score": 3
+          }
+        }
+      },
+      "supabaseMBTI": {
+        "type": "ENFJ",
+        "dimensions": {
+          "EI": "E",
+          "SN": "N",
+          "TF": "F",
+          "JP": "J"
+        },
+        "confidence": {
+          "EI": 0.2,
+          "SN": 0.2,
+          "TF": 0.2,
+          "JP": 0.2
+        }
+      },
+      "isIdentical": false
+    }
+  ]
+}

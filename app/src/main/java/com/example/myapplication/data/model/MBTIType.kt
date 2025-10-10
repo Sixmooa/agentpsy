@@ -10,29 +10,48 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MBTIType(
     @SerialName("id")
-    val id: Int,
-    
+    val id: Int? = null,
+
     @SerialName("type_code")
-    val typeCode: String,
-    
+    val typeCode: String? = null,
+
     @SerialName("type_name_zh")
-    val typeNameZh: String,
-    
+    val typeNameZh: String? = null,
+
     @SerialName("type_name_en")
-    val typeNameEn: String,
-    
+    val typeNameEn: String? = null,
+
     @SerialName("description_zh")
-    val descriptionZh: String,
-    
+    val descriptionZh: String? = null,
+
     @SerialName("description_en")
-    val descriptionEn: String,
-    
+    val descriptionEn: String? = null,
+
     @SerialName("strengths")
-    val strengths: List<String>,
-    
+    val strengths: List<String>? = null,
+
     @SerialName("challenges")
-    val challenges: List<String>
+    val challenges: List<String>? = null
 ) {
+
+    /**
+     * 创建一个基于MBTI结果的简化版本
+     */
+    companion object {
+        fun fromMBTIResult(mbtiResult: MBTIResult): MBTIType {
+            val typeCode = mbtiResult.type.replace("-A", "").replace("-T", "")
+            return MBTIType(
+                id = null,
+                typeCode = typeCode,
+                typeNameZh = mbtiResult.type,
+                typeNameEn = mbtiResult.type,
+                descriptionZh = "${mbtiResult.type}类型",
+                descriptionEn = "${mbtiResult.type} Type",
+                strengths = emptyList(),
+                challenges = emptyList()
+            )
+        }
+    }
     /**
      * 根据语言获取类型名称
      * @param language 语言代码 ("zh" 或 "en")
@@ -40,11 +59,11 @@ data class MBTIType(
      */
     fun getTypeName(language: String = "zh"): String {
         return when (language) {
-            "en" -> typeNameEn
-            else -> typeNameZh
+            "en" -> typeNameEn ?: "未知类型"
+            else -> typeNameZh ?: "未知类型"
         }
     }
-    
+
     /**
      * 根据语言获取描述
      * @param language 语言代码 ("zh" 或 "en")
@@ -52,8 +71,8 @@ data class MBTIType(
      */
     fun getDescription(language: String = "zh"): String {
         return when (language) {
-            "en" -> descriptionEn
-            else -> descriptionZh
+            "en" -> descriptionEn ?: "暂无描述"
+            else -> descriptionZh ?: "暂无描述"
         }
     }
 }

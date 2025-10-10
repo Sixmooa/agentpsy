@@ -16,7 +16,7 @@ const DIMENSIONS = {
 };
 
 /**
- * 计算Big Five分数
+ * 计算Big Five分数 - 匹配静态版本算法
  */
 function calculateBigFiveScores(answers, questions) {
   const scores = {
@@ -26,7 +26,7 @@ function calculateBigFiveScores(answers, questions) {
     agreeableness: 0,
     neuroticism: 0
   };
-  
+
   const counts = {
     openness: 0,
     conscientiousness: 0,
@@ -34,66 +34,81 @@ function calculateBigFiveScores(answers, questions) {
     agreeableness: 0,
     neuroticism: 0
   };
-  
-  questions.forEach(question => {
-    const answer = answers[question.id];
-    if (answer !== undefined && question.dimension) {
-      const dimension = question.dimension.toLowerCase();
-      if (scores.hasOwnProperty(dimension)) {
-        const score = question.reverse ? (6 - answer) : answer;
-        scores[dimension] += score;
-        counts[dimension]++;
-      }
+
+  // 遍历答案，计算每个维度的总分和题目数量
+  for (const [questionId, answer] of Object.entries(answers)) {
+    const question = questions.find(q => q.id === parseInt(questionId));
+    if (question && question.dimension) {
+      scores[question.dimension] += parseInt(answer);
+      counts[question.dimension]++;
     }
-  });
-  
-  // 转换为0-100百分比
-  Object.keys(scores).forEach(dimension => {
+  }
+
+  // 计算平均分，保留两位小数
+  const avgScores = {};
+  for (const dimension in scores) {
     if (counts[dimension] > 0) {
-      scores[dimension] = (scores[dimension] / counts[dimension]) / 5 * 100;
+      avgScores[dimension] = Math.round((scores[dimension] / counts[dimension]) * 100) / 100;
+    } else {
+      avgScores[dimension] = 0;
     }
-  });
-  
-  return scores;
+  }
+
+  return avgScores;
 }
 
 /**
- * 计算MBTI类型
+ * 计算MBTI类型 - 完全匹配静态版本算法
  */
 function calculateMBTI(bigFiveScores) {
-  const dimensions = {};
-  const confidence = {};
-  
-  // E/I - 基于外向性
-  const extraversionScore = bigFiveScores.extraversion;
-  dimensions.EI = extraversionScore > 50 ? 'E' : 'I';
-  confidence.EI = Math.abs(extraversionScore - 50) / 50;
-  
-  // S/N - 基于开放性
-  const opennessScore = bigFiveScores.openness;
-  dimensions.SN = opennessScore > 50 ? 'N' : 'S';
-  confidence.SN = Math.abs(opennessScore - 50) / 50;
-  
-  // T/F - 基于宜人性
-  const agreeablenessScore = bigFiveScores.agreeableness;
-  dimensions.TF = agreeablenessScore > 50 ? 'F' : 'T';
-  confidence.TF = Math.abs(agreeablenessScore - 50) / 50;
-  
-  // J/P - 基于尽责性
-  const conscientiousnessScore = bigFiveScores.conscientiousness;
-  dimensions.JP = conscientiousnessScore > 50 ? 'J' : 'P';
-  confidence.JP = Math.abs(conscientiousnessScore - 50) / 50;
-  
-  const mbtiType = dimensions.EI + dimensions.SN + dimensions.TF + dimensions.JP;
-  
-  // 基于神经质性添加-A/-T后缀
-  const neuroticismScore = bigFiveScores.neuroticism;
-  const suffix = neuroticismScore < 30 ? '-A' : (neuroticismScore > 70 ? '-T' : '');
-  
+  const { openness, conscientiousness, extraversion, agreeableness, neuroticism } = bigFiveScores;
+  const midPoint = 3.0;
+
+  // E/I (外向/内向) - 基于外向性得分，严格匹配静态版本
+  const ei = extraversion > midPoint ? 'E' : 'I';
+
+  // S/N (感觉/直觉) - 基于开放性得分，注意使用 >= (关键差异!)
+  const sn = openness >= midPoint ? 'N' : 'S';
+
+  // T/F (思考/情感) - 基于宜人性得分
+  const tf = agreeableness > midPoint ? 'F' : 'T';
+
+  // J/P (判断/知觉) - 基于尽责性得分，注意使用 >= (关键差异!)
+  const jp = conscientiousness >= midPoint ? 'J' : 'P';
+
+  // 情绪稳定性后缀 -A/-T，严格匹配静态版本逻辑
+  const suffix = neuroticism > midPoint ? '-T' : '-A';
+
+  const mbtiType = ei + sn + tf + jp + suffix;
+
+  // 为了向后兼容，保留原有的dimensions和confidence格式
+  const dimensions = {
+    EI: ei,
+    SN: sn,
+    TF: tf,
+    JP: jp
+  };
+
+  const confidence = {
+    EI: Math.abs(extraversion - midPoint) / 2.0,
+    SN: Math.abs(openness - midPoint) / 2.0,
+    TF: Math.abs(agreeableness - midPoint) / 2.0,
+    JP: Math.abs(conscientiousness - midPoint) / 2.0
+  };
+
   return {
-    type: mbtiType + suffix,
+    type: mbtiType,
+    typeCode: ei + sn + tf + jp,
     dimensions,
-    confidence
+    confidence,
+    // 添加详细的维度信息，匹配静态版本格式
+    detailedDimensions: {
+      ei: { type: ei, score: extraversion },
+      sn: { type: sn, score: openness },
+      tf: { type: tf, score: agreeableness },
+      jp: { type: jp, score: conscientiousness },
+      suffix: { type: suffix, score: neuroticism }
+    }
   };
 }
 
