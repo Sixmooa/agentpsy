@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-10-13T14:28:35.322Z",
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "successRate": 100
+  },
+  "results": [
+    {
+      "name": "贝尔宾角色数据一致性",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "职业建议数据类型覆盖",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "INTJ类型职业建议差异分析",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "INTP类型职业建议差异分析",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "ENTJ类型职业建议差异分析",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "数据一致性统计",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "TDD阶段验证",
+      "status": "PASSED",
+      "error": null
+    },
+    {
+      "name": "生成问题诊断报告",
+      "status": "PASSED",
+      "error": null
+    }
+  ]
+}

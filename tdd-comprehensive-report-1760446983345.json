@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-10-14T13:03:03.345Z",
+  "duration": 4061,
+  "summary": {
+    "totalTests": 4,
+    "totalPassed": 3,
+    "totalFailed": 1,
+    "successRate": 75,
+    "status": "FAILED"
+  },
+  "phases": {
+    "phase1": {
+      "name": "基础验证",
+      "tests": [
+        {
+          "name": "Supabase连接测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "Supabase连接失败: ",
+          "timestamp": "2025-10-14T13:03:01.023Z"
+        },
+        {
+          "name": "本地文件读取测试",
+          "passed": true,
+          "details": "文件大小: 34078字符",
+          "error": null,
+          "timestamp": "2025-10-14T13:03:01.024Z"
+        },
+        {
+          "name": "MBTI类型覆盖测试",
+          "passed": true,
+          "details": "16个MBTI类型全部覆盖",
+          "error": null,
+          "timestamp": "2025-10-14T13:03:02.212Z"
+        },
+        {
+          "name": "贝尔宾角色一致性测试",
+          "passed": true,
+          "details": "9个贝尔宾角色完全一致",
+          "error": null,
+          "timestamp": "2025-10-14T13:03:03.068Z"
+        }
+      ],
+      "passed": 3,
+      "failed": 1
+    },
+    "phase2": {
+      "name": "详细对比",
+      "tests": [],
+      "passed": 0,
+      "failed": 0
+    },
+    "phase3": {
+      "name": "边界测试",
+      "tests": [],
+      "passed": 0,
+      "failed": 0
+    },
+    "phase4": {
+      "name": "回归测试",
+      "tests": [],
+      "passed": 0,
+      "failed": 0
+    }
+  },
+  "dataSummary": {
+    "supabaseTypes": 16,
+    "localTypes": 0,
+    "totalCareers": 128
+  },
+  "conclusion": "读取本地数据失败: Unexpected token ';'"
+}

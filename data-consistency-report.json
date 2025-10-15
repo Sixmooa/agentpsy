@@ -1,0 +1,263 @@
+{
+  "timestamp": "2025-10-13T14:21:40.048Z",
+  "career": {
+    "missingInLocal": [],
+    "missingInSupabase": [],
+    "differences": {
+      "INTJ": {
+        "missingInLocal": [
+          "建筑师",
+          "战略规划师",
+          "投资分析师",
+          "管理顾问"
+        ],
+        "missingInSupabase": [
+          "战略顾问",
+          "软件工程师"
+        ],
+        "localCount": 6,
+        "supabaseCount": 8
+      },
+      "INTP": {
+        "missingInLocal": [
+          "软件开发工程师",
+          "研究科学家",
+          "数学家",
+          "理论物理学家",
+          "技术作家",
+          "系统架构师"
+        ],
+        "missingInSupabase": [
+          "研究员",
+          "科学家",
+          "软件工程师",
+          "技术专家"
+        ],
+        "localCount": 6,
+        "supabaseCount": 8
+      },
+      "ENTJ": {
+        "missingInLocal": [
+          "首席执行官",
+          "投资银行家",
+          "政治家",
+          "销售经理"
+        ],
+        "missingInSupabase": [
+          "企业高管"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ENTP": {
+        "missingInLocal": [
+          "营销经理",
+          "记者",
+          "发明家",
+          "咨询顾问",
+          "创意总监",
+          "风险投资家"
+        ],
+        "missingInSupabase": [
+          "市场营销",
+          "创新顾问",
+          "咨询师"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "INFJ": {
+        "missingInLocal": [
+          "人力资源专家",
+          "非营利组织工作者",
+          "艺术家",
+          "编辑"
+        ],
+        "missingInSupabase": [
+          "人力资源"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "INFP": {
+        "missingInLocal": [
+          "心理学家",
+          "音乐家",
+          "图书管理员",
+          "翻译",
+          "非营利组织工作者"
+        ],
+        "missingInSupabase": [
+          "心理咨询师",
+          "培训师"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ENFJ": {
+        "missingInLocal": [
+          "社会工作者",
+          "公关专家",
+          "销售代表",
+          "非营利组织领导"
+        ],
+        "missingInSupabase": [
+          "公关经理"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ENFP": {
+        "missingInLocal": [
+          "公关专家",
+          "心理学家",
+          "销售代表",
+          "艺术家",
+          "社会工作者",
+          "企业家"
+        ],
+        "missingInSupabase": [
+          "创意总监",
+          "市场营销",
+          "培训师"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ISTJ": {
+        "missingInLocal": [
+          "银行家",
+          "工程师",
+          "医生",
+          "律师",
+          "管理员",
+          "质量控制专家"
+        ],
+        "missingInSupabase": [
+          "行政主管",
+          "质量控制",
+          "运营经理"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ISFJ": {
+        "missingInLocal": [
+          "图书管理员",
+          "人力资源专员",
+          "客户服务代表",
+          "行政助理",
+          "医疗技术员"
+        ],
+        "missingInSupabase": [
+          "人力资源",
+          "客户服务经理"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ESTJ": {
+        "missingInLocal": [
+          "销售经理",
+          "银行家",
+          "律师",
+          "警察"
+        ],
+        "missingInSupabase": [
+          "行政主管"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ESFJ": {
+        "missingInLocal": [
+          "销售代表",
+          "人力资源专员",
+          "客户服务经理",
+          "活动策划师",
+          "社会工作者",
+          "办公室经理"
+        ],
+        "missingInSupabase": [
+          "人力资源",
+          "客户服务",
+          "活动策划"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ISTP": {
+        "missingInLocal": [
+          "飞行员",
+          "计算机程序员",
+          "建筑师",
+          "侦探",
+          "运动员"
+        ],
+        "missingInSupabase": [
+          "技术专家",
+          "程序员"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ISFP": {
+        "missingInLocal": [
+          "摄影师",
+          "心理学家",
+          "按摩治疗师",
+          "厨师"
+        ],
+        "missingInSupabase": [
+          "心理咨询师"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ESTP": {
+        "missingInLocal": [
+          "消防员",
+          "演员",
+          "房地产经纪人",
+          "急救医疗技术员"
+        ],
+        "missingInSupabase": [
+          "急救医生"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      },
+      "ESFP": {
+        "missingInLocal": [
+          "音乐家",
+          "活动策划师",
+          "导游",
+          "儿童护理工作者",
+          "摄影师",
+          "公关专家"
+        ],
+        "missingInSupabase": [
+          "活动策划",
+          "教师",
+          "社会工作者"
+        ],
+        "localCount": 5,
+        "supabaseCount": 8
+      }
+    },
+    "totalDifferences": 16,
+    "commonTypes": 16
+  },
+  "belbin": {
+    "localCount": 9,
+    "supabaseCount": 9,
+    "missingInLocal": [],
+    "missingInSupabase": [],
+    "consistent": true
+  },
+  "overall": {
+    "careerConsistent": false,
+    "belbinConsistent": true,
+    "fullyConsistent": false
+  }
+}

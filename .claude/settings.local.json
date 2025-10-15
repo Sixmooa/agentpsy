@@ -8,7 +8,11 @@
       "Bash(npx supabase:*)",
       "Bash(echo:*)",
       "Bash(cat:*)",
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Read(//e/**)",
+      "Bash(npm install:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

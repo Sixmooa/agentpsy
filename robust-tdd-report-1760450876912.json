@@ -1,0 +1,418 @@
+{
+  "timestamp": "2025-10-14T14:07:56.912Z",
+  "duration": 2033,
+  "summary": {
+    "totalTests": 57,
+    "passedTests": 57,
+    "failedTests": 0,
+    "successRate": 100,
+    "status": "SUCCESS"
+  },
+  "dataSummary": {
+    "supabaseTypes": 16,
+    "localTypes": 16,
+    "totalCareers": 128
+  },
+  "testResults": [
+    {
+      "name": "Supabase连接测试",
+      "passed": true,
+      "details": "成功连接，获取16个MBTI类型，128条记录",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.909Z"
+    },
+    {
+      "name": "本地数据解析测试",
+      "passed": true,
+      "details": "解析成功 - 中文:16类型, 英文:16类型",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "云端MBTI覆盖",
+      "passed": true,
+      "details": "16个类型完全覆盖",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "本地MBTI覆盖",
+      "passed": true,
+      "details": "16个类型完全覆盖",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ENFJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ENFP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ENTJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ENTP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ESFJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.911Z"
+    },
+    {
+      "name": "ESFP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTJ数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTP数量一致性",
+      "passed": true,
+      "details": "8个职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "总体数量一致性",
+      "passed": true,
+      "details": "所有16个类型数量一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENFJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENFP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENTJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENTP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESFJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESFP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTJ内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTP内容一致性",
+      "passed": true,
+      "details": "内容完全一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "总体内容一致性",
+      "passed": true,
+      "details": "所有16个类型内容100%一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENFJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENFP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENTJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ENTP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESFJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESFP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ESTP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INFP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "INTP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISFP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTJ英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "ISTP英文一致性",
+      "passed": true,
+      "details": "英文内容一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "总体英文一致性",
+      "passed": true,
+      "details": "所有16个类型英文数据一致",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "空值检查",
+      "passed": true,
+      "details": "所有128个职业名称非空",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    },
+    {
+      "name": "重复检查",
+      "passed": true,
+      "details": "无重复职业",
+      "error": null,
+      "timestamp": "2025-10-14T14:07:56.912Z"
+    }
+  ],
+  "conclusion": "✅ 所有测试通过，数据一致性验证成功"
+}
