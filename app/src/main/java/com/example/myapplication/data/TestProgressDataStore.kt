@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
@@ -29,6 +30,10 @@ class TestProgressDataStore(private val context: Context) {
         private val QUESTIONS_JSON = stringPreferencesKey("questions_json")
         private val ANSWER_OPTIONS_JSON = stringPreferencesKey("answer_options_json")
         private val TEST_PROGRESS = stringPreferencesKey("test_progress")
+        private val DATA_VERSION = intPreferencesKey("data_version")
+
+        // 当前数据版本号 - 当数据结构变化或需要清理缓存时递增
+        const val CURRENT_DATA_VERSION = 2
     }
     
     /**
@@ -155,5 +160,62 @@ class TestProgressDataStore(private val context: Context) {
         context.dataStore.edit { preferences ->
             preferences.remove(TEST_PROGRESS)
         }
+    }
+
+    /**
+     * 获取当前数据版本
+     */
+    val currentDataVersion: Flow<Int> = context.dataStore.data.map { preferences ->
+        preferences[DATA_VERSION] ?: 1
+    }
+
+    /**
+     * 保存数据版本
+     */
+    suspend fun saveDataVersion(version: Int) {
+        context.dataStore.edit { preferences ->
+            preferences[DATA_VERSION] = version
+        }
+    }
+
+    /**
+     * 检查是否需要清理缓存（版本过旧）
+     */
+    suspend fun needsCacheClear(): Boolean {
+        return try {
+            val savedVersion = currentDataVersion.first()
+            savedVersion < CURRENT_DATA_VERSION
+        } catch (e: Exception) {
+            true // 如果读取失败，建议清理缓存
+        }
+    }
+
+    /**
+     * 清理过时的缓存数据
+     */
+    suspend fun clearOutdatedCache(): Boolean {
+        return try {
+            if (needsCacheClear()) {
+                clearProgress()
+                // 更新到当前版本
+                saveDataVersion(CURRENT_DATA_VERSION)
+                true
+            } else {
+                false
+            }
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    /**
+     * 强制清理所有缓存数据（用于版本升级或数据修复）
+     */
+    suspend fun forceClearAll() {
+        context.dataStore.edit { preferences ->
+            preferences.clear()
+        }
+        // 重置版本号
+        saveDataVersion(CURRENT_DATA_VERSION)
     }
 }

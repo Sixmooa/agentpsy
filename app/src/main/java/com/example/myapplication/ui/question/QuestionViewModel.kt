@@ -25,9 +25,12 @@ class QuestionViewModel(
     private val dataStore: TestProgressDataStore? = null,
     private val coroutineScope: CoroutineScope? = null
 ) : ViewModel() {
-    
+
     // 使用注入的协程作用域或默认的viewModelScope
     private val scope: CoroutineScope = coroutineScope ?: viewModelScope
+
+    // 当前数据版本
+    private val currentDataVersion = TestProgressDataStore.CURRENT_DATA_VERSION
     
     // UI状态
     private val _uiState = MutableStateFlow(QuestionUiState())
@@ -442,12 +445,23 @@ class QuestionViewModel(
         scope.launch {
             if (dataStore != null) {
                 try {
+                    // 首先检查数据版本，如果版本过旧则清理缓存
+                    val needsClear = dataStore.needsCacheClear()
+                    if (needsClear) {
+                        println("检测到过时的缓存数据，正在清理...")
+                        dataStore.clearOutdatedCache()
+                        // 清理后加载新数据
+                        loadInitialData()
+                        return@launch
+                    }
+
                     val savedProgress = dataStore.getTestProgress.first()
                     if (savedProgress.isNotEmpty()) {
                         restoreProgress(savedProgress)
                         return@launch
                     }
                 } catch (e: Exception) {
+                    println("恢复进度失败: ${e.message}")
                     // 恢复失败，继续加载新数据
                 }
             }
@@ -497,7 +511,7 @@ class QuestionViewModel(
      */
     private fun saveProgress() {
         if (dataStore == null) return
-        
+
         scope.launch {
             try {
                 val progress = TestProgress(
@@ -507,11 +521,15 @@ class QuestionViewModel(
                     currentQuestionIndex = _uiState.value.currentQuestionIndex,
                     currentLanguage = _uiState.value.currentLanguage
                 )
-                
+
                 val progressJson = Json.encodeToString(progress)
                 dataStore.saveTestProgress(progressJson)
+
+                // 确保保存当前数据版本
+                dataStore.saveDataVersion(currentDataVersion)
             } catch (e: Exception) {
                 // 保存失败，不影响正常流程
+                println("保存进度失败: ${e.message}")
             }
         }
     }

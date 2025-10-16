@@ -12,7 +12,17 @@
       "Read(//e/**)",
       "Bash(npm install:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "mcp__supabase__list_projects",
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__list_allowed_directories",
+      "mcp__filesystem__search_files",
+      "Bash(find:*)",
+      "Bash(.gradle:*)",
+      "Bash(.gradlew.bat clean assembleDebug)",
+      "Bash(dir:*)",
+      "Bash(cmd /c:*)",
+      "Bash(powershell:*)"
     ],
     "deny": [],
     "ask": []

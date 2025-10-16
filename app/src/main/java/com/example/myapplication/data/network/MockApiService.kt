@@ -15,305 +15,306 @@ class MockApiService : ApiService {
         delay(500)
         
         val questions = listOf(
+            // 基于Big Five人格理论的正确题目格式
             Question(
                 id = 1,
-                questionTextZh = "在社交聚会中，你通常：",
-                questionTextEn = "At social gatherings, you usually:",
-                dimension = "E"
+                questionTextZh = "我有很多想象力。",
+                questionTextEn = "I have a vivid imagination.",
+                dimension = "openness"
             ),
             Question(
                 id = 2,
-                questionTextZh = "当你感到疲惫时，你倾向于：",
-                questionTextEn = "When you feel tired, you tend to:",
-                dimension = "I"
+                questionTextZh = "我总是准时完成任务。",
+                questionTextEn = "I always complete tasks on time.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 3,
-                questionTextZh = "在学习新事物时，你更注重：",
-                questionTextEn = "When learning new things, you focus more on:",
-                dimension = "S"
+                questionTextZh = "我在社交场合中感到自在。",
+                questionTextEn = "I feel comfortable in social situations.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 4,
-                questionTextZh = "对于未来的可能性，你更喜欢：",
-                questionTextEn = "Regarding future possibilities, you prefer:",
-                dimension = "N"
+                questionTextZh = "我信任别人。",
+                questionTextEn = "I trust others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 5,
-                questionTextZh = "做决定时，你更看重：",
-                questionTextEn = "When making decisions, you value more:",
-                dimension = "T"
+                questionTextZh = "我经常感到焦虑。",
+                questionTextEn = "I often feel anxious.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 6,
-                questionTextZh = "在处理人际关系时，你更关注：",
-                questionTextEn = "In handling relationships, you focus more on:",
-                dimension = "F"
+                questionTextZh = "我喜欢尝试新事物。",
+                questionTextEn = "I like to try new things.",
+                dimension = "openness"
             ),
             Question(
                 id = 7,
-                questionTextZh = "对于计划和安排，你倾向于：",
-                questionTextEn = "Regarding plans and arrangements, you tend to:",
-                dimension = "J"
+                questionTextZh = "我做事有条理。",
+                questionTextEn = "I do things in an organized manner.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 8,
-                questionTextZh = "面对突发情况时，你通常：",
-                questionTextEn = "When facing unexpected situations, you usually:",
-                dimension = "P"
+                questionTextZh = "我喜欢成为关注的焦点。",
+                questionTextEn = "I enjoy being the center of attention.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 9,
-                questionTextZh = "在团队工作中，你更愿意：",
-                questionTextEn = "In teamwork, you prefer to:",
-                dimension = "E"
+                questionTextZh = "我愿意帮助他人。",
+                questionTextEn = "I am willing to help others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 10,
-                questionTextZh = "独处时间对你来说：",
-                questionTextEn = "Time alone for you is:",
-                dimension = "I"
+                questionTextZh = "我容易感到沮丧。",
+                questionTextEn = "I am easily discouraged.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 11,
-                questionTextZh = "你更相信：",
-                questionTextEn = "You trust more:",
-                dimension = "S"
+                questionTextZh = "我对艺术和美学有浓厚兴趣。",
+                questionTextEn = "I have a strong interest in art and aesthetics.",
+                dimension = "openness"
             ),
             Question(
                 id = 12,
-                questionTextZh = "你更喜欢：",
-                questionTextEn = "You prefer:",
-                dimension = "N"
+                questionTextZh = "我注重细节。",
+                questionTextEn = "I pay attention to details.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 13,
-                questionTextZh = "在争议中，你更注重：",
-                questionTextEn = "In conflicts, you focus more on:",
-                dimension = "T"
+                questionTextZh = "我有很多朋友。",
+                questionTextEn = "I have many friends.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 14,
-                questionTextZh = "他人的感受对你来说：",
-                questionTextEn = "Others' feelings are to you:",
-                dimension = "F"
+                questionTextZh = "我容易与人相处。",
+                questionTextEn = "I am easy to get along with.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 15,
-                questionTextZh = "对于截止日期，你通常：",
-                questionTextEn = "Regarding deadlines, you usually:",
-                dimension = "J"
+                questionTextZh = "我经常感到紧张。",
+                questionTextEn = "I often feel tense.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 16,
-                questionTextZh = "面对多种选择时，你倾向于：",
-                questionTextEn = "When facing multiple choices, you tend to:",
-                dimension = "P"
+                questionTextZh = "我喜欢思考抽象的概念。",
+                questionTextEn = "I enjoy thinking about abstract concepts.",
+                dimension = "openness"
             ),
             Question(
                 id = 17,
-                questionTextZh = "在聚会中，你更可能：",
-                questionTextEn = "At parties, you're more likely to:",
-                dimension = "E"
+                questionTextZh = "我坚持完成自己开始的工作。",
+                questionTextEn = "I persist in completing work I start.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 18,
-                questionTextZh = "深度思考对你来说：",
-                questionTextEn = "Deep thinking is for you:",
-                dimension = "I"
+                questionTextZh = "我喜欢参加聚会和活动。",
+                questionTextEn = "I enjoy attending parties and events.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 19,
-                questionTextZh = "你更关注：",
-                questionTextEn = "You pay more attention to:",
-                dimension = "S"
+                questionTextZh = "我很少与人发生争执。",
+                questionTextEn = "I rarely argue with others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 20,
-                questionTextZh = "创新和改变对你来说：",
-                questionTextEn = "Innovation and change are for you:",
-                dimension = "N"
+                questionTextZh = "我担心很多事情。",
+                questionTextEn = "I worry about many things.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 21,
-                questionTextZh = "在大型聚会中，你更可能：",
-                questionTextEn = "At large gatherings, you're more likely to:",
-                dimension = "E"
+                questionTextZh = "我经常有创造性的想法。",
+                questionTextEn = "I often have creative ideas.",
+                dimension = "openness"
             ),
             Question(
                 id = 22,
-                questionTextZh = "安静的环境对你来说：",
-                questionTextEn = "Quiet environments are for you:",
-                dimension = "I"
+                questionTextZh = "我制定计划并按计划执行。",
+                questionTextEn = "I make plans and follow through with them.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 23,
-                questionTextZh = "你更注重：",
-                questionTextEn = "You focus more on:",
-                dimension = "S"
+                questionTextZh = "我很容易与陌生人交谈。",
+                questionTextEn = "I find it easy to talk to strangers.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 24,
-                questionTextZh = "理论和概念对你来说：",
-                questionTextEn = "Theories and concepts are for you:",
-                dimension = "N"
+                questionTextZh = "我对人宽容。",
+                questionTextEn = "I am tolerant of others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 25,
-                questionTextZh = "在分析问题时，你更重视：",
-                questionTextEn = "When analyzing problems, you value more:",
-                dimension = "T"
+                questionTextZh = "我情绪波动较大。",
+                questionTextEn = "My emotions fluctuate greatly.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 26,
-                questionTextZh = "他人的情绪状态对你：",
-                questionTextEn = "Others' emotional states are to you:",
-                dimension = "F"
+                questionTextZh = "我喜欢探索不同的文化。",
+                questionTextEn = "I like to explore different cultures.",
+                dimension = "openness"
             ),
             Question(
                 id = 27,
-                questionTextZh = "对于日程安排，你偏好：",
-                questionTextEn = "Regarding schedules, you prefer:",
-                dimension = "J"
+                questionTextZh = "我很少拖延。",
+                questionTextEn = "I rarely procrastinate.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 28,
-                questionTextZh = "面对计划外的情况，你通常：",
-                questionTextEn = "When facing unplanned situations, you usually:",
-                dimension = "P"
+                questionTextZh = "我在团队中表现活跃。",
+                questionTextEn = "I am active in team settings.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 29,
-                questionTextZh = "在会议中，你更倾向于：",
-                questionTextEn = "In meetings, you tend to:",
-                dimension = "E"
+                questionTextZh = "我体谅他人的感受。",
+                questionTextEn = "I consider others' feelings.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 30,
-                questionTextZh = "独立思考的时间对你：",
-                questionTextEn = "Time for independent thinking is for you:",
-                dimension = "I"
+                questionTextZh = "我容易感到压力。",
+                questionTextEn = "I am easily stressed.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 31,
-                questionTextZh = "你更信任：",
-                questionTextEn = "You trust more:",
-                dimension = "S"
+                questionTextZh = "我对哲学问题感兴趣。",
+                questionTextEn = "I am interested in philosophical questions.",
+                dimension = "openness"
             ),
             Question(
                 id = 32,
-                questionTextZh = "抽象的想法对你来说：",
-                questionTextEn = "Abstract ideas are for you:",
-                dimension = "N"
+                questionTextZh = "我总是做好充分准备。",
+                questionTextEn = "I always prepare thoroughly.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 33,
-                questionTextZh = "在评价选择时，你更看重：",
-                questionTextEn = "When evaluating choices, you value more:",
-                dimension = "T"
+                questionTextZh = "我喜欢表达自己的观点。",
+                questionTextEn = "I enjoy expressing my opinions.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 34,
-                questionTextZh = "和谐的氛围对你：",
-                questionTextEn = "A harmonious atmosphere is to you:",
-                dimension = "F"
+                questionTextZh = "我愿意与他人合作。",
+                questionTextEn = "I am willing to cooperate with others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 35,
-                questionTextZh = "对于完成任务，你更喜欢：",
-                questionTextEn = "For completing tasks, you prefer:",
-                dimension = "J"
+                questionTextZh = "我经常感到不安。",
+                questionTextEn = "I often feel uneasy.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 36,
-                questionTextZh = "面对新机会时，你通常：",
-                questionTextEn = "When facing new opportunities, you usually:",
-                dimension = "P"
+                questionTextZh = "我喜欢学习新技能。",
+                questionTextEn = "I enjoy learning new skills.",
+                dimension = "openness"
             ),
             Question(
                 id = 37,
-                questionTextZh = "在社交场合，你更愿意：",
-                questionTextEn = "In social situations, you prefer to:",
-                dimension = "E"
+                questionTextZh = "我追求完美。",
+                questionTextEn = "I pursue perfection.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 38,
-                questionTextZh = "深入的交谈对你来说：",
-                questionTextEn = "Deep conversations are for you:",
-                dimension = "I"
+                questionTextZh = "我充满活力。",
+                questionTextEn = "I am full of energy.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 39,
-                questionTextZh = "具体的事实对你：",
-                questionTextEn = "Concrete facts are to you:",
-                dimension = "S"
+                questionTextZh = "我关心他人的福祉。",
+                questionTextEn = "I care about others' well-being.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 40,
-                questionTextZh = "想象力和创意对你：",
-                questionTextEn = "Imagination and creativity are to you:",
-                dimension = "N"
+                questionTextZh = "我对批评敏感。",
+                questionTextEn = "I am sensitive to criticism.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 41,
-                questionTextZh = "在讨论中，你更注重：",
-                questionTextEn = "In discussions, you focus more on:",
-                dimension = "T"
+                questionTextZh = "我对未知事物充满好奇。",
+                questionTextEn = "I am curious about unknown things.",
+                dimension = "openness"
             ),
             Question(
                 id = 42,
-                questionTextZh = "考虑他人感受对你：",
-                questionTextEn = "Considering others' feelings is to you:",
-                dimension = "F"
+                questionTextZh = "我能够自我约束。",
+                questionTextEn = "I am able to exercise self-control.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 43,
-                questionTextZh = "对于时间管理，你倾向于：",
-                questionTextEn = "For time management, you tend to:",
-                dimension = "J"
+                questionTextZh = "我喜欢热闹的环境。",
+                questionTextEn = "I enjoy lively environments.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 44,
-                questionTextZh = "保持选择的开放性对你：",
-                questionTextEn = "Keeping options open is to you:",
-                dimension = "P"
+                questionTextZh = "我容易相信他人。",
+                questionTextEn = "I find it easy to trust others.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 45,
-                questionTextZh = "在人群中，你通常感觉：",
-                questionTextEn = "In crowds, you usually feel:",
-                dimension = "E"
+                questionTextZh = "我容易感到愤怒。",
+                questionTextEn = "I get angry easily.",
+                dimension = "neuroticism"
             ),
             Question(
                 id = 46,
-                questionTextZh = "个人空间对你来说：",
-                questionTextEn = "Personal space is for you:",
-                dimension = "I"
+                questionTextZh = "我喜欢挑战传统观念。",
+                questionTextEn = "I like to challenge traditional ideas.",
+                dimension = "openness"
             ),
             Question(
                 id = 47,
-                questionTextZh = "实践经验对你：",
-                questionTextEn = "Practical experience is to you:",
-                dimension = "S"
+                questionTextZh = "我有很强的目标导向。",
+                questionTextEn = "I have strong goal orientation.",
+                dimension = "conscientiousness"
             ),
             Question(
                 id = 48,
-                questionTextZh = "探索新的可能性对你：",
-                questionTextEn = "Exploring new possibilities is to you:",
-                dimension = "N"
+                questionTextZh = "我善于激励他人。",
+                questionTextEn = "I am good at motivating others.",
+                dimension = "extraversion"
             ),
             Question(
                 id = 49,
-                questionTextZh = "在决策时，你更优先考虑：",
-                questionTextEn = "When making decisions, you prioritize:",
-                dimension = "T"
+                questionTextZh = "我尽量避免冲突。",
+                questionTextEn = "I try to avoid conflicts.",
+                dimension = "agreeableness"
             ),
             Question(
                 id = 50,
-                questionTextZh = "人际关系的和谐对你：",
-                questionTextEn = "Harmony in relationships is to you:",
-                dimension = "F"
+                questionTextZh = "我经常感到孤独。",
+                questionTextEn = "I often feel lonely.",
+                dimension = "neuroticism"
             )
         ).take(count)
         
@@ -372,41 +373,34 @@ class MockApiService : ApiService {
         // 模拟网络延迟
         delay(800)
         
-        // 简单的MBTI计算逻辑
-        val scores = mutableMapOf(
-            "E" to 0, "I" to 0,
-            "S" to 0, "N" to 0, 
-            "T" to 0, "F" to 0,
-            "J" to 0, "P" to 0
+        // 计算Big Five各维度得分
+        val rawBigFiveScores = mutableMapOf(
+            "openness" to 0,
+            "conscientiousness" to 0,
+            "extraversion" to 0,
+            "agreeableness" to 0,
+            "neuroticism" to 0
         )
-        
-        // 计算各维度得分
+
         request.answers.forEach { answer ->
             val dimension = when(answer.questionId) {
-                // E vs I 问题
-                1, 9, 17, 21, 29, 37, 45 -> "E"
-                2, 10, 18, 22, 30, 38, 46 -> "I"
-                // S vs N 问题
-                3, 11, 19, 23, 31, 39, 47 -> "S"
-                4, 12, 20, 24, 32, 40, 48 -> "N"
-                // T vs F 问题
-                5, 13, 25, 33, 41, 49 -> "T"
-                6, 14, 26, 34, 42, 50 -> "F"
-                // J vs P 问题
-                7, 15, 27, 35, 43 -> "J"
-                8, 16, 28, 36, 44 -> "P"
-                else -> "E" // 默认值
+                // Openness 问题
+                1, 6, 11, 16, 21, 26, 31, 36, 41, 46 -> "openness"
+                // Conscientiousness 问题
+                2, 7, 12, 17, 22, 27, 32, 37, 42, 47 -> "conscientiousness"
+                // Extraversion 问题
+                3, 8, 13, 18, 23, 28, 33, 38, 43, 48 -> "extraversion"
+                // Agreeableness 问题
+                4, 9, 14, 19, 24, 29, 34, 39, 44, 49 -> "agreeableness"
+                // Neuroticism 问题
+                5, 10, 15, 20, 25, 30, 35, 40, 45, 50 -> "neuroticism"
+                else -> "openness" // 默认值
             }
-            scores[dimension] = scores.getOrDefault(dimension, 0) + answer.answerScore
+            rawBigFiveScores[dimension] = rawBigFiveScores.getOrDefault(dimension, 0) + answer.answerScore
         }
-        
-        // 确定MBTI类型
-        val mbtiType = buildString {
-            append(if (scores["E"]!! >= scores["I"]!!) "E" else "I")
-            append(if (scores["S"]!! >= scores["N"]!!) "S" else "N")
-            append(if (scores["T"]!! >= scores["F"]!!) "T" else "F")
-            append(if (scores["J"]!! >= scores["P"]!!) "J" else "P")
-        }
+
+        // 基于Big Five得分推断MBTI类型
+        val mbtiType = calculateMBTIFromBigFive(rawBigFiveScores)
         
         // 创建MBTI类型信息
         val mbtiTypeInfo = MBTIType(
@@ -456,14 +450,8 @@ class MockApiService : ApiService {
             challenges = getMBTIChallenges(mbtiType)
         )
         
-        // 创建Big Five分数（转换为0-100百分比）
-        val bigFiveScores = BigFiveScores(
-            openness = 75.0,
-            conscientiousness = 68.0,
-            extraversion = 45.0,
-            agreeableness = 72.0,
-            neuroticism = 35.0
-        )
+        // 创建Big Five分数（基于实际用户答案计算）
+        val bigFiveScores = calculateBigFiveScores(rawBigFiveScores)
         
         // 创建职业建议
         val careerSuggestions = listOf(
@@ -685,5 +673,43 @@ class MockApiService : ApiService {
             "ESFP" -> listOf("提高规划能力", "学会延迟满足", "增强深度思考", "关注长远目标")
             else -> listOf("继续自我探索", "发挥个人优势", "面对成长挑战", "实现全面发展")
         }
+    }
+
+    /**
+     * 基于Big Five得分推断MBTI类型
+     */
+    private fun calculateMBTIFromBigFive(bigFiveScores: Map<String, Int>): String {
+        val openness = bigFiveScores["openness"] ?: 0
+        val conscientiousness = bigFiveScores["conscientiousness"] ?: 0
+        val extraversion = bigFiveScores["extraversion"] ?: 0
+        val agreeableness = bigFiveScores["agreeableness"] ?: 0
+        val neuroticism = bigFiveScores["neuroticism"] ?: 0
+
+        // 基于Big Five特征推断MBTI类型
+        val eI = if (extraversion > 25) "E" else "I"
+        val sN = if (openness > 25) "N" else "S"
+        val tF = if (agreeableness < 25) "T" else "F"
+        val jP = if (conscientiousness > 25) "J" else "P"
+
+        return "$eI$sN$tF$jP"
+    }
+
+    /**
+     * 计算Big Five分数
+     * 将原始分数转换为0-100的百分比分数
+     */
+    private fun calculateBigFiveScores(scores: Map<String, Int>): BigFiveScores {
+        // 每个维度的题目数量
+        val questionsPerDimension = 10
+        // 每个维度的最高分数（每题最高5分）
+        val maxScorePerDimension = questionsPerDimension * 5
+
+        return BigFiveScores(
+            openness = (scores["openness"] ?: 0) * 100.0 / maxScorePerDimension,
+            conscientiousness = (scores["conscientiousness"] ?: 0) * 100.0 / maxScorePerDimension,
+            extraversion = (scores["extraversion"] ?: 0) * 100.0 / maxScorePerDimension,
+            agreeableness = (scores["agreeableness"] ?: 0) * 100.0 / maxScorePerDimension,
+            neuroticism = (scores["neuroticism"] ?: 0) * 100.0 / maxScorePerDimension
+        )
     }
 }

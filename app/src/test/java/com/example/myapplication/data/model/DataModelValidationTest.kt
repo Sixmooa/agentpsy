@@ -406,8 +406,8 @@ class DataModelValidationTest {
     fun `Question模型序列化测试`() {
         val question = Question(
             id = 1,
-            questionTextZh = "在社交聚会中，你更倾向于：",
-            questionTextEn = "At social gatherings, you tend to:",
+            questionTextZh = "我在社交聚会中表现活跃。",
+            questionTextEn = "I am active in social gatherings.",
             dimension = "extraversion"
         )
 
@@ -416,8 +416,8 @@ class DataModelValidationTest {
 
         // 验证关键字段
         assertTrue("应该包含问题ID", jsonString.contains("\"id\":1"))
-        assertTrue("应该包含中文问题", jsonString.contains("在社交聚会中"))
-        assertTrue("应该包含英文问题", jsonString.contains("At social gatherings"))
+        assertTrue("应该包含中文问题", jsonString.contains("我在社交聚会中"))
+        assertTrue("应该包含英文问题", jsonString.contains("I am active in social gatherings"))
         assertTrue("应该包含维度", jsonString.contains("extraversion"))
 
         // 反序列化验证
