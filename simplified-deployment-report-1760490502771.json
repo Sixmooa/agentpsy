@@ -1,0 +1,40 @@
+{
+  "deploymentTime": "2025-10-15T01:08:22.769Z",
+  "verificationTime": "2025-10-15T01:08:22.771Z",
+  "duration": 5,
+  "summary": {
+    "totalTests": 3,
+    "passedTests": 2,
+    "failedTests": 1,
+    "successRate": 66.7,
+    "status": "FAILED"
+  },
+  "testResults": [
+    {
+      "name": "部署时间验证",
+      "passed": true,
+      "details": "部署完成时间: 2025-10-15T01:08:22.769Z",
+      "error": null,
+      "timestamp": "2025-10-15T01:08:22.770Z"
+    },
+    {
+      "name": "本地文件完整性验证",
+      "passed": true,
+      "details": "文件完整，数据结构正常，0个职业建议",
+      "error": null,
+      "timestamp": "2025-10-15T01:08:22.770Z"
+    },
+    {
+      "name": "数据量验证",
+      "passed": false,
+      "details": "",
+      "error": "MBTI类型数量异常: 0，期望16",
+      "timestamp": "2025-10-15T01:08:22.771Z"
+    }
+  ],
+  "conclusion": "MBTI类型数量异常: 0，期望16",
+  "recommendations": [
+    "需要修复失败的测试",
+    "建议检查部署完整性"
+  ]
+}

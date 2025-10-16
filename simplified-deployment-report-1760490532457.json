@@ -1,0 +1,40 @@
+{
+  "deploymentTime": "2025-10-15T01:08:52.455Z",
+  "verificationTime": "2025-10-15T01:08:52.457Z",
+  "duration": 5,
+  "summary": {
+    "totalTests": 3,
+    "passedTests": 2,
+    "failedTests": 1,
+    "successRate": 66.7,
+    "status": "FAILED"
+  },
+  "testResults": [
+    {
+      "name": "部署时间验证",
+      "passed": true,
+      "details": "部署完成时间: 2025-10-15T01:08:52.455Z",
+      "error": null,
+      "timestamp": "2025-10-15T01:08:52.455Z"
+    },
+    {
+      "name": "本地文件完整性验证",
+      "passed": true,
+      "details": "文件完整，数据结构正常，128个职业建议",
+      "error": null,
+      "timestamp": "2025-10-15T01:08:52.456Z"
+    },
+    {
+      "name": "数据量验证",
+      "passed": false,
+      "details": "",
+      "error": "职业建议数量异常: 0，期望128",
+      "timestamp": "2025-10-15T01:08:52.456Z"
+    }
+  ],
+  "conclusion": "职业建议数量异常: 0，期望128",
+  "recommendations": [
+    "需要修复失败的测试",
+    "建议检查部署完整性"
+  ]
+}

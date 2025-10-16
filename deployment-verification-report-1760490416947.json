@@ -1,0 +1,124 @@
+{
+  "deploymentTime": "2025-10-15T01:06:55.434Z",
+  "verificationTime": "2025-10-15T01:06:56.947Z",
+  "duration": 1513,
+  "summary": {
+    "totalTests": 10,
+    "totalPassed": 2,
+    "totalFailed": 8,
+    "successRate": 20,
+    "status": "FAILED"
+  },
+  "phases": {
+    "phase1": {
+      "name": "部署后单元测试",
+      "tests": [
+        {
+          "name": "部署时间验证",
+          "passed": true,
+          "details": "部署完成时间: 2025-10-15T01:06:55.434Z",
+          "error": null,
+          "duration": 1,
+          "timestamp": "2025-10-15T01:06:55.435Z"
+        },
+        {
+          "name": "Supabase服务可用性测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "Supabase服务不可用: ",
+          "duration": 287,
+          "timestamp": "2025-10-15T01:06:55.722Z"
+        },
+        {
+          "name": "本地Static文件访问测试",
+          "passed": true,
+          "details": "文件访问正常，大小: 34078字符，读取时间: 1ms",
+          "error": null,
+          "duration": 1,
+          "timestamp": "2025-10-15T01:06:55.723Z"
+        },
+        {
+          "name": "数据完整性基础验证",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "获取Supabase数据失败: Invalid API key",
+          "duration": 356,
+          "timestamp": "2025-10-15T01:06:56.079Z"
+        }
+      ],
+      "passed": 2,
+      "failed": 2
+    },
+    "phase2": {
+      "name": "部署后集成测试",
+      "tests": [
+        {
+          "name": "端到端数据流测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "Supabase数据获取失败: Invalid API key",
+          "duration": 361,
+          "timestamp": "2025-10-15T01:06:56.441Z"
+        },
+        {
+          "name": "多平台数据一致性测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "获取Supabase数据失败: Invalid API key",
+          "duration": 74,
+          "timestamp": "2025-10-15T01:06:56.515Z"
+        },
+        {
+          "name": "API响应格式验证",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "API请求失败: Invalid API key",
+          "duration": 82,
+          "timestamp": "2025-10-15T01:06:56.597Z"
+        }
+      ],
+      "passed": 0,
+      "failed": 3
+    },
+    "phase3": {
+      "name": "部署后回归测试",
+      "tests": [
+        {
+          "name": "完整回归测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "runComprehensiveTest is not a function",
+          "duration": 2,
+          "timestamp": "2025-10-15T01:06:56.600Z"
+        },
+        {
+          "name": "性能回归测试",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "性能测试: 部分请求失败",
+          "duration": 284,
+          "timestamp": "2025-10-15T01:06:56.884Z"
+        },
+        {
+          "name": "数据稳定性验证",
+          "passed": false,
+          "details": "测试执行异常",
+          "error": "稳定性测试第1次失败: ",
+          "duration": 62,
+          "timestamp": "2025-10-15T01:06:56.946Z"
+        }
+      ],
+      "passed": 0,
+      "failed": 3
+    }
+  },
+  "baselineVerification": {
+    "dataTypes": 0,
+    "totalRecords": 0
+  },
+  "conclusion": "❌ 部署验证失败: 8/10个测试失败",
+  "recommendations": [
+    "需要修复失败的测试",
+    "建议进行问题诊断和修复"
+  ]
+}
