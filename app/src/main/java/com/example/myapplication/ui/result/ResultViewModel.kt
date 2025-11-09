@@ -72,7 +72,7 @@ class ResultViewModel : ViewModel() {
                 appendLine("Neuroticism: ${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
                 appendLine()
                 appendLine("Recommended Careers:")
-                testReport.careerSuggestions.take(3).forEach { career ->
+                testReport.careerSuggestions.forEach { career ->
                     appendLine("• ${career.getCareerName(language)}")
                 }
             } else {
@@ -90,7 +90,7 @@ class ResultViewModel : ViewModel() {
                 appendLine("神经质：${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
                 appendLine()
                 appendLine("推荐职业：")
-                testReport.careerSuggestions.take(3).forEach { career ->
+                testReport.careerSuggestions.forEach { career ->
                     appendLine("• ${career.getCareerName(language)}")
                 }
             }
@@ -123,7 +123,7 @@ class ResultViewModel : ViewModel() {
             appendLine("神经质：${String.format("%.1f", testReport.bigFiveScores.neuroticism)}")
             appendLine()
             appendLine("推荐职业：")
-            testReport.careerSuggestions.take(3).forEach { career ->
+            testReport.careerSuggestions.forEach { career ->
                 appendLine("• ${career.getCareerName()}")
             }
         }

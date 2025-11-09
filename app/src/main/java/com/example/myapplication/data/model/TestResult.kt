@@ -60,7 +60,7 @@ data class BigFiveScores(
     /**
      * 获取格式化的得分文本
      * @param dimension 维度名称
-     * @return 格式化的得分字符串 (例如: "75.2%")
+     * @return 格式化的得分字符串 (例如: "4.2分")
      */
     fun getFormattedScore(dimension: String): String {
         val score = when (dimension.lowercase()) {
@@ -71,7 +71,7 @@ data class BigFiveScores(
             "neuroticism", "神经质" -> neuroticism
             else -> 0.0
         }
-        return String.format("%.1f%%", score)
+        return String.format("%.1f分", score)
     }
 
     /**

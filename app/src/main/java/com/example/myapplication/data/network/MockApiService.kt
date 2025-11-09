@@ -446,19 +446,15 @@ class MockApiService : ApiService {
             },
             descriptionZh = getMBTIDescription(mbtiType, "zh"),
             descriptionEn = getMBTIDescription(mbtiType, "en"),
-            strengths = getMBTIStrengths(mbtiType),
-            challenges = getMBTIChallenges(mbtiType)
+            strengths = getMBTIStrengths(mbtiType, request.language),
+            challenges = getMBTIChallenges(mbtiType, request.language)
         )
         
         // 创建Big Five分数（基于实际用户答案计算）
         val bigFiveScores = calculateBigFiveScores(rawBigFiveScores)
         
-        // 创建职业建议
-        val careerSuggestions = listOf(
-            CareerSuggestion(1, mbtiType, "软件工程师", "Software Engineer"),
-            CareerSuggestion(2, mbtiType, "项目经理", "Project Manager"),
-            CareerSuggestion(3, mbtiType, "咨询师", "Consultant")
-        )
+        // 创建职业建议 - 使用getCareerSuggestions函数获取完整数据
+        val careerSuggestions = getCareerSuggestionsForMBTI(mbtiType, request.language)
         
         val testReport = TestReport(
             timestamp = "2024-01-01T12:00:00Z",
@@ -525,8 +521,8 @@ class MockApiService : ApiService {
             },
             descriptionZh = getMBTIDescription(typeCode, "zh"),
             descriptionEn = getMBTIDescription(typeCode, "en"),
-            strengths = getMBTIStrengths(typeCode),
-            challenges = getMBTIChallenges(typeCode)
+            strengths = getMBTIStrengths(typeCode, language),
+            challenges = getMBTIChallenges(typeCode, language)
         )
         
         return Response.success(ApiResponse(
@@ -542,25 +538,35 @@ class MockApiService : ApiService {
         
         // 根据MBTI类型返回对应的职业建议
         val careerMap = mapOf(
+            "ENFJ" to listOf(
+                CareerSuggestion(1, "ENFJ", "教师", "Teacher"),
+                CareerSuggestion(2, "ENFJ", "培训师", "Trainer"),
+                CareerSuggestion(3, "ENFJ", "人力资源经理", "Human Resources Manager"),
+                CareerSuggestion(4, "ENFJ", "心理咨询师", "Counselor"),
+                CareerSuggestion(5, "ENFJ", "社会工作者", "Social Worker"),
+                CareerSuggestion(6, "ENFJ", "公关专家", "Public Relations Specialist"),
+                CareerSuggestion(7, "ENFJ", "销售代表", "Sales Representative"),
+                CareerSuggestion(8, "ENFJ", "非营利组织领导", "Non-profit Leader")
+            ),
             "INTJ" to listOf(
-                CareerSuggestion(1, "INTJ", "软件工程师", "Software Engineer"),
-                CareerSuggestion(2, "INTJ", "数据分析师", "Data Analyst"),
-                CareerSuggestion(3, "INTJ", "系统分析师", "Systems Analyst")
+                CareerSuggestion(9, "INTJ", "软件工程师", "Software Engineer"),
+                CareerSuggestion(10, "INTJ", "数据分析师", "Data Analyst"),
+                CareerSuggestion(11, "INTJ", "系统分析师", "Systems Analyst")
             ),
             "INTP" to listOf(
-                CareerSuggestion(4, "INTP", "研究员", "Researcher"),
-                CareerSuggestion(5, "INTP", "科学家", "Scientist"),
-                CareerSuggestion(6, "INTP", "技术专家", "Technical Specialist")
+                CareerSuggestion(12, "INTP", "研究员", "Researcher"),
+                CareerSuggestion(13, "INTP", "科学家", "Scientist"),
+                CareerSuggestion(14, "INTP", "技术专家", "Technical Specialist")
             ),
             "ENTJ" to listOf(
-                CareerSuggestion(7, "ENTJ", "企业高管", "Executive"),
-                CareerSuggestion(8, "ENTJ", "项目经理", "Project Manager"),
-                CareerSuggestion(9, "ENTJ", "管理顾问", "Management Consultant")
+                CareerSuggestion(15, "ENTJ", "企业高管", "Executive"),
+                CareerSuggestion(16, "ENTJ", "项目经理", "Project Manager"),
+                CareerSuggestion(17, "ENTJ", "管理顾问", "Management Consultant")
             ),
             "ENTP" to listOf(
-                CareerSuggestion(10, "ENTP", "企业家", "Entrepreneur"),
-                CareerSuggestion(11, "ENTP", "市场营销", "Marketing Specialist"),
-                CareerSuggestion(12, "ENTP", "创新顾问", "Innovation Consultant")
+                CareerSuggestion(18, "ENTP", "企业家", "Entrepreneur"),
+                CareerSuggestion(19, "ENTP", "市场营销", "Marketing Specialist"),
+                CareerSuggestion(20, "ENTP", "创新顾问", "Innovation Consultant")
             )
         )
         
@@ -628,50 +634,94 @@ class MockApiService : ApiService {
     /**
      * 获取MBTI类型的优势特质
      */
-    private fun getMBTIStrengths(mbtiType: String): List<String> {
-        return when (mbtiType) {
-            "INTJ" -> listOf("战略思维敏锐", "独立自主能力强", "追求卓越完美", "具有长远眼光")
-            "INTP" -> listOf("逻辑分析能力强", "创新思维活跃", "求知欲旺盛", "思维灵活开放")
-            "ENTJ" -> listOf("领导能力出众", "决策果断有力", "组织协调高效", "目标导向明确")
-            "ENTP" -> listOf("创新能力强", "辩论技巧高超", "适应能力灵活", "思维活跃敏捷")
-            "INFJ" -> listOf("洞察力深刻", "同理心强烈", "理想主义坚定", "助人意愿真挚")
-            "INFP" -> listOf("创造力丰富", "价值观坚定", "理解力深刻", "真诚友善")
-            "ENFJ" -> listOf("领导魅力非凡", "沟通能力出色", "激励他人有效", "团队协作优秀")
-            "ENFP" -> listOf("热情洋溢", "创意无限", "社交能力强", "乐观积极")
-            "ISTJ" -> listOf("责任感强烈", "组织能力优秀", "注重细节", "可靠值得信赖")
-            "ISFJ" -> listOf("关怀体贴", "支持他人", "责任感强", "细心周到")
-            "ESTJ" -> listOf("管理能力强", "执行力出色", "组织有序", "目标明确")
-            "ESFJ" -> listOf("社交能力强", "关心他人", "合作精神佳", "责任心强")
-            "ISTP" -> listOf("实践能力强", "问题解决能力出色", "适应灵活", "冷静理性")
-            "ISFP" -> listOf("艺术感受力强", "价值观坚定", "敏感细腻", "真诚友好")
-            "ESTP" -> listOf("行动力强", "适应能力出色", "乐观开朗", "冒险精神")
-            "ESFP" -> listOf("热情活泼", "社交能力出众", "娱乐精神强", "乐观积极")
-            else -> listOf("个性独特", "具有潜力", "值得了解", "能力多样")
+    private fun getMBTIStrengths(mbtiType: String, language: String = "zh"): List<String> {
+        return if (language == "zh") {
+            when (mbtiType) {
+                "INTJ" -> listOf("战略思维敏锐", "独立自主能力强", "追求卓越完美", "具有长远眼光")
+                "INTP" -> listOf("逻辑分析能力强", "创新思维活跃", "求知欲旺盛", "思维灵活开放")
+                "ENTJ" -> listOf("领导能力出众", "决策果断有力", "组织协调高效", "目标导向明确")
+                "ENTP" -> listOf("创新能力强", "辩论技巧高超", "适应能力灵活", "思维活跃敏捷")
+                "INFJ" -> listOf("洞察力深刻", "同理心强烈", "理想主义坚定", "助人意愿真挚")
+                "INFP" -> listOf("创造力丰富", "价值观坚定", "理解力深刻", "真诚友善")
+                "ENFJ" -> listOf("领导魅力非凡", "沟通能力出色", "激励他人有效", "团队协作优秀")
+                "ENFP" -> listOf("热情洋溢", "创意无限", "社交能力强", "乐观积极")
+                "ISTJ" -> listOf("责任感强烈", "组织能力优秀", "注重细节", "可靠值得信赖")
+                "ISFJ" -> listOf("关怀体贴", "支持他人", "责任感强", "细心周到")
+                "ESTJ" -> listOf("管理能力强", "执行力出色", "组织有序", "目标明确")
+                "ESFJ" -> listOf("社交能力强", "关心他人", "合作精神佳", "责任心强")
+                "ISTP" -> listOf("实践能力强", "问题解决能力出色", "适应灵活", "冷静理性")
+                "ISFP" -> listOf("艺术感受力强", "价值观坚定", "敏感细腻", "真诚友好")
+                "ESTP" -> listOf("行动力强", "适应能力出色", "乐观开朗", "冒险精神")
+                "ESFP" -> listOf("热情活泼", "社交能力出众", "娱乐精神强", "乐观积极")
+                else -> listOf("个性独特", "具有潜力", "值得了解", "能力多样")
+            }
+        } else {
+            when (mbtiType) {
+                "INTJ" -> listOf("Sharp strategic thinking", "Strong independence", "Pursuit of excellence", "Long-term vision")
+                "INTP" -> listOf("Strong logical analysis", "Active innovative thinking", "Insatiable curiosity", "Flexible open mind")
+                "ENTJ" -> listOf("Outstanding leadership", "Decisive decision-making", "Efficient organization", "Clear goal orientation")
+                "ENTP" -> listOf("Strong innovation ability", "Superb debate skills", "Flexible adaptability", "Active agile thinking")
+                "INFJ" -> listOf("Profound insight", "Strong empathy", "Firm idealism", "Sincere desire to help")
+                "INFP" -> listOf("Rich creativity", "Strong values", "Deep understanding", "Sincere friendliness")
+                "ENFJ" -> listOf("Exceptional leadership charisma", "Excellent communication", "Effective motivation of others", "Excellent teamwork")
+                "ENFP" -> listOf("Full of enthusiasm", "Unlimited creativity", "Strong social skills", "Optimistic and positive")
+                "ISTJ" -> listOf("Strong sense of responsibility", "Excellent organizational skills", "Attention to detail", "Reliable and trustworthy")
+                "ISFJ" -> listOf("Caring and considerate", "Supportive of others", "Strong sense of responsibility", "Meticulous and thoughtful")
+                "ESTJ" -> listOf("Strong management skills", "Excellent execution", "Well-organized", "Clear objectives")
+                "ESFJ" -> listOf("Strong social skills", "Caring for others", "Good cooperative spirit", "Strong sense of responsibility")
+                "ISTP" -> listOf("Strong practical ability", "Excellent problem-solving skills", "Flexible adaptation", "Calm and rational")
+                "ISFP" -> listOf("Strong artistic sensibility", "Strong values", "Sensitive and delicate", "Sincere and friendly")
+                "ESTP" -> listOf("Strong action ability", "Excellent adaptability", "Optimistic and cheerful", "Adventurous spirit")
+                "ESFP" -> listOf("Enthusiastic and lively", "Outstanding social skills", "Strong entertainment spirit", "Optimistic and positive")
+                else -> listOf("Unique personality", "Has potential", "Worth knowing", "Diverse abilities")
+            }
         }
     }
 
     /**
      * 获取MBTI类型的发展建议
      */
-    private fun getMBTIChallenges(mbtiType: String): List<String> {
-        return when (mbtiType) {
-            "INTJ" -> listOf("学会更好地表达情感", "增强对他人的耐心", "改善社交技巧", "平衡理想与现实")
-            "INTP" -> listOf("将想法付诸实践", "提高时间管理能力", "加强情感表达", "增强执行力")
-            "ENTJ" -> listOf("学会倾听他人意见", "培养耐心和同理心", "关注团队感受", "避免过于强势")
-            "ENTP" -> listOf("专注于完成项目", "提高对细节的关注", "建立长期规划", "增强持续性")
-            "INFJ" -> listOf("学会设定界限", "避免过度理想化", "关注自身需求", "提高现实适应力")
-            "INFP" -> listOf("提高实际执行能力", "学会处理冲突", "增强时间管理", "面对现实挑战")
-            "ENFJ" -> listOf("关注自身需求", "学会拒绝不合理要求", "避免过度付出", "平衡工作与生活")
-            "ENFP" -> listOf("提高专注力", "加强时间管理", "完成既定目标", "增强持续性")
-            "ISTJ" -> listOf("尝试新的事物", "提高灵活性", "增强创造力", "改善应变能力")
-            "ISFJ" -> listOf("学会表达自己的需求", "增强自信心", "关注自身发展", "提高决断力")
-            "ESTJ" -> listOf("培养同理心", "学会倾听他人", "提高灵活性", "关注情感因素")
-            "ESFJ" -> listOf("学会关注自己", "增强独立性", "处理冲突的能力", "平衡付出与回报")
-            "ISTP" -> listOf("提高长期规划能力", "加强情感表达", "建立深层关系", "增强责任感")
-            "ISFP" -> listOf("提高现实适应能力", "学会面对冲突", "增强自信心", "规划未来发展")
-            "ESTP" -> listOf("培养长远思维", "提高责任感", "学会深度思考", "增强持续性")
-            "ESFP" -> listOf("提高规划能力", "学会延迟满足", "增强深度思考", "关注长远目标")
-            else -> listOf("继续自我探索", "发挥个人优势", "面对成长挑战", "实现全面发展")
+    private fun getMBTIChallenges(mbtiType: String, language: String = "zh"): List<String> {
+        return if (language == "zh") {
+            when (mbtiType) {
+                "INTJ" -> listOf("学会更好地表达情感", "增强对他人的耐心", "改善社交技巧", "平衡理想与现实")
+                "INTP" -> listOf("将想法付诸实践", "提高时间管理能力", "加强情感表达", "增强执行力")
+                "ENTJ" -> listOf("学会倾听他人意见", "培养耐心和同理心", "关注团队感受", "避免过于强势")
+                "ENTP" -> listOf("专注于完成项目", "提高对细节的关注", "建立长期规划", "增强持续性")
+                "INFJ" -> listOf("学会设定界限", "避免过度理想化", "关注自身需求", "提高现实适应力")
+                "INFP" -> listOf("提高实际执行能力", "学会处理冲突", "增强时间管理", "面对现实挑战")
+                "ENFJ" -> listOf("关注自身需求", "学会拒绝不合理要求", "避免过度付出", "平衡工作与生活")
+                "ENFP" -> listOf("提高专注力", "加强时间管理", "完成既定目标", "增强持续性")
+                "ISTJ" -> listOf("尝试新的事物", "提高灵活性", "增强创造力", "改善应变能力")
+                "ISFJ" -> listOf("学会表达自己的需求", "增强自信心", "关注自身发展", "提高决断力")
+                "ESTJ" -> listOf("培养同理心", "学会倾听他人", "提高灵活性", "关注情感因素")
+                "ESFJ" -> listOf("学会关注自己", "增强独立性", "处理冲突的能力", "平衡付出与回报")
+                "ISTP" -> listOf("提高长期规划能力", "加强情感表达", "建立深层关系", "增强责任感")
+                "ISFP" -> listOf("提高现实适应能力", "学会面对冲突", "增强自信心", "规划未来发展")
+                "ESTP" -> listOf("培养长远思维", "提高责任感", "学会深度思考", "增强持续性")
+                "ESFP" -> listOf("提高规划能力", "学会延迟满足", "增强深度思考", "关注长远目标")
+                else -> listOf("继续自我探索", "发挥个人优势", "面对成长挑战", "实现全面发展")
+            }
+        } else {
+            when (mbtiType) {
+                "INTJ" -> listOf("Learn to express emotions better", "Increase patience with others", "Improve social skills", "Balance ideals and reality")
+                "INTP" -> listOf("Turn ideas into action", "Improve time management", "Enhance emotional expression", "Strengthen execution ability")
+                "ENTJ" -> listOf("Learn to listen to others' opinions", "Cultivate patience and empathy", "Pay attention to team feelings", "Avoid being too assertive")
+                "ENTP" -> listOf("Focus on completing projects", "Increase attention to details", "Establish long-term planning", "Enhance persistence")
+                "INFJ" -> listOf("Learn to set boundaries", "Avoid over-idealization", "Focus on personal needs", "Improve reality adaptation")
+                "INFP" -> listOf("Improve practical execution ability", "Learn to handle conflicts", "Enhance time management", "Face reality challenges")
+                "ENFJ" -> listOf("Focus on personal needs", "Learn to refuse unreasonable requests", "Avoid over-giving", "Balance work and life")
+                "ENFP" -> listOf("Improve concentration", "Strengthen time management", "Complete established goals", "Enhance persistence")
+                "ISTJ" -> listOf("Try new things", "Improve flexibility", "Enhance creativity", "Improve adaptability")
+                "ISFJ" -> listOf("Learn to express own needs", "Enhance self-confidence", "Focus on personal development", "Improve decision-making ability")
+                "ESTJ" -> listOf("Cultivate empathy", "Learn to listen to others", "Improve flexibility", "Pay attention to emotional factors")
+                "ESFJ" -> listOf("Learn to focus on yourself", "Enhance independence", "Develop conflict resolution skills", "Balance giving and receiving")
+                "ISTP" -> listOf("Improve long-term planning ability", "Enhance emotional expression", "Build deep relationships", "Strengthen sense of responsibility")
+                "ISFP" -> listOf("Improve reality adaptation ability", "Learn to face conflicts", "Enhance self-confidence", "Plan future development")
+                "ESTP" -> listOf("Cultivate long-term thinking", "Improve sense of responsibility", "Learn to think deeply", "Enhance persistence")
+                "ESFP" -> listOf("Improve planning ability", "Learn to delay gratification", "Enhance deep thinking", "Focus on long-term goals")
+                else -> listOf("Continue self-exploration", "Leverage personal strengths", "Face growth challenges", "Achieve comprehensive development")
+            }
         }
     }
 
@@ -695,21 +745,152 @@ class MockApiService : ApiService {
     }
 
     /**
+     * 为指定MBTI类型获取职业建议（内部函数）
+     * 修复：之前submitTest函数只返回3个硬编码职业
+     */
+    private fun getCareerSuggestionsForMBTI(mbtiType: String, language: String): List<CareerSuggestion> {
+        val careerMap = mapOf(
+            "ENFJ" to listOf(
+                CareerSuggestion(1, "ENFJ", "教师", "Teacher"),
+                CareerSuggestion(2, "ENFJ", "培训师", "Trainer"),
+                CareerSuggestion(3, "ENFJ", "人力资源经理", "Human Resources Manager"),
+                CareerSuggestion(4, "ENFJ", "心理咨询师", "Counselor"),
+                CareerSuggestion(5, "ENFJ", "社会工作者", "Social Worker"),
+                CareerSuggestion(6, "ENFJ", "公关专家", "Public Relations Specialist"),
+                CareerSuggestion(7, "ENFJ", "销售代表", "Sales Representative"),
+                CareerSuggestion(8, "ENFJ", "非营利组织领导", "Non-profit Leader")
+            ),
+            "INTJ" to listOf(
+                CareerSuggestion(9, "INTJ", "软件工程师", "Software Engineer"),
+                CareerSuggestion(10, "INTJ", "数据分析师", "Data Analyst"),
+                CareerSuggestion(11, "INTJ", "系统分析师", "Systems Analyst"),
+                CareerSuggestion(12, "INTJ", "产品经理", "Product Manager"),
+                CareerSuggestion(13, "INTJ", "研发工程师", "R&D Engineer")
+            ),
+            "INTP" to listOf(
+                CareerSuggestion(14, "INTP", "研究员", "Researcher"),
+                CareerSuggestion(15, "INTP", "科学家", "Scientist"),
+                CareerSuggestion(16, "INTP", "技术专家", "Technical Specialist"),
+                CareerSuggestion(17, "INTP", "大学教授", "University Professor"),
+                CareerSuggestion(18, "INTP", "数据科学家", "Data Scientist")
+            ),
+            "ENTJ" to listOf(
+                CareerSuggestion(19, "ENTJ", "企业高管", "Executive"),
+                CareerSuggestion(20, "ENTJ", "项目经理", "Project Manager"),
+                CareerSuggestion(21, "ENTJ", "管理顾问", "Management Consultant"),
+                CareerSuggestion(22, "ENTJ", "创业家", "Entrepreneur"),
+                CareerSuggestion(23, "ENTJ", "投资银行家", "Investment Banker")
+            ),
+            "ENTP" to listOf(
+                CareerSuggestion(24, "ENTP", "企业家", "Entrepreneur"),
+                CareerSuggestion(25, "ENTP", "市场营销", "Marketing Specialist"),
+                CareerSuggestion(26, "ENTP", "创新顾问", "Innovation Consultant"),
+                CareerSuggestion(27, "ENTP", "产品开发", "Product Developer"),
+                CareerSuggestion(28, "ENTP", "商业分析师", "Business Analyst")
+            ),
+            "INFJ" to listOf(
+                CareerSuggestion(29, "INFJ", "心理咨询师", "Counselor"),
+                CareerSuggestion(30, "INFJ", "作家", "Writer"),
+                CareerSuggestion(31, "INFJ", "社会工作者", "Social Worker"),
+                CareerSuggestion(32, "INFJ", "人力资源专员", "HR Specialist"),
+                CareerSuggestion(33, "INFJ", "教育工作者", "Educator")
+            ),
+            "INFP" to listOf(
+                CareerSuggestion(34, "INFP", "艺术家", "Artist"),
+                CareerSuggestion(35, "INFP", "作家", "Writer"),
+                CareerSuggestion(36, "INFP", "心理咨询师", "Counselor"),
+                CareerSuggestion(37, "INFP", "社会工作者", "Social Worker"),
+                CareerSuggestion(38, "INFP", "翻译家", "Translator")
+            ),
+            "ENFP" to listOf(
+                CareerSuggestion(39, "ENFP", "市场营销", "Marketing Specialist"),
+                CareerSuggestion(40, "ENFP", "公关专员", "PR Specialist"),
+                CareerSuggestion(41, "ENFP", "人力资源", "HR Generalist"),
+                CareerSuggestion(42, "ENFP", "教师", "Teacher"),
+                CareerSuggestion(43, "ENFP", "活动策划", "Event Planner")
+            ),
+            "ISTJ" to listOf(
+                CareerSuggestion(44, "ISTJ", "会计师", "Accountant"),
+                CareerSuggestion(45, "ISTJ", "律师", "Lawyer"),
+                CareerSuggestion(46, "ISTJ", "银行家", "Banker"),
+                CareerSuggestion(47, "ISTJ", "工程师", "Engineer"),
+                CareerSuggestion(48, "ISTJ", "项目经理", "Project Manager")
+            ),
+            "ISFJ" to listOf(
+                CareerSuggestion(49, "ISFJ", "护士", "Nurse"),
+                CareerSuggestion(50, "ISFJ", "教师", "Teacher"),
+                CareerSuggestion(51, "ISFJ", "社工", "Social Worker"),
+                CareerSuggestion(52, "ISFJ", "人力资源助理", "HR Assistant"),
+                CareerSuggestion(53, "ISFJ", "行政助理", "Administrative Assistant")
+            ),
+            "ESTJ" to listOf(
+                CareerSuggestion(54, "ESTJ", "企业经理", "Manager"),
+                CareerSuggestion(55, "ESTJ", "项目经理", "Project Manager"),
+                CareerSuggestion(56, "ESTJ", "销售经理", "Sales Manager"),
+                CareerSuggestion(57, "ESTJ", "会计师", "Accountant"),
+                CareerSuggestion(58, "ESTJ", "警察", "Police Officer")
+            ),
+            "ESFJ" to listOf(
+                CareerSuggestion(59, "ESFJ", "护士", "Nurse"),
+                CareerSuggestion(60, "ESFJ", "教师", "Teacher"),
+                CareerSuggestion(61, "ESFJ", "社工", "Social Worker"),
+                CareerSuggestion(62, "ESFJ", "销售代表", "Sales Representative"),
+                CareerSuggestion(63, "ESFJ", "人力资源专员", "HR Specialist")
+            ),
+            "ISTP" to listOf(
+                CareerSuggestion(64, "ISTP", "工程师", "Engineer"),
+                CareerSuggestion(65, "ISTP", "技术员", "Technician"),
+                CareerSuggestion(66, "ISTP", "机械师", "Mechanic"),
+                CareerSuggestion(67, "ISTP", "消防员", "Firefighter"),
+                CareerSuggestion(68, "ISTP", "飞行员", "Pilot")
+            ),
+            "ISFP" to listOf(
+                CareerSuggestion(69, "ISFP", "艺术家", "Artist"),
+                CareerSuggestion(70, "ISFP", "设计师", "Designer"),
+                CareerSuggestion(71, "ISFP", "摄影师", "Photographer"),
+                CareerSuggestion(72, "ISFP", "治疗师", "Therapist"),
+                CareerSuggestion(73, "ISFP", "兽医", "Veterinarian")
+            ),
+            "ESTP" to listOf(
+                CareerSuggestion(74, "ESTP", "销售代表", "Sales Representative"),
+                CareerSuggestion(75, "ESTP", "企业家", "Entrepreneur"),
+                CareerSuggestion(76, "ESTP", "市场营销", "Marketing"),
+                CareerSuggestion(77, "ESTP", "运动员", "Athlete"),
+                CareerSuggestion(78, "ESTP", "导游", "Tour Guide")
+            ),
+            "ESFP" to listOf(
+                CareerSuggestion(79, "ESFP", "演员", "Actor"),
+                CareerSuggestion(80, "ESFP", "销售代表", "Sales Representative"),
+                CareerSuggestion(81, "ESFP", "教师", "Teacher"),
+                CareerSuggestion(82, "ESFP", "活动策划", "Event Planner"),
+                CareerSuggestion(83, "ESFP", "护士", "Nurse")
+            )
+        )
+
+        return careerMap[mbtiType] ?: listOf(
+            CareerSuggestion(84, mbtiType, "通用职业", "General Career"),
+            CareerSuggestion(85, mbtiType, "咨询师", "Consultant"),
+            CareerSuggestion(86, mbtiType, "分析师", "Analyst"),
+            CareerSuggestion(87, mbtiType, "协调员", "Coordinator"),
+            CareerSuggestion(88, mbtiType, "专员", "Specialist")
+        )
+    }
+
+    /**
      * 计算Big Five分数
-     * 将原始分数转换为0-100的百分比分数
+     * 将原始分数转换为1-5的平均分范围
+     * 修复：之前错误地计算为0-100百分比，导致UI显示1000%
      */
     private fun calculateBigFiveScores(scores: Map<String, Int>): BigFiveScores {
         // 每个维度的题目数量
         val questionsPerDimension = 10
-        // 每个维度的最高分数（每题最高5分）
-        val maxScorePerDimension = questionsPerDimension * 5
 
         return BigFiveScores(
-            openness = (scores["openness"] ?: 0) * 100.0 / maxScorePerDimension,
-            conscientiousness = (scores["conscientiousness"] ?: 0) * 100.0 / maxScorePerDimension,
-            extraversion = (scores["extraversion"] ?: 0) * 100.0 / maxScorePerDimension,
-            agreeableness = (scores["agreeableness"] ?: 0) * 100.0 / maxScorePerDimension,
-            neuroticism = (scores["neuroticism"] ?: 0) * 100.0 / maxScorePerDimension
+            openness = (scores["openness"] ?: 0).toDouble() / questionsPerDimension,
+            conscientiousness = (scores["conscientiousness"] ?: 0).toDouble() / questionsPerDimension,
+            extraversion = (scores["extraversion"] ?: 0).toDouble() / questionsPerDimension,
+            agreeableness = (scores["agreeableness"] ?: 0).toDouble() / questionsPerDimension,
+            neuroticism = (scores["neuroticism"] ?: 0).toDouble() / questionsPerDimension
         )
     }
 }

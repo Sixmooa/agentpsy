@@ -41,6 +41,11 @@ fun ResultScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
+
+    // 当前语言状态，从测试报告中获取或默认中文
+    val currentLanguage = remember(testReport?.language) {
+        testReport?.language ?: "zh"
+    }
     
     // 设置测试报告
     LaunchedEffect(testReport) {
@@ -71,13 +76,14 @@ fun ResultScreen(
     ) {
         when {
             uiState.isLoading -> {
-                LoadingContent()
+                LoadingContent(currentLanguage)
             }
             
             uiState.testReport != null -> {
                 val testReport = uiState.testReport!!
                 ResultContent(
                     testReport = testReport,
+                    currentLanguage = currentLanguage,
                     onRestartTest = viewModel::restartTest,
                     onShareResult = viewModel::shareResult,
                     modifier = Modifier.weight(1f)
@@ -95,6 +101,7 @@ fun ResultScreen(
 
 @Composable
 private fun LoadingContent(
+    currentLanguage: String = "zh",
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -107,7 +114,7 @@ private fun LoadingContent(
         ) {
             CircularProgressIndicator()
             Text(
-                text = "正在生成测试报告...",
+                text = if (currentLanguage == "zh") "正在生成测试报告..." else "Generating test report...",
                 style = MaterialTheme.typography.bodyLarge
             )
         }
@@ -153,6 +160,7 @@ private fun ErrorContent(
 @Composable
 private fun ResultContent(
     testReport: TestReport,
+    currentLanguage: String,
     onRestartTest: () -> Unit,
     onShareResult: () -> Unit,
     modifier: Modifier = Modifier
@@ -173,21 +181,24 @@ private fun ResultContent(
         item {
             MBTITypeCard(
                 mbtiType = testReport.mbtiType,
-                mbtiTypeInfo = testReport.getMBTITypeInfo()
+                mbtiTypeInfo = testReport.getMBTITypeInfo(),
+                currentLanguage = currentLanguage
             )
         }
-        
+
         // Big Five人格维度得分
         item {
             BigFiveScoresCard(
-                bigFiveScores = testReport.bigFiveScores
+                bigFiveScores = testReport.bigFiveScores,
+                currentLanguage = currentLanguage
             )
         }
-        
+
         // 职业建议
         item {
             CareerSuggestionsCard(
-                careerSuggestions = testReport.careerSuggestions
+                careerSuggestions = testReport.careerSuggestions,
+                currentLanguage = currentLanguage
             )
         }
         
@@ -262,6 +273,7 @@ private fun ActionButtons(
 private fun MBTITypeCard(
     mbtiType: String,
     mbtiTypeInfo: MBTIType,
+    currentLanguage: String,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -291,7 +303,7 @@ private fun MBTITypeCard(
                     modifier = Modifier.size(24.dp)
                 )
                 Text(
-                    text = "您的人格类型",
+                    text = if (currentLanguage == "zh") "您的人格类型" else "Your Personality Type",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     fontWeight = FontWeight.SemiBold
@@ -316,7 +328,7 @@ private fun MBTITypeCard(
 
             // 类型名称
             Text(
-                text = mbtiTypeInfo.getTypeName(),
+                text = mbtiTypeInfo.getTypeName(currentLanguage),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -331,7 +343,7 @@ private fun MBTITypeCard(
 
             // 描述文本
             Text(
-                text = mbtiTypeInfo.getDescription(),
+                text = mbtiTypeInfo.getDescription(currentLanguage),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onPrimaryContainer,
                 textAlign = TextAlign.Center,
@@ -350,11 +362,12 @@ private fun MBTITypeCard(
                     // 优势
                     mbtiTypeInfo.strengths?.takeIf { it.isNotEmpty() }?.let { strengths ->
                         ExpandedTraitCard(
-                            title = "优势特质",
+                            title = if (currentLanguage == "zh") "优势特质" else "Strengths",
                             iconText = "⭐",
                             items = strengths,
                             containerColor = MaterialTheme.colorScheme.secondaryContainer,
                             contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                            currentLanguage = currentLanguage,
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -362,11 +375,12 @@ private fun MBTITypeCard(
                     // 挑战
                     mbtiTypeInfo.challenges?.takeIf { it.isNotEmpty() }?.let { challenges ->
                         ExpandedTraitCard(
-                            title = "发展建议",
+                            title = if (currentLanguage == "zh") "发展建议" else "Growth Areas",
                             iconText = "🎯",
                             items = challenges,
                             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                             contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                            currentLanguage = currentLanguage,
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -383,8 +397,18 @@ private fun ExpandedTraitCard(
     items: List<String>,
     containerColor: Color,
     contentColor: Color,
+    currentLanguage: String = "zh",
     modifier: Modifier = Modifier
 ) {
+    // 展开状态管理
+    var isExpanded by remember { mutableStateOf(false) }
+
+    // 显示的项目数量
+    val visibleItems = if (isExpanded) items else items.take(3)
+
+    // 是否显示展开/折叠按钮
+    val shouldShowToggleButton = items.size > 3
+
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(
@@ -416,7 +440,7 @@ private fun ExpandedTraitCard(
                 )
             }
 
-            items.take(3).forEach { item ->
+            visibleItems.forEach { item ->
                 Row(
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -437,13 +461,22 @@ private fun ExpandedTraitCard(
                 }
             }
 
-            if (items.size > 3) {
+            // 展开/折叠按钮
+            if (shouldShowToggleButton) {
                 Text(
-                    text = "+${items.size - 3} 更多",
+                    text = if (isExpanded) {
+                        if (currentLanguage == "zh") "收起" else "Collapse"
+                    } else {
+                        val moreCount = items.size - 3
+                        if (currentLanguage == "zh") "+$moreCount 更多" else "+$moreCount more"
+                    },
                     style = MaterialTheme.typography.bodySmall,
                     color = contentColor.copy(alpha = 0.7f),
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { isExpanded = !isExpanded }
+                        .padding(vertical = 4.dp)
                 )
             }
         }
@@ -453,6 +486,7 @@ private fun ExpandedTraitCard(
 @Composable
 private fun BigFiveScoresCard(
     bigFiveScores: BigFiveScores,
+    currentLanguage: String,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -479,18 +513,18 @@ private fun BigFiveScoresCard(
                     modifier = Modifier.size(28.dp)
                 )
                 Text(
-                    text = "Big Five人格维度得分",
+                    text = if (currentLanguage == "zh") "Big Five人格维度得分" else "Big Five Personality Scores",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
-            EnhancedScoreItem("开放性", bigFiveScores.openness, "对新体验和创意的接受程度")
-            EnhancedScoreItem("尽责性", bigFiveScores.conscientiousness, "自律和组织能力")
-            EnhancedScoreItem("外向性", bigFiveScores.extraversion, "社交活跃度和能量来源")
-            EnhancedScoreItem("宜人性", bigFiveScores.agreeableness, "与他人和谐相处的能力")
-            EnhancedScoreItem("神经质", bigFiveScores.neuroticism, "情绪稳定性和压力应对")
+            EnhancedScoreItem(getBigFiveLabel("openness", currentLanguage), bigFiveScores.openness, getBigFiveDescription("openness", currentLanguage))
+            EnhancedScoreItem(getBigFiveLabel("conscientiousness", currentLanguage), bigFiveScores.conscientiousness, getBigFiveDescription("conscientiousness", currentLanguage))
+            EnhancedScoreItem(getBigFiveLabel("extraversion", currentLanguage), bigFiveScores.extraversion, getBigFiveDescription("extraversion", currentLanguage))
+            EnhancedScoreItem(getBigFiveLabel("agreeableness", currentLanguage), bigFiveScores.agreeableness, getBigFiveDescription("agreeableness", currentLanguage))
+            EnhancedScoreItem(getBigFiveLabel("neuroticism", currentLanguage), bigFiveScores.neuroticism, getBigFiveDescription("neuroticism", currentLanguage))
         }
     }
 }
@@ -502,9 +536,11 @@ private fun EnhancedScoreItem(
     description: String,
     modifier: Modifier = Modifier
 ) {
+    // 将1-5分转换为百分比用于颜色判断
+    val percentage = ((score - 1) / 4.0) * 100
     val progressColor = when {
-        score >= 75 -> MaterialTheme.colorScheme.primary
-        score >= 50 -> MaterialTheme.colorScheme.secondary
+        percentage >= 75 -> MaterialTheme.colorScheme.primary
+        percentage >= 50 -> MaterialTheme.colorScheme.secondary
         else -> MaterialTheme.colorScheme.tertiary
     }
 
@@ -536,7 +572,7 @@ private fun EnhancedScoreItem(
                 color = progressColor.copy(alpha = 0.1f)
             ) {
                 Text(
-                    text = String.format("%.0f%%", ((score - 1) / 4.0) * 100),
+                    text = String.format("%.0f%%", percentage),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Bold,
                     color = progressColor,
@@ -563,6 +599,7 @@ private fun EnhancedScoreItem(
 @Composable
 private fun CareerSuggestionsCard(
     careerSuggestions: List<CareerSuggestion>,
+    currentLanguage: String,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -589,7 +626,7 @@ private fun CareerSuggestionsCard(
                     modifier = Modifier.size(28.dp)
                 )
                 Text(
-                    text = "推荐职业",
+                    text = if (currentLanguage == "zh") "推荐职业" else "Recommended Careers",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer
@@ -604,7 +641,7 @@ private fun CareerSuggestionsCard(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "暂无职业建议数据",
+                        text = if (currentLanguage == "zh") "暂无职业建议数据" else "No career suggestions available",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f)
                     )
@@ -621,6 +658,7 @@ private fun CareerSuggestionsCard(
                         chunk.forEach { career ->
                             EnhancedCareerItem(
                                 career = career,
+                                currentLanguage = currentLanguage,
                                 modifier = Modifier.weight(1f)
                             )
                         }
@@ -662,6 +700,7 @@ private fun CareerSuggestionsCard(
 @Composable
 private fun EnhancedCareerItem(
     career: CareerSuggestion,
+    currentLanguage: String,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -693,7 +732,7 @@ private fun EnhancedCareerItem(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = getCareerIcon(career.getCareerName()),
+                        text = getCareerIcon(career.getCareerName(currentLanguage)),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
@@ -703,7 +742,7 @@ private fun EnhancedCareerItem(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = career.getCareerName(),
+                    text = career.getCareerName(currentLanguage),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -808,6 +847,56 @@ private fun TestInfoCard(
                     )
                 }
             }
+        }
+    }
+}
+
+/**
+ * 获取Big Five维度的标签
+ */
+private fun getBigFiveLabel(dimension: String, language: String): String {
+    return if (language == "zh") {
+        when (dimension) {
+            "openness" -> "开放性"
+            "conscientiousness" -> "尽责性"
+            "extraversion" -> "外向性"
+            "agreeableness" -> "宜人性"
+            "neuroticism" -> "神经质"
+            else -> dimension
+        }
+    } else {
+        when (dimension) {
+            "openness" -> "Openness"
+            "conscientiousness" -> "Conscientiousness"
+            "extraversion" -> "Extraversion"
+            "agreeableness" -> "Agreeableness"
+            "neuroticism" -> "Neuroticism"
+            else -> dimension
+        }
+    }
+}
+
+/**
+ * 获取Big Five维度的描述
+ */
+private fun getBigFiveDescription(dimension: String, language: String): String {
+    return if (language == "zh") {
+        when (dimension) {
+            "openness" -> "对新体验和创意的接受程度"
+            "conscientiousness" -> "自律和组织能力"
+            "extraversion" -> "社交活跃度和能量来源"
+            "agreeableness" -> "与他人和谐相处的能力"
+            "neuroticism" -> "情绪稳定性和压力应对"
+            else -> ""
+        }
+    } else {
+        when (dimension) {
+            "openness" -> "Openness to new experiences and creativity"
+            "conscientiousness" -> "Self-discipline and organization"
+            "extraversion" -> "Social activity and energy source"
+            "agreeableness" -> "Ability to harmonize with others"
+            "neuroticism" -> "Emotional stability and stress coping"
+            else -> ""
         }
     }
 }

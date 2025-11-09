@@ -22,7 +22,8 @@
       "Bash(.gradlew.bat clean assembleDebug)",
       "Bash(dir:*)",
       "Bash(cmd /c:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(./gradlew.bat:*)"
     ],
     "deny": [],
     "ask": []

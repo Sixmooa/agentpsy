@@ -263,7 +263,7 @@ private fun QuestionContent(
             )
         ) {
             Text(
-                text = question.getQuestionText(),
+                text = question.getQuestionText(language),
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(20.dp),
                 textAlign = TextAlign.Center,
@@ -279,6 +279,7 @@ private fun QuestionContent(
             items(answerOptions) { option ->
                 AnswerOptionCard(
                     option = option,
+                    language = language,
                     isSelected = selectedAnswer?.id == option.id,
                     onSelected = { onAnswerSelected(option) }
                 )
@@ -302,6 +303,7 @@ private fun QuestionContent(
 @Composable
 private fun AnswerOptionCard(
     option: AnswerOption,
+    language: String,
     isSelected: Boolean,
     onSelected: () -> Unit,
     modifier: Modifier = Modifier
@@ -323,7 +325,7 @@ private fun AnswerOptionCard(
         shape = RoundedCornerShape(12.dp)
     ) {
         Text(
-            text = option.getOptionText(),
+            text = option.getOptionText(language),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(16.dp),
             color = if (isSelected) {
